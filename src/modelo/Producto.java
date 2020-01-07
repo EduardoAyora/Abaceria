@@ -13,19 +13,14 @@ package modelo;
 
 public class Producto {
     private int id;
-    private String codigo_barra;
-    private String nombre_producto;
-    private String nacionalidad;
-    private String unidad_medida;
+    private String codigoBarra;
+    private String descripcion;
+    private int nacional;
+    private String unidadMedida;
     private int stock;
-
-    public Producto(String codigo_barra, String nombre_producto, String nacionalidad, String unidad_medida, int stock) {
-        this.codigo_barra = codigo_barra;
-        this.nombre_producto = nombre_producto;
-        this.nacionalidad = nacionalidad;
-        this.unidad_medida = unidad_medida;
-        this.stock = stock;
-    }
+    private double precio;
+    private int tieneIva;
+    private CategoriaProducto cateriaProducto;
 
     public int getId() {
         return id;
@@ -34,38 +29,37 @@ public class Producto {
     public void setId(int id) {
         this.id = id;
     }
-    
 
-    public String getCodigo_barra() {
-        return codigo_barra;
+    public String getCodigoBarra() {
+        return codigoBarra;
     }
 
-    public void setCodigo_barra(String codigo_barra) {
-        this.codigo_barra = codigo_barra;
+    public void setCodigoBarra(String codigoBarra) {
+        this.codigoBarra = codigoBarra;
     }
 
-    public String getNombre_producto() {
-        return nombre_producto;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombre_producto(String nombre_producto) {
-        this.nombre_producto = nombre_producto;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getNacionalidad() {
-        return nacionalidad;
+    public int getNacional() {
+        return nacional;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
+    public void setNacional(int nacional) {
+        this.nacional = nacional;
     }
 
-    public String getUnidad_medida() {
-        return unidad_medida;
+    public String getUnidadMedida() {
+        return unidadMedida;
     }
 
-    public void setUnidad_medida(String unidad_medida) {
-        this.unidad_medida = unidad_medida;
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
     }
 
     public int getStock() {
@@ -76,11 +70,33 @@ public class Producto {
         this.stock = stock;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "id=" + id + ", codigo_barra=" + codigo_barra + ", nombre_producto=" + nombre_producto + ", nacionalidad=" + nacionalidad + ", unidad_medida=" + unidad_medida + ", stock=" + stock + '}';
+    public double getPrecio() {
+        return precio;
     }
 
-    
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public int getTieneIva() {
+        return tieneIva;
+    }
+
+    public void setTieneIva(int tieneIva) {
+        this.tieneIva = tieneIva;
+    }
+
+    public CategoriaProducto getCateriaProducto() {
+        return cateriaProducto;
+    }
+
+    public void setCateriaProducto(CategoriaProducto cateriaProducto) {
+        this.cateriaProducto = cateriaProducto;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", descripcion=" + descripcion + ", nacional=" + nacional + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", precio=" + precio + ", tieneIva=" + tieneIva + ", cateriaProducto=" + cateriaProducto + '}';
+    }
 
 }

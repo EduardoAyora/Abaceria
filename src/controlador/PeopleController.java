@@ -22,18 +22,18 @@ public class PeopleController {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public Persona read(int code){
+    public Proveedor read(String cedula){
         Proveedor persona = null;
         try{
             String sql = "select * from ABA_PERSONAS "
-                    + "where per_id = " + code;
+                    + "where per_cedula = '" + cedula + "'";
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
                 persona = new Proveedor();
-                persona.setId(code);
-                persona.setCedula(rs.getString("per_cedula"));
+                persona.setId(rs.getInt("per_id"));
+                persona.setCedula(cedula);
                 persona.setNombre(rs.getString("per_nombre"));
                 persona.setApellido(rs.getString("per_apellido"));
                 persona.setDireccion(rs.getString("per_direccion"));
