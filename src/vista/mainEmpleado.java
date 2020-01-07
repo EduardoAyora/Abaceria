@@ -91,7 +91,6 @@ public class mainEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (registroCliente == null || !registroCliente.isVisible()) {
              registroCliente = new Cliente();
-             registroCliente = new RegistroCliente();
            registroCliente.setVisible(true);
            desktopPane.add(registroCliente);
          }
@@ -101,7 +100,6 @@ public class mainEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
              factura = new Factura();
-            factura = new Factura();
           factura.setVisible(true);
            desktopPane.add(factura);
         }
