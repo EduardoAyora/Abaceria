@@ -7,6 +7,8 @@ package controlador;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import modelo.Persona;
+import modelo.Proveedor;
 
 /**
  *
@@ -20,16 +22,24 @@ public class PeopleController {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public String read(int code){
-        String people = "";
+    public Persona read(int code){
+        Proveedor persona = null;
         try{
-            String sql = "select per_nombre, per_apellido from ABA_PERSONAS "
+            String sql = "select * from ABA_PERSONAS "
                     + "where per_id = " + code;
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
-                people = rs.getString("per_nombre") + rs.getString("per_apellido");
+                persona = new Proveedor();
+                persona.setId(code);
+                persona.setCedula(rs.getString("per_cedula"));
+                persona.setNombre(rs.getString("per_nombre"));
+                persona.setApellido(rs.getString("per_apellido"));
+                persona.setDireccion(rs.getString("per_direccion"));
+                persona.setTelefono(rs.getString("per_telefono"));
+                persona.setCelular(rs.getString("per_celular"));
+                persona.setActivo(rs.getInt("per_activo"));
             }
             rs.close();
             sta.close();
@@ -37,7 +47,7 @@ public class PeopleController {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return people;
+        return persona;
     }
     
 }
