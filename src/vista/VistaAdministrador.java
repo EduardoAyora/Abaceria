@@ -5,13 +5,13 @@
  */
 package vista;
 
-//import ec.edu.ups.vista.producto.CrearProducto;
+  import vista.producto.CrearProducto;
 //import ec.edu.ups.vista.producto.RudCategoria;
-//import ec.edu.ups.vista.producto.RudProducto;
+  import vista.producto.EditarProducto;
 //import ec.edu.ups.vista.proveedor.CrearProveedor;
 //import ec.edu.ups.vista.proveedor.RudProveedor;
-//import ec.edu.ups.vista.usuario.CrearUsuario;
-//import ec.edu.ups.vista.usuario.RudUsuario;
+  import vista.usuario.CrearUsuario;
+  import vista.usuario.EditarUsuario;
 
 /**
  *
@@ -20,10 +20,10 @@ package vista;
 public class VistaAdministrador extends javax.swing.JFrame {
     //private CrearProducto crearProducto;
     //private RudCategoria rudCategoria;
-//    private RudProducto rudProducto;
+      private EditarProducto rudProducto;
 //    
-//    private CrearUsuario crearUsuario;
-//    private RudUsuario rudUsuario;
+      private CrearUsuario crearUsuario;
+      private EditarUsuario rudUsuario;
 //    
 //    private CrearProveedor regProveedor;
 //    private RudProveedor rudProveedor;
@@ -49,21 +49,25 @@ public class VistaAdministrador extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         helpMenu = new javax.swing.JMenu();
         itemCrearE = new javax.swing.JMenuItem();
-        itemCrudE = new javax.swing.JMenuItem();
+        itemEditarE = new javax.swing.JMenuItem();
+        menuProducto = new javax.swing.JMenu();
+        itemCrear = new javax.swing.JMenuItem();
+        itemRProducto = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itemCrearC = new javax.swing.JMenuItem();
+        itemEditarC = new javax.swing.JMenuItem();
         menuProveedor = new javax.swing.JMenu();
         itemRegistrarProveedor = new javax.swing.JMenuItem();
         itemRudProveedor = new javax.swing.JMenuItem();
-        menuProducto = new javax.swing.JMenu();
-        itemCrear = new javax.swing.JMenuItem();
-        itemCategoria = new javax.swing.JMenuItem();
-        itemRProducto = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(240, 240, 240));
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Empleado");
+        helpMenu.setText("Empleados");
 
         itemCrearE.setText("Crear");
         itemCrearE.addActionListener(new java.awt.event.ActionListener() {
@@ -73,38 +77,18 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         helpMenu.add(itemCrearE);
 
-        itemCrudE.setText("CRUD Empleado");
-        itemCrudE.addActionListener(new java.awt.event.ActionListener() {
+        itemEditarE.setText("Editar");
+        itemEditarE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCrudEActionPerformed(evt);
+                itemEditarEActionPerformed(evt);
             }
         });
-        helpMenu.add(itemCrudE);
+        helpMenu.add(itemEditarE);
 
         menuBar.add(helpMenu);
 
-        menuProveedor.setText("Proveedor");
-
-        itemRegistrarProveedor.setText("Registrar");
-        itemRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemRegistrarProveedorActionPerformed(evt);
-            }
-        });
-        menuProveedor.add(itemRegistrarProveedor);
-
-        itemRudProveedor.setText("Rud Proveedor");
-        itemRudProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemRudProveedorActionPerformed(evt);
-            }
-        });
-        menuProveedor.add(itemRudProveedor);
-
-        menuBar.add(menuProveedor);
-
         menuProducto.setMnemonic('f');
-        menuProducto.setText("Producto");
+        menuProducto.setText("Productos");
 
         itemCrear.setMnemonic('o');
         itemCrear.setText("Crear");
@@ -115,17 +99,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         menuProducto.add(itemCrear);
 
-        itemCategoria.setMnemonic('s');
-        itemCategoria.setText("Rud Categoria");
-        itemCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCategoriaActionPerformed(evt);
-            }
-        });
-        menuProducto.add(itemCategoria);
-
         itemRProducto.setMnemonic('a');
-        itemRProducto.setText("Rud Producto");
+        itemRProducto.setText("Editar");
         itemRProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemRProductoActionPerformed(evt);
@@ -134,6 +109,43 @@ public class VistaAdministrador extends javax.swing.JFrame {
         menuProducto.add(itemRProducto);
 
         menuBar.add(menuProducto);
+
+        jMenu1.setText("Categoria");
+
+        itemCrearC.setText("Crear");
+        jMenu1.add(itemCrearC);
+
+        itemEditarC.setText("Editar");
+        jMenu1.add(itemEditarC);
+
+        menuBar.add(jMenu1);
+
+        menuProveedor.setText("Proveedor");
+
+        itemRegistrarProveedor.setText("Crear");
+        itemRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarProveedorActionPerformed(evt);
+            }
+        });
+        menuProveedor.add(itemRegistrarProveedor);
+
+        itemRudProveedor.setText("Editar");
+        itemRudProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRudProveedorActionPerformed(evt);
+            }
+        });
+        menuProveedor.add(itemRudProveedor);
+
+        menuBar.add(menuProveedor);
+
+        jMenu2.setText("Compras de Mercancia");
+
+        jMenuItem1.setText("Entrega de Proveedor");
+        jMenu2.add(jMenuItem1);
+
+        menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
 
@@ -164,37 +176,21 @@ public class VistaAdministrador extends javax.swing.JFrame {
 //         } 
     }//GEN-LAST:event_itemCrearActionPerformed
 
-    private void itemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategoriaActionPerformed
-//        if (rudCategoria == null || !rudCategoria.isVisible()) {
-//            rudCategoria = new RudCategoria();
-//            rudCategoria.setVisible(true);
-//            desktopPane.add(rudCategoria);
-//         }  
-    }//GEN-LAST:event_itemCategoriaActionPerformed
-
-    private void itemRProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRProductoActionPerformed
-//        if (rudProducto == null || !rudProducto.isVisible()) {
-//            rudProducto = new RudProducto();
-//            rudProducto.setVisible(true);
-//            desktopPane.add(rudProducto);
-//         } 
-    }//GEN-LAST:event_itemRProductoActionPerformed
-
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
-//         if (crearUsuario == null || !crearUsuario.isVisible()) {
-//            crearUsuario = new CrearUsuario();
-//            crearUsuario.setVisible(true);
-//            desktopPane.add(crearUsuario);
-//         } 
+         if (crearUsuario == null || !crearUsuario.isVisible()) {
+            crearUsuario = new CrearUsuario();
+            crearUsuario.setVisible(true);
+            desktopPane.add(crearUsuario);
+         } 
     }//GEN-LAST:event_itemCrearEActionPerformed
 
-    private void itemCrudEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrudEActionPerformed
-//       if (rudUsuario == null || !rudUsuario.isVisible()) {
-//            rudUsuario = new RudUsuario();
-//            rudUsuario.setVisible(true);
-//            desktopPane.add(rudUsuario);
-//         }  
-    }//GEN-LAST:event_itemCrudEActionPerformed
+    private void itemEditarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarEActionPerformed
+       if (rudUsuario == null || !rudUsuario.isVisible()) {
+            rudUsuario = new EditarUsuario();
+            rudUsuario.setVisible(true);
+            desktopPane.add(rudUsuario);
+         }  
+    }//GEN-LAST:event_itemEditarEActionPerformed
 
     private void itemRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarProveedorActionPerformed
 //         if (regProveedor == null || !regProveedor.isVisible()) {
@@ -211,6 +207,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
 //            desktopPane.add(rudProveedor);
 //         } 
     }//GEN-LAST:event_itemRudProveedorActionPerformed
+
+    private void itemRProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRProductoActionPerformed
+                if (rudProducto == null || !rudProducto.isVisible()) {
+                        rudProducto = new EditarProducto();
+                        rudProducto.setVisible(true);
+                        desktopPane.add(rudProducto);
+                     }
+    }//GEN-LAST:event_itemRProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,13 +255,17 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem itemCategoria;
     private javax.swing.JMenuItem itemCrear;
+    private javax.swing.JMenuItem itemCrearC;
     private javax.swing.JMenuItem itemCrearE;
-    private javax.swing.JMenuItem itemCrudE;
+    private javax.swing.JMenuItem itemEditarC;
+    private javax.swing.JMenuItem itemEditarE;
     private javax.swing.JMenuItem itemRProducto;
     private javax.swing.JMenuItem itemRegistrarProveedor;
     private javax.swing.JMenuItem itemRudProveedor;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuProveedor;
