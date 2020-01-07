@@ -18,7 +18,7 @@ public class Persona {
     private String direccion;
     private String telefono;
     private String celular;
-    private String activo;
+    private int activo;
 
     public int getId() {
         return id;
@@ -76,11 +76,11 @@ public class Persona {
         this.celular = celular;
     }
 
-    public String getActivo() {
+    public int getActivo() {
         return activo;
     }
 
-    public void setActivo(String activo) {
+    public void setActivo(int activo) {
         this.activo = activo;
     }
 

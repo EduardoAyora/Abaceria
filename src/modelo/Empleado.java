@@ -44,6 +44,4 @@ public class Empleado extends Persona{
         return "Empleado{" + "tipoAdministrador=" + tipoAdministrador + ", usuario=" + usuario + ", contrasenia=" + contrasenia + '}';
     }
     
-    
-    
 }
