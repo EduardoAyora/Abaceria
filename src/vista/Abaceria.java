@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.PeopleController;
+import controlador.ControladorPersona;
 import modelo.Persona;
 
 /**
@@ -20,7 +20,7 @@ public class Abaceria {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        PeopleController peopleController = new PeopleController();
+        ControladorPersona peopleController = new ControladorPersona();
         System.out.println(peopleController.read("0101"));
         
         

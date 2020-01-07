@@ -14,13 +14,13 @@ import modelo.Persona;
  *
  * @author Eduardo Ayora
  */
-public class PeopleController {
+public class ControladorPersona {
     
     private DataBaseConnection dataBaseConnection;
     private static final String TABLE_NAME = "ABA_PERSONAS";
     private static final String CODE_NAME = "per_id";
 
-    public PeopleController() {
+    public ControladorPersona() {
         dataBaseConnection = new DataBaseConnection();
     }
     
