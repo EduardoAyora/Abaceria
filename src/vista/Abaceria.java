@@ -15,11 +15,10 @@ public class Abaceria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here hice cambios
+        // TODO code application logic here
         
-        int e = 5;
- 
-        int b = 90;  
+        
+        
     }
     
 }
