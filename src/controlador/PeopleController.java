@@ -24,7 +24,7 @@ public class PeopleController {
         String people = "";
         try{
             String sql = "select per_nombre, per_apellido from ABA_PERSONAS "
-                    + "where per_id = " + code + ";";
+                    + "where per_id = " + code;
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);

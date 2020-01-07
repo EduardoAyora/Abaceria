@@ -19,7 +19,7 @@ public class Abaceria {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        new PeopleController().read(1);
+        System.out.println(new PeopleController().read(1));
         
     }
     
