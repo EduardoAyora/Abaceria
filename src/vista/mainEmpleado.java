@@ -5,6 +5,8 @@
  */
 package vista;
 
+import vista.producto.EditarProducto;
+
 
 
 
@@ -89,18 +91,22 @@ public class mainEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (registroCliente == null || !registroCliente.isVisible()) {
              registroCliente = new Cliente();
+             registroCliente = new RegistroCliente();
            registroCliente.setVisible(true);
            desktopPane.add(registroCliente);
+         }
     }//GEN-LAST:event_RegCliActionPerformed
-    }
+    
     private void RegFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFacActionPerformed
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
              factura = new Factura();
+            factura = new Factura();
           factura.setVisible(true);
            desktopPane.add(factura);
+        }
     }//GEN-LAST:event_RegFacActionPerformed
-    }
+    
     /**
      * @param args the command line arguments
      */
