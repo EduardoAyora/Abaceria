@@ -103,8 +103,8 @@ public class Inicio extends javax.swing.JFrame {
 
         if(txtU.getText().equals(usuario) && pass.equals(passU)){
             JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia");
-            //MainUsuario u = new MainUsuario();
-            //u.setVisible(true);
+            VistaEmpleado u = new VistaEmpleado();
+            u.setVisible(true);
             dispose();
         }else{
             if(txtU.getText().equals(admimisrador) && pass.equals(passA)){
