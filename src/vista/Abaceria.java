@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.PeopleController;
+
 /**
  *
  * @author Eduardo Ayora
@@ -17,7 +19,7 @@ public class Abaceria {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
+        new PeopleController().read(1);
         
     }
     

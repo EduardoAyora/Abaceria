@@ -23,13 +23,13 @@ public class PeopleController {
     public String read(int code){
         String people = "";
         try{
-            String sql = "select first_name, last_name from employees "
-                    + "where employee_id = 100";
+            String sql = "select per_nombre, per_apellido from ABA_PERSONAS "
+                    + "where per_id = " + code + ";";
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
-                people = rs.getString("first_name") + rs.getString("last_name");
+                people = rs.getString("per_nombre") + rs.getString("per_apellido");
             }
             rs.close();
             sta.close();
