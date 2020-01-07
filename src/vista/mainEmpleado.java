@@ -14,7 +14,7 @@ package vista;
  * @author Paul Arichabala
  */
 public class mainEmpleado extends javax.swing.JFrame {
-    private RegistroCliente registroCliente;
+    private Cliente registroCliente;
     private Factura factura;
     /**
      * Creates new form mainEmpleado
@@ -88,6 +88,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     private void RegCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCliActionPerformed
         // TODO add your handling code here:
          if (registroCliente == null || !registroCliente.isVisible()) {
+             registroCliente = new Cliente();
            registroCliente.setVisible(true);
            desktopPane.add(registroCliente);
     }//GEN-LAST:event_RegCliActionPerformed
@@ -95,6 +96,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     private void RegFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFacActionPerformed
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
+             factura = new Factura();
           factura.setVisible(true);
            desktopPane.add(factura);
     }//GEN-LAST:event_RegFacActionPerformed
