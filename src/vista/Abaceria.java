@@ -18,6 +18,7 @@ public class Abaceria {
         // TODO code application logic here
         
         int e = 5;
+        int b = 4;
         
     }
     
