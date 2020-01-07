@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Eduardo Ayora
  */
-public class CategoriaProducto {
+public class Categoria {
     private int id;
     private String nombre;
 

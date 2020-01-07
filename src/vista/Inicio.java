@@ -109,7 +109,7 @@ public class Inicio extends javax.swing.JFrame {
         }else{
             if(txtU.getText().equals(admimisrador) && pass.equals(passA)){
                 JOptionPane.showMessageDialog(rootPane, "Acceso Correcto :) ");
-                MainA a = new MainA();
+                VistaAdministrador a = new VistaAdministrador();
                 a.setVisible(true);
                 dispose();
             }else{

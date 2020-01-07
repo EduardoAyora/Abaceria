@@ -6,9 +6,9 @@
 package controlador;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.Persona;
-import modelo.Proveedor;
 
 /**
  *
@@ -17,21 +17,47 @@ import modelo.Proveedor;
 public class PeopleController {
     
     private DataBaseConnection dataBaseConnection;
+    private static final String TABLE_NAME = "ABA_PERSONAS";
+    private static final String CODE_NAME = "per_id";
 
     public PeopleController() {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public Proveedor read(String cedula){
-        Proveedor persona = null;
+    public void create(Persona persona) {
+        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
+        String sql = "INSERT INTO " + TABLE_NAME + 
+                "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
+                + "per_activo)" +
+                " VALUES(" +
+                code + ",'" +
+                persona.getCedula() + "', '" +
+                persona.getNombre() + "', '" +
+                persona.getApellido() + "', '" +
+                persona.getDireccion() + "', '" +
+                persona.getTelefono() + "', '" +
+                persona.getCelular() + "'," +
+                persona.getActivo() + ")";
+        dataBaseConnection.connect();
+        try {
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            sta.execute(sql);
+            dataBaseConnection.disconnect();
+            persona.setId(code);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public Persona read(String cedula){
+        Persona persona = null;
         try{
-            String sql = "select * from ABA_PERSONAS "
-                    + "where per_cedula = '" + cedula + "'";
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + "per_cedula" + " = '" + cedula + "'";
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
-                persona = new Proveedor();
+                persona = new Persona();
                 persona.setId(rs.getInt("per_id"));
                 persona.setCedula(cedula);
                 persona.setNombre(rs.getString("per_nombre"));
@@ -48,6 +74,31 @@ public class PeopleController {
             ex.printStackTrace();
         }
         return persona;
+    }
+    
+    public void update(Persona persona) {
+        String sql = "UPDATE " + TABLE_NAME +
+                " SET per_cedula = '" + persona.getCedula() + "'," +
+                "per_nombre = '" + persona.getNombre() + "'," + 
+                "per_apellido = '" + persona.getApellido() + "'," + 
+                "per_direccion = '" + persona.getDireccion() + "'," + 
+                "per_telefono = '" + persona.getTelefono() + "'," + 
+                "per_celular = '" + persona.getCelular() + "'," + 
+                "per_activo = " + persona.getActivo() + 
+                " WHERE " + CODE_NAME + " = " + persona.getId();
+        dataBaseConnection.connect();
+
+        try {
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            sta.execute(sql);
+            dataBaseConnection.disconnect();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void delete(int code){
+        
     }
     
 }

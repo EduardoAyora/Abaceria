@@ -20,7 +20,7 @@ public class Producto {
     private int stock;
     private double precio;
     private int tieneIva;
-    private CategoriaProducto cateriaProducto;
+    private Categoria cateriaProducto;
 
     public int getId() {
         return id;
@@ -86,11 +86,11 @@ public class Producto {
         this.tieneIva = tieneIva;
     }
 
-    public CategoriaProducto getCateriaProducto() {
+    public Categoria getCateriaProducto() {
         return cateriaProducto;
     }
 
-    public void setCateriaProducto(CategoriaProducto cateriaProducto) {
+    public void setCateriaProducto(Categoria cateriaProducto) {
         this.cateriaProducto = cateriaProducto;
     }
 

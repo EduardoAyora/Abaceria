@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.PeopleController;
+import modelo.Persona;
 
 /**
  *
@@ -19,8 +20,18 @@ public class Abaceria {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println(new PeopleController().read("0106073331"));
+        PeopleController peopleController = new PeopleController();
+        System.out.println(peopleController.read("0101"));
         
+        
+//        Persona persona = new Persona();
+//        persona.setApellido("L");
+//        persona.setNombre("Darwin");
+//        persona.setCedula("0101");
+//        peopleController.create(persona);
+        Persona persona = peopleController.read("0106073331");
+        persona.setDireccion("Cuenca");
+        peopleController.update(persona);
     }
     
 }
