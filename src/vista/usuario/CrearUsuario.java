@@ -5,6 +5,9 @@
  */
 package vista.usuario;
 
+import excepcion.ExcepcionBinaria;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Empleado;
 
 /**
@@ -205,7 +208,19 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Empleado empleado = new Empleado();
         empleado.setCedula(txtCedula.getText());
-        
+        empleado.setNombre(txtNombre.getText());
+        empleado.setApellido(txtApellido.getText());
+        empleado.setDireccion(txtDireccion.getText());
+        empleado.setTelefono(txtTelefono.getText());
+        empleado.setCelular(txtCelular.getText());
+        empleado.setUsuario(txtUsuario.getText());
+        System.out.println(itemTipo.getSelectedIndex());
+        //empleado.setContrasenia(txtPassword.gett);Contrasenia
+        try {
+            empleado.setActivo(1);
+        } catch (ExcepcionBinaria ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

@@ -19,10 +19,6 @@ import vista.producto.EditarCategoria;
  *
  * @author Darwin
  */
-//<<<<<<< HEAD:src/vista/MainA.java
-//public class MainA extends javax.swing.JFrame {
-//      private CrearProducto crearProducto;
-//=======
 public class VistaAdministrador extends javax.swing.JFrame {
     //private CrearProducto crearProducto;
     //private RudCategoria rudCategoria;
