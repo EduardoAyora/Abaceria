@@ -5,6 +5,7 @@
  */
 package vista;
 
+import vista.compra.EntregaProveedor;
 import vista.producto.CrearCategoria;
   import vista.producto.CrearProducto;
 import vista.producto.EditarCategoria;
@@ -20,18 +21,17 @@ import vista.producto.EditarCategoria;
  * @author Darwin
  */
 public class VistaAdministrador extends javax.swing.JFrame {
-    private CrearProducto crearProducto;
-    //private RudCategoria rudCategoria;
-
+    
+      private CrearProducto crearProducto;
       private EditarProducto rudProducto;
+      
       private CrearCategoria crearCategoria;
       private EditarCategoria editarCategoria;
-//    
+      
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
-//    
-//    private CrearProveedor regProveedor;
-//    private RudProveedor rudProveedor;
+
+      private EntregaProveedor entregaProveedor;
 
     /**
      * Creates new form MainA
@@ -56,7 +56,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         itemCrearE = new javax.swing.JMenuItem();
         itemEditarE = new javax.swing.JMenuItem();
         menuProducto = new javax.swing.JMenu();
-        itemCrear = new javax.swing.JMenuItem();
+        itemCrearP = new javax.swing.JMenuItem();
         itemRProducto = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         itemCrearCat = new javax.swing.JMenuItem();
@@ -65,7 +65,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         itemRegistrarProveedor = new javax.swing.JMenuItem();
         itemRudProveedor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemEntregaP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,14 +95,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
         menuProducto.setMnemonic('f');
         menuProducto.setText("Productos");
 
-        itemCrear.setMnemonic('o');
-        itemCrear.setText("Crear");
-        itemCrear.addActionListener(new java.awt.event.ActionListener() {
+        itemCrearP.setMnemonic('o');
+        itemCrearP.setText("Crear");
+        itemCrearP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCrearActionPerformed(evt);
+                itemCrearPActionPerformed(evt);
             }
         });
-        menuProducto.add(itemCrear);
+        menuProducto.add(itemCrearP);
 
         itemRProducto.setMnemonic('a');
         itemRProducto.setText("Editar");
@@ -157,8 +157,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenu2.setText("Compras de Mercancia");
 
-        jMenuItem1.setText("Entrega de Proveedor");
-        jMenu2.add(jMenuItem1);
+        itemEntregaP.setText("Entrega de Proveedor");
+        itemEntregaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEntregaPActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemEntregaP);
 
         menuBar.add(jMenu2);
 
@@ -170,8 +175,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 836, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,13 +188,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
+    private void itemCrearPActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+                                           
+
         if (crearProducto == null || !crearProducto.isVisible()) {
             crearProducto = new CrearProducto();
             crearProducto.setVisible(true);
             desktopPane.add(crearProducto);
          } 
-    }//GEN-LAST:event_itemCrearActionPerformed
+    }                                         
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
         if (crearUsuario == null || !crearUsuario.isVisible()) {
@@ -247,6 +255,15 @@ public class VistaAdministrador extends javax.swing.JFrame {
                      } 
     }//GEN-LAST:event_itemEditarCatActionPerformed
 
+    private void itemEntregaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEntregaPActionPerformed
+        // TODO add your handling code here:
+        if (entregaProveedor == null || !entregaProveedor.isVisible()) {
+                        entregaProveedor = new EntregaProveedor();
+                        entregaProveedor.setVisible(true);
+                        desktopPane.add(entregaProveedor);
+                     } 
+    }//GEN-LAST:event_itemEntregaPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,17 +303,17 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem itemCrear;
     private javax.swing.JMenuItem itemCrearCat;
     private javax.swing.JMenuItem itemCrearE;
+    private javax.swing.JMenuItem itemCrearP;
     private javax.swing.JMenuItem itemEditarCat;
     private javax.swing.JMenuItem itemEditarE;
+    private javax.swing.JMenuItem itemEntregaP;
     private javax.swing.JMenuItem itemRProducto;
     private javax.swing.JMenuItem itemRegistrarProveedor;
     private javax.swing.JMenuItem itemRudProveedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuProveedor;
