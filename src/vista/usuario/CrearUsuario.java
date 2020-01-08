@@ -214,10 +214,10 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         empleado.setTelefono(txtTelefono.getText());
         empleado.setCelular(txtCelular.getText());
         empleado.setUsuario(txtUsuario.getText());
-        
-        System.out.println(itemTipo.getSelectedIndex());
-        //empleado.setContrasenia(txtPassword.gett);Contrasenia
+        char[] arrayC = txtPassword.getPassword();
+        empleado.setContrasenia(new String(arrayC));
         try {
+            empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
             empleado.setActivo(1);
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
