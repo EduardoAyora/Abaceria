@@ -14,7 +14,8 @@ import vista.producto.EditarCategoria;
 //import ec.edu.ups.vista.proveedor.RudProveedor;
   import vista.persona.CrearUsuario;
   import vista.persona.EditarUsuario;
-
+  import vista.proveedor.CrearProveedor;
+  import vista.proveedor.EditarProveedor;
 /**
  *
  * @author Darwin
@@ -30,8 +31,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
 //    
-//    private CrearProveedor regProveedor;
-//    private RudProveedor rudProveedor;
+    private CrearProveedor regProveedor;
+    private EditarProveedor editarProveedor;
 
     /**
      * Creates new form MainA
@@ -208,19 +209,25 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEditarEActionPerformed
 
     private void itemRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarProveedorActionPerformed
-//         if (regProveedor == null || !regProveedor.isVisible()) {
-//            regProveedor = new CrearProveedor();
-//            regProveedor.setVisible(true);
-//            desktopPane.add(regProveedor);
-//         } 
+        if (regProveedor == null || !regProveedor.isVisible()) {
+            regProveedor = new CrearProveedor();
+            regProveedor.setVisible(true);
+            regProveedor.setClosable(true);
+            regProveedor.setMaximizable(true);
+//            regProveedor.setMinimizable(true);
+            desktopPane.add(regProveedor);
+         } 
     }//GEN-LAST:event_itemRegistrarProveedorActionPerformed
 
     private void itemRudProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRudProveedorActionPerformed
-//        if (rudProveedor == null || !rudProveedor.isVisible()) {
-//            rudProveedor = new RudProveedor();
-//            rudProveedor.setVisible(true);
-//            desktopPane.add(rudProveedor);
-//         } 
+        if (editarProveedor == null || !editarProveedor.isVisible()) {
+            editarProveedor = new EditarProveedor();
+            editarProveedor.setVisible(true);
+            editarProveedor.setClosable(true);
+            editarProveedor.setMaximizable(true);
+//           editarProveedor.setMinimizable(true);
+           desktopPane.add(editarProveedor);
+         } 
     }//GEN-LAST:event_itemRudProveedorActionPerformed
 
     private void itemRProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRProductoActionPerformed
