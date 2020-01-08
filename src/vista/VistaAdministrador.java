@@ -20,7 +20,7 @@ import vista.producto.EditarCategoria;
  * @author Darwin
  */
 public class VistaAdministrador extends javax.swing.JFrame {
-    //private CrearProducto crearProducto;
+    private CrearProducto crearProducto;
     //private RudCategoria rudCategoria;
 
       private EditarProducto rudProducto;
@@ -184,11 +184,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
-//        if (crearProducto == null || !crearProducto.isVisible()) {
-//            crearProducto = new CrearProducto();
-//            crearProducto.setVisible(true);
-//            desktopPane.add(crearProducto);
-//         } 
+        if (crearProducto == null || !crearProducto.isVisible()) {
+            crearProducto = new CrearProducto();
+            crearProducto.setVisible(true);
+            desktopPane.add(crearProducto);
+         } 
     }//GEN-LAST:event_itemCrearActionPerformed
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
