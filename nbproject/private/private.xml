@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/Inicio.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/modelo/CategoriaProducto.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/modelo/Persona.java</file>
@@ -20,6 +21,10 @@
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/producto/CrearProducto.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/producto/EditarProducto.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/mainEmpleado.java</file>
+=======
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/RegistroCliente.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/Abaceria.java</file>
+>>>>>>> 563d1bc82f208dbdf8787fb64f7417668a406d68
         </group>
     </open-files>
 </project-private>

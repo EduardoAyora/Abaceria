@@ -1,6 +1,36 @@
 --------------------------------------------------------
--- Archivo creado  - martes-enero-07-2020   
+-- Archivo creado  - miércoles-enero-08-2020   
 --------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Sequence CAT_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."CAT_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence COM_PROV_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."COM_PROV_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence FAC_CAB_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."FAC_CAB_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence FAC_DET_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."FAC_DET_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence PER_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."PER_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence PRO_ID_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "ABACERIA"."PRO_ID_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Table ABA_CATEGORIAS
 --------------------------------------------------------
@@ -166,7 +196,7 @@ REM INSERTING into ABACERIA.ABA_FACTURAS_DETALLE
 SET DEFINE OFF;
 REM INSERTING into ABACERIA.ABA_PERSONAS
 SET DEFINE OFF;
-Insert into ABACERIA.ABA_PERSONAS (PER_ID,PER_TIPO_ADMINISTRADOR,PER_CEDULA,PER_NOMBRE,PER_APELLIDO,PER_DIRECCION,PER_TELEFONO,PER_CELULAR,PER_USUARIO,PER_CONTRASENIA,PER_ACTIVO) values ('1',null,'0106073331','Eduardo','Ayora','cuenca','3012113','0984709259',null,null,'1');
+Insert into ABACERIA.ABA_PERSONAS (PER_ID,PER_TIPO_ADMINISTRADOR,PER_CEDULA,PER_NOMBRE,PER_APELLIDO,PER_DIRECCION,PER_TELEFONO,PER_CELULAR,PER_USUARIO,PER_CONTRASENIA,PER_ACTIVO) values ('1',null,'0106073331','Eduardo','Ayora','Cuenca','3012113','0984709259',null,null,'1');
 Insert into ABACERIA.ABA_PERSONAS (PER_ID,PER_TIPO_ADMINISTRADOR,PER_CEDULA,PER_NOMBRE,PER_APELLIDO,PER_DIRECCION,PER_TELEFONO,PER_CELULAR,PER_USUARIO,PER_CONTRASENIA,PER_ACTIVO) values ('2','0','0106073332','Antonio','Ochoa','cuenca','3012114','0984709258','AntonioOchoa','123','1');
 REM INSERTING into ABACERIA.ABA_PRODUCTOS
 SET DEFINE OFF;

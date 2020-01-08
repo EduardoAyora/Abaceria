@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import algoritmo.Algorithm;
+import excepcion.ExcepcionBinaria;
+
 /**
  *
  * @author Eduardo Ayora
@@ -80,8 +83,8 @@ public class Persona {
         return activo;
     }
 
-    public void setActivo(int activo) {
-        this.activo = activo;
+    public void setActivo(int activo) throws ExcepcionBinaria {
+        this.activo = Algorithm.verificacionBinaria(activo);
     }
 
     @Override

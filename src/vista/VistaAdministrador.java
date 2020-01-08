@@ -19,8 +19,14 @@ import vista.producto.EditarCategoria;
  *
  * @author Darwin
  */
-public class MainA extends javax.swing.JFrame {
-      private CrearProducto crearProducto;
+//<<<<<<< HEAD:src/vista/MainA.java
+//public class MainA extends javax.swing.JFrame {
+//      private CrearProducto crearProducto;
+//=======
+public class VistaAdministrador extends javax.swing.JFrame {
+    //private CrearProducto crearProducto;
+    //private RudCategoria rudCategoria;
+
       private EditarProducto rudProducto;
       private CrearCategoria crearCategoria;
       private EditarCategoria editarCategoria;
@@ -34,7 +40,7 @@ public class MainA extends javax.swing.JFrame {
     /**
      * Creates new form MainA
      */
-    public MainA() {
+    public VistaAdministrador() {
         initComponents();
         
     }
@@ -182,11 +188,11 @@ public class MainA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
-        if (crearProducto == null || !crearProducto.isVisible()) {
-            crearProducto = new CrearProducto();
-            crearProducto.setVisible(true);
-            desktopPane.add(crearProducto);
-         } 
+//        if (crearProducto == null || !crearProducto.isVisible()) {
+//            crearProducto = new CrearProducto();
+//            crearProducto.setVisible(true);
+//            desktopPane.add(crearProducto);
+//         } 
     }//GEN-LAST:event_itemCrearActionPerformed
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
@@ -262,20 +268,21 @@ public class MainA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainA().setVisible(true);
+                new VistaAdministrador().setVisible(true);
             }
         });
     }
