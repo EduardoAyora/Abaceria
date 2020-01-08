@@ -5,6 +5,7 @@
  */
 package vista.producto;
 
+import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
 import javax.swing.JOptionPane;
 import modelo.Producto;
@@ -15,12 +16,13 @@ import modelo.Producto;
  */
 public class CrearProducto extends javax.swing.JInternalFrame {
 
+    private ControladorProductos controladorProductos;
     /**
      * Creates new form CrearProducto
      */
     public CrearProducto() {
         initComponents();
-        
+        controladorProductos = new ControladorProductos();
     }
 
     /**
@@ -229,6 +231,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             producto.setUnidadMedida(txtUnidadVenta.getText());
             producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
             producto.setCodigoBarra(txtBarras.getText());
+            //producto.setCateriaProducto(null);
             if(chExtranjero.isSelected()){
                 producto.setNacional(0);
             }else{
@@ -239,6 +242,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             }else{
                 producto.setTieneIva(0);
             }
+            controladorProductos.create(producto);
         }catch(ExcepcionBinaria ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }catch(Exception ex){
