@@ -5,6 +5,7 @@
  */
 package vista.producto;
 
+import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
 import javax.swing.JOptionPane;
@@ -231,7 +232,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             producto.setUnidadMedida(txtUnidadVenta.getText());
             producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
             producto.setCodigoBarra(txtBarras.getText());
-            //producto.setCateriaProducto(null);
+            producto.setCateriaProducto(new ControladorCategoria().read(1));
             if(chExtranjero.isSelected()){
                 producto.setNacional(0);
             }else{
