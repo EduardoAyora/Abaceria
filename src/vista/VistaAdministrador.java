@@ -12,8 +12,8 @@ import vista.producto.EditarCategoria;
   import vista.producto.EditarProducto;
 //import ec.edu.ups.vista.proveedor.CrearProveedor;
 //import ec.edu.ups.vista.proveedor.RudProveedor;
-  import vista.usuario.CrearUsuario;
-  import vista.usuario.EditarUsuario;
+  import vista.persona.CrearUsuario;
+  import vista.persona.EditarUsuario;
 
 /**
  *

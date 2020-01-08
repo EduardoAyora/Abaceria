@@ -7,7 +7,7 @@ package vista;
 
 import controlador.ControladorPersona;
 import modelo.Persona;
-import vista.usuario.CrearUsuario;
+import vista.persona.CrearUsuario;
 
 /**
  *
