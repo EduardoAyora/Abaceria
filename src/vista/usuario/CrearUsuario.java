@@ -81,7 +81,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Tipo:");
 
-        itemTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Empleado" }));
+        itemTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empleado", "Administrador" }));
         itemTipo.setToolTipText("");
 
         btnGuardar.setBackground(new java.awt.Color(102, 102, 102));
@@ -214,6 +214,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         empleado.setTelefono(txtTelefono.getText());
         empleado.setCelular(txtCelular.getText());
         empleado.setUsuario(txtUsuario.getText());
+        
         System.out.println(itemTipo.getSelectedIndex());
         //empleado.setContrasenia(txtPassword.gett);Contrasenia
         try {
