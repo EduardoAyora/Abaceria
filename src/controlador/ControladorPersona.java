@@ -30,7 +30,7 @@ public class ControladorPersona {
                 "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
                 + "per_activo)" +
                 " VALUES(" +
-                code + ",'" +
+                "per_id_seq.nextval" + ",'" +
                 persona.getCedula() + "', '" +
                 persona.getNombre() + "', '" +
                 persona.getApellido() + "', '" +

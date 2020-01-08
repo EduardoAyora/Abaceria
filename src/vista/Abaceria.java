@@ -24,11 +24,11 @@ public class Abaceria {
         System.out.println(peopleController.read("0106073331"));
         
         
-//        Persona persona = new Persona();
-//        persona.setApellido("L");
-//        persona.setNombre("Darwin");
-//        persona.setCedula("0101");
-//        peopleController.create(persona);
+        Persona persona = new Persona();
+        persona.setApellido("L");
+        persona.setNombre("Darwin");
+        persona.setCedula("0101");
+        peopleController.create(persona);
 //        Persona persona = peopleController.read("0106073331");
 //        persona.setDireccion("Cuenca");
 //        peopleController.update(persona);
