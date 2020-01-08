@@ -5,17 +5,22 @@
  */
 package vista.producto;
 
+import controlador.ControladorCategoria;
+import modelo.Categoria;
+
 /**
  *
  * @author Darwin
  */
 public class CrearCategoria extends javax.swing.JInternalFrame {
 
+    private ControladorCategoria controladorCategoria;
     /**
      * Creates new form CrearCategoria
      */
     public CrearCategoria() {
         initComponents();
+        controladorCategoria = new ControladorCategoria();
     }
 
     /**
@@ -45,6 +50,11 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
         jLabel1.setText("Nombre:");
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Limpiar");
 
@@ -95,6 +105,13 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Categoria categoria = new Categoria();
+        categoria.setNombre(txtNombre.getText());
+        controladorCategoria.create(categoria);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
