@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoritmos;
+package algoritmo;
 
+import excepcion.ExcepcionBinaria;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +21,14 @@ public class Algorithm {
         Format format = new SimpleDateFormat("yyyy-MM-dd");
         String dat = format.format(date.getTime());
         return dat;
+    }
+    
+    public static int verificacionBinaria(int numero) throws ExcepcionBinaria{
+        if(numero == 1 || numero == 0){
+            return numero;
+        }else{
+            throw new ExcepcionBinaria();
+        }
     }
     
 }

@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import algoritmo.Algorithm;
+import excepcion.ExcepcionBinaria;
+
 /**
  *
  * @author Eduardo Ayora
@@ -19,8 +22,8 @@ public class Empleado extends Persona{
         return tipoAdministrador;
     }
 
-    public void setTipoAdministrador(int tipoAdministrador) {
-        this.tipoAdministrador = tipoAdministrador;
+    public void setTipoAdministrador(int tipoAdministrador) throws ExcepcionBinaria {
+        this.tipoAdministrador = Algorithm.verificacionBinaria(tipoAdministrador);
     }
 
     public String getUsuario() {

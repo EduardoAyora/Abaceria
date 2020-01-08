@@ -20,7 +20,7 @@ public class Producto {
     private int stock;
     private double precio;
     private int tieneIva;
-    private Categoria cateriaProducto;
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -87,16 +87,16 @@ public class Producto {
     }
 
     public Categoria getCateriaProducto() {
-        return cateriaProducto;
+        return categoria;
     }
 
     public void setCateriaProducto(Categoria cateriaProducto) {
-        this.cateriaProducto = cateriaProducto;
+        this.categoria = cateriaProducto;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", descripcion=" + descripcion + ", nacional=" + nacional + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", precio=" + precio + ", tieneIva=" + tieneIva + ", cateriaProducto=" + cateriaProducto + '}';
+        return "Producto{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", descripcion=" + descripcion + ", nacional=" + nacional + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", precio=" + precio + ", tieneIva=" + tieneIva + ", cateriaProducto=" + categoria + '}';
     }
 
 }
