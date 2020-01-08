@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.usuario;
+package vista.persona;
 
 import excepcion.ExcepcionBinaria;
 import java.util.logging.Level;
@@ -51,7 +51,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         txtCelular = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        itemTipo = new javax.swing.JComboBox<String>();
+        itemTipo = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -226,7 +226,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 
