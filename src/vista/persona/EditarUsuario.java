@@ -17,7 +17,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     public EditarUsuario() {
         initComponents();
         txtCedula.requestFocus();
-        btnDesactivar.setEnabled(false);
     }
 
     /**
@@ -215,7 +214,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        btnDesactivar.setEnabled(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
