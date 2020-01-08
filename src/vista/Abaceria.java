@@ -21,7 +21,7 @@ public class Abaceria {
         // TODO code application logic here
         
         ControladorPersona peopleController = new ControladorPersona();
-        System.out.println(peopleController.read("0101"));
+        System.out.println(peopleController.read("0106073331"));
         
         
 //        Persona persona = new Persona();
@@ -33,7 +33,7 @@ public class Abaceria {
 //        persona.setDireccion("Cuenca");
 //        peopleController.update(persona);
         
-        peopleController.delete(5);
+//        peopleController.delete(5);
         
     }
     
