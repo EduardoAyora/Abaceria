@@ -108,7 +108,6 @@ public class Inicio extends javax.swing.JFrame {
 
             mainEmpleado e = new mainEmpleado();
             e.setVisible(true);
-
             dispose();
         }else{
             if(txtU.getText().equals(admimisrador) && pass.equals(passA)){
