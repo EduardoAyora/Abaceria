@@ -6,6 +6,7 @@
 package vista.producto;
 
 import controlador.ControladorCategoria;
+import javax.swing.JOptionPane;
 import modelo.Categoria;
 
 /**
@@ -108,9 +109,14 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Categoria categoria = new Categoria();
-        categoria.setNombre(txtNombre.getText());
-        controladorCategoria.create(categoria);
+        try{
+            Categoria categoria = new Categoria();
+            categoria.setNombre(txtNombre.getText());
+            controladorCategoria.create(categoria);
+            JOptionPane.showMessageDialog(null, "Categoria creada con exito", "Categoria", JOptionPane.WARNING_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
