@@ -98,7 +98,16 @@ public class ControladorPersona {
     }
     
     public void delete(int code){
-        
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + CODE_NAME + " = " + code;
+        System.out.println(sql);
+        dataBaseConnection.connect();
+        try {
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            sta.executeUpdate(sql);
+            dataBaseConnection.disconnect();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }
