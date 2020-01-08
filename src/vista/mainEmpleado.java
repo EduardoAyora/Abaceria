@@ -5,12 +5,7 @@
  */
 package vista;
 
-import vista.producto.EditarProducto;
-
-
-
-
-
+import vista.mainEmpleado;
 /**
  *
  * @author Paul Arichabala
@@ -89,7 +84,7 @@ public class mainEmpleado extends javax.swing.JFrame {
 
     private void RegCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCliActionPerformed
         // TODO add your handling code here:
-         if (registroCliente == null || !registroCliente.isVisible()) {
+        if (registroCliente == null || !registroCliente.isVisible()) {
              registroCliente = new RegistroCliente();
            registroCliente.setVisible(true);
            desktopPane.add(registroCliente);
