@@ -1,5 +1,8 @@
 package modelo;
 
+import algoritmo.Algorithm;
+import excepcion.ExcepcionBinaria;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -50,8 +53,8 @@ public class Producto {
         return nacional;
     }
 
-    public void setNacional(int nacional) {
-        this.nacional = nacional;
+    public void setNacional(int nacional) throws ExcepcionBinaria {
+        this.nacional = Algorithm.verificacionBinaria(nacional);
     }
 
     public String getUnidadMedida() {
@@ -82,8 +85,8 @@ public class Producto {
         return tieneIva;
     }
 
-    public void setTieneIva(int tieneIva) {
-        this.tieneIva = tieneIva;
+    public void setTieneIva(int tieneIva) throws ExcepcionBinaria {
+        this.tieneIva = Algorithm.verificacionBinaria(tieneIva);
     }
 
     public Categoria getCateriaProducto() {

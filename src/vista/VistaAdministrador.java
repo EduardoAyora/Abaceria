@@ -27,7 +27,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
       
       private CrearCategoria crearCategoria;
       private EditarCategoria editarCategoria;
-//    
+      
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
 
@@ -188,13 +188,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemCrearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearPActionPerformed
+    private void itemCrearPActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+                                           
+
         if (crearProducto == null || !crearProducto.isVisible()) {
             crearProducto = new CrearProducto();
             crearProducto.setVisible(true);
             desktopPane.add(crearProducto);
          } 
-    }//GEN-LAST:event_itemCrearPActionPerformed
+    }                                         
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
         if (crearUsuario == null || !crearUsuario.isVisible()) {
