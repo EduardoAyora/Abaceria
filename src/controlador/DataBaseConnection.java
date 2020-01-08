@@ -50,7 +50,8 @@ public class DataBaseConnection {
     
     public int getCode(String nombreColumna, String nombreTabla){
         int code = 0;
-        String sql = "SELECT MAX(" + nombreColumna + ") FROM \"" + nombreTabla + "\";";
+        //SELECT MAX(salary) "Maximum" FROM employees;
+        String sql = "SELECT MAX(" + nombreColumna + ") FROM " + nombreTabla;
         connect();
         try {
             Statement sta = connection.createStatement();

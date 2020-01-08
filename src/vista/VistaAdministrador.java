@@ -5,22 +5,27 @@
  */
 package vista;
 
+import vista.producto.CrearCategoria;
   import vista.producto.CrearProducto;
+import vista.producto.EditarCategoria;
 //import ec.edu.ups.vista.producto.RudCategoria;
   import vista.producto.EditarProducto;
 //import ec.edu.ups.vista.proveedor.CrearProveedor;
 //import ec.edu.ups.vista.proveedor.RudProveedor;
-  import vista.usuario.CrearUsuario;
-  import vista.usuario.EditarUsuario;
+  import vista.persona.CrearUsuario;
+  import vista.persona.EditarUsuario;
 
 /**
  *
  * @author Darwin
  */
-public class MainA extends javax.swing.JFrame {
-      private CrearProducto crearProducto;
+public class VistaAdministrador extends javax.swing.JFrame {
+    //private CrearProducto crearProducto;
     //private RudCategoria rudCategoria;
+
       private EditarProducto rudProducto;
+      private CrearCategoria crearCategoria;
+      private EditarCategoria editarCategoria;
 //    
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
@@ -31,7 +36,7 @@ public class MainA extends javax.swing.JFrame {
     /**
      * Creates new form MainA
      */
-    public MainA() {
+    public VistaAdministrador() {
         initComponents();
         
     }
@@ -54,8 +59,8 @@ public class MainA extends javax.swing.JFrame {
         itemCrear = new javax.swing.JMenuItem();
         itemRProducto = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        itemCrearC = new javax.swing.JMenuItem();
-        itemEditarC = new javax.swing.JMenuItem();
+        itemCrearCat = new javax.swing.JMenuItem();
+        itemEditarCat = new javax.swing.JMenuItem();
         menuProveedor = new javax.swing.JMenu();
         itemRegistrarProveedor = new javax.swing.JMenuItem();
         itemRudProveedor = new javax.swing.JMenuItem();
@@ -112,11 +117,21 @@ public class MainA extends javax.swing.JFrame {
 
         jMenu1.setText("Categoria");
 
-        itemCrearC.setText("Crear");
-        jMenu1.add(itemCrearC);
+        itemCrearCat.setText("Crear");
+        itemCrearCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCrearCatActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemCrearCat);
 
-        itemEditarC.setText("Editar");
-        jMenu1.add(itemEditarC);
+        itemEditarCat.setText("Editar");
+        itemEditarCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarCatActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemEditarCat);
 
         menuBar.add(jMenu1);
 
@@ -169,15 +184,15 @@ public class MainA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
-        if (crearProducto == null || !crearProducto.isVisible()) {
-            crearProducto = new CrearProducto();
-            crearProducto.setVisible(true);
-            desktopPane.add(crearProducto);
-         } 
+//        if (crearProducto == null || !crearProducto.isVisible()) {
+//            crearProducto = new CrearProducto();
+//            crearProducto.setVisible(true);
+//            desktopPane.add(crearProducto);
+//         } 
     }//GEN-LAST:event_itemCrearActionPerformed
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
-         if (crearUsuario == null || !crearUsuario.isVisible()) {
+        if (crearUsuario == null || !crearUsuario.isVisible()) {
             crearUsuario = new CrearUsuario();
             crearUsuario.setVisible(true);
             desktopPane.add(crearUsuario);
@@ -216,6 +231,22 @@ public class MainA extends javax.swing.JFrame {
                      }
     }//GEN-LAST:event_itemRProductoActionPerformed
 
+    private void itemCrearCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCatActionPerformed
+       if (crearCategoria == null || !crearCategoria.isVisible()) {
+                        crearCategoria = new CrearCategoria();
+                        crearCategoria.setVisible(true);
+                        desktopPane.add(crearCategoria);
+                     } 
+    }//GEN-LAST:event_itemCrearCatActionPerformed
+
+    private void itemEditarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarCatActionPerformed
+        if (editarCategoria == null || !editarCategoria.isVisible()) {
+                        editarCategoria = new EditarCategoria();
+                        editarCategoria.setVisible(true);
+                        desktopPane.add(editarCategoria);
+                     } 
+    }//GEN-LAST:event_itemEditarCatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,20 +264,21 @@ public class MainA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainA().setVisible(true);
+                new VistaAdministrador().setVisible(true);
             }
         });
     }
@@ -255,9 +287,9 @@ public class MainA extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem itemCrear;
-    private javax.swing.JMenuItem itemCrearC;
+    private javax.swing.JMenuItem itemCrearCat;
     private javax.swing.JMenuItem itemCrearE;
-    private javax.swing.JMenuItem itemEditarC;
+    private javax.swing.JMenuItem itemEditarCat;
     private javax.swing.JMenuItem itemEditarE;
     private javax.swing.JMenuItem itemRProducto;
     private javax.swing.JMenuItem itemRegistrarProveedor;

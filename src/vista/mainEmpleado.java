@@ -5,19 +5,17 @@
  */
 package vista;
 
-import vista.producto.EditarProducto;
-
-
-
-
-
+import vista.persona.CrearCliente;
+import vista.mainEmpleado;
+import vista.persona.EditarCliente;
 /**
  *
  * @author Paul Arichabala
  */
 public class mainEmpleado extends javax.swing.JFrame {
-    private Cliente registroCliente;
+    private CrearCliente registroCliente;
     private Factura factura;
+    private EditarCliente editarCliente;
     /**
      * Creates new form mainEmpleado
      */
@@ -36,32 +34,19 @@ public class mainEmpleado extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        RegCli = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         RegFac = new javax.swing.JMenuItem();
+        fileMenu = new javax.swing.JMenu();
+        itemCrearC = new javax.swing.JMenuItem();
+        itemEditarC = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cliente");
-
-        RegCli.setMnemonic('o');
-        RegCli.setText("Registrar Cliente");
-        RegCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegCliActionPerformed(evt);
-            }
-        });
-        fileMenu.add(RegCli);
-
-        menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
         editMenu.setText("Factura");
 
         RegFac.setMnemonic('t');
-        RegFac.setText("Registrar Factura");
+        RegFac.setText("Crear");
         RegFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegFacActionPerformed(evt);
@@ -71,30 +56,58 @@ public class mainEmpleado extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
+        fileMenu.setMnemonic('f');
+        fileMenu.setText("Registro Cliente");
+
+        itemCrearC.setMnemonic('o');
+        itemCrearC.setText("Crear");
+        itemCrearC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCrearCActionPerformed(evt);
+            }
+        });
+        fileMenu.add(itemCrearC);
+
+        itemEditarC.setText("Editar");
+        itemEditarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarCActionPerformed(evt);
+            }
+        });
+        fileMenu.add(itemEditarC);
+
+        menuBar.add(fileMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCliActionPerformed
+    private void itemCrearCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCActionPerformed
         // TODO add your handling code here:
+
          if (registroCliente == null || !registroCliente.isVisible()) {
-             registroCliente = new Cliente();
+             registroCliente = new CrearCliente();
+
            registroCliente.setVisible(true);
            desktopPane.add(registroCliente);
          }
-    }//GEN-LAST:event_RegCliActionPerformed
+    }//GEN-LAST:event_itemCrearCActionPerformed
     
     private void RegFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFacActionPerformed
         // TODO add your handling code here:
@@ -104,6 +117,14 @@ public class mainEmpleado extends javax.swing.JFrame {
            desktopPane.add(factura);
         }
     }//GEN-LAST:event_RegFacActionPerformed
+
+    private void itemEditarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarCActionPerformed
+        if (editarCliente == null || !editarCliente.isVisible()) {
+             editarCliente = new EditarCliente();
+          editarCliente.setVisible(true);
+           desktopPane.add(editarCliente);
+        }
+    }//GEN-LAST:event_itemEditarCActionPerformed
     
     /**
      * @param args the command line arguments
@@ -141,11 +162,12 @@ public class mainEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem RegCli;
     private javax.swing.JMenuItem RegFac;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem itemCrearC;
+    private javax.swing.JMenuItem itemEditarC;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

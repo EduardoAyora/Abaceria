@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package excepcion;
 
 /**
  *
  * @author Eduardo Ayora
  */
-public class Proveedor extends Persona{
-    
-    
+public class ExcepcionBinaria extends Exception{
+
+    public ExcepcionBinaria() {
+        super("Solo se admite 1 o 0");
+    }
     
 }

@@ -5,7 +5,9 @@
  */
 package vista;
 
-import controlador.PeopleController;
+import controlador.ControladorPersona;
+import modelo.Persona;
+import vista.persona.CrearUsuario;
 
 /**
  *
@@ -19,7 +21,21 @@ public class Abaceria {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println(new PeopleController().read("0106073331"));
+        ControladorPersona peopleController = new ControladorPersona();
+        System.out.println(peopleController.read("0106073331"));
+        
+//        CrearUsuario crearUsuario = new CrearUsuario();
+//        crearUsuario.setVisible(true);
+//        Persona persona = new Persona();
+//        persona.setApellido("L");
+//        persona.setNombre("Darwin");
+//        persona.setCedula("0101");
+//        peopleController.create(persona);
+//        Persona persona = peopleController.read("0106073331");
+//        persona.setDireccion("Cuenca");
+//        peopleController.update(persona);
+        
+//        peopleController.delete(5);
         
     }
     
