@@ -82,6 +82,36 @@ public class ControladorEmpleado {
         return persona;
     }
     
+    public Empleado readByCode(int code){
+        Empleado persona = null;
+        try{
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + CODE_NAME + " = " + code;
+            dataBaseConnection.connect();
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if(rs.next()){
+                persona = new Empleado();
+                persona.setId(rs.getInt(CODE_NAME));
+                persona.setTipoAdministrador(rs.getInt("per_tipo_administrador"));
+                persona.setCedula("per_cedula");
+                persona.setNombre(rs.getString("per_nombre"));
+                persona.setApellido(rs.getString("per_apellido"));
+                persona.setDireccion(rs.getString("per_direccion"));
+                persona.setTelefono(rs.getString("per_telefono"));
+                persona.setCelular(rs.getString("per_celular"));
+                persona.setUsuario(rs.getString("per_usuario"));
+                persona.setContrasenia(rs.getString("per_contrasenia"));
+                persona.setActivo(rs.getInt("per_activo"));
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return persona;
+    }
+    
     public void update(Empleado persona) {
         String sql = "UPDATE " + TABLE_NAME +
                 " SET per_cedula = '" + persona.getCedula() + "'," +
