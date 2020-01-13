@@ -6,6 +6,8 @@
 package vista.persona;
 
 import com.placeholder.PlaceHolder;
+import javax.swing.JOptionPane;
+import modelo.Persona;
 
 /**
  *
@@ -30,7 +32,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         place = new PlaceHolder(txtConvencional, "Convencional");
         place = new PlaceHolder(txtCelular, "Celular");
         place = new PlaceHolder(txtDireccion, "Direccion");
-        
     }
 
     /**
@@ -76,6 +77,12 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
+            }
+        });
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -146,6 +153,20 @@ public class CrearCliente extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        try{
+            Persona cliente = new Persona();
+           
+            cliente.setId(Integer.parseInt(txtId.getText()));
+            cliente.setCedula(txtCedula.getText());
+            cliente.setNombre(txtNombre.getText());
+            cliente.setApellido(txtApellido.getText());
+            cliente.setDireccion(txtDireccion.getText());
+            cliente.setTelefono(txtConvencional.getText());
+            cliente.setCelular(txtCelular.getText());
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
@@ -155,6 +176,10 @@ public class CrearCliente extends javax.swing.JInternalFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

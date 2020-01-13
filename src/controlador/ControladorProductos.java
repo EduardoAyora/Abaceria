@@ -27,9 +27,10 @@ public class ControladorProductos {
     public void create(Producto producto) {
         int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
-                "("+ CODE_NAME +", pro_descripcion, pro_stock, pro_tiene_iva, pro_nacional,"
+                "("+ CODE_NAME +", ABA_CATEGORIAS_CAT_ID, pro_descripcion, pro_stock, pro_tiene_iva, pro_nacional,"
                 + "pro_unidad_medida, pro_precio, pro_codigo_barras)" + 
-                " VALUES(" + CODE_NAME + "_seq.nextval" + ",'" +
+                " VALUES(" + CODE_NAME + "_seq.nextval" + "," +
+                producto.getCateriaProducto().getId() + ",'" +
                 producto.getDescripcion() + "'," +
                 producto.getStock() + "," +
                 producto.getTieneIva() + "," +
@@ -59,6 +60,7 @@ public class ControladorProductos {
             if(rs.next()){
                 producto = new Producto();
                 producto.setId(rs.getInt(CODE_NAME));
+                producto.setCateriaProducto(new ControladorCategoria().read(rs.getInt("ABA_CATEGORIAS_CAT_ID")));
                 producto.setDescripcion(rs.getString("pro_descripcion"));
                 producto.setStock(rs.getInt("pro_stock"));
                 producto.setTieneIva(rs.getInt("pro_tiene_iva"));
@@ -79,6 +81,7 @@ public class ControladorProductos {
     public void update(Producto producto) {
         String sql = "UPDATE " + TABLE_NAME +
                 " SET pro_descripcion = '" + producto.getDescripcion()+ "'," +
+                "ABA_CATEGORIAS_CAT_ID = " + producto.getCateriaProducto().getId() + "," +
                 "pro_stock = " + producto.getStock() + "," +
                 "pro_tiene_iva = " + producto.getStock() + "," +
                 "pro_nacional = " + producto.getStock() + "," +

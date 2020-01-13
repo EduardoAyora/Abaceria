@@ -10,6 +10,7 @@ package modelo;
  * @author Eduardo Ayora
  */
 public class Categoria {
+    
     private int id;
     private String nombre;
 
@@ -31,7 +32,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "CategoriaProducto{" + "id=" + id + ", nombre=" + nombre + '}';
+        return nombre;
     }
    
 }
