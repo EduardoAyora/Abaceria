@@ -5,8 +5,19 @@
  */
 package vista.factura;
 
+import controlador.ControladorFactura;
+import controlador.ControladorPersona;
 import controlador.ControladorProductos;
+import excepcion.ExcepcionBinaria;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Empleado;
+import modelo.Factura;
+import modelo.FacturaDetalle;
+import modelo.Persona;
 import modelo.Producto;
 import vista.mainEmpleado;
 import vista.persona.CrearCliente;
@@ -19,7 +30,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     
     private CrearCliente registroCliente;
     private ControladorProductos controladorProductos;
+    private ControladorFactura controladorFactura;
+    private ControladorPersona controladorPersona;
     private Producto producto;
+    private List<FacturaDetalle> facturaDetalles;
+    private Persona cliente;
+    private Empleado empleado;
     /**
      * Creates new form Factura
      */
@@ -27,8 +43,29 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         initComponents();
         txtBCedula.requestFocus();
         controladorProductos = new ControladorProductos();
+        controladorFactura = new ControladorFactura();
     }
 
+    public void listar(){
+        tblDetalles.setRowHeight(55);
+        DefaultTableModel modelo = (DefaultTableModel) tblDetalles.getModel();
+        modelo.setRowCount(0);
+        for (FacturaDetalle facturaDetalle : facturaDetalles) {
+            Object[] datos = {
+                facturaDetalle.getProducto().getDescripcion(),
+                facturaDetalle.getCantidad(),
+                facturaDetalle.getIva() + " $",
+                facturaDetalle.getSubtotal() + " $",
+                facturaDetalle.getTotal() + " $"
+            };
+            modelo.addRow(datos);
+        }
+    }
+    
+    public void llenarDatosCliente(){
+        lblNombres.setText(cliente.getNombre());
+        lblApellidos.setText(cliente.getApellido());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +91,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         btnRegistrarCliente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -67,14 +104,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblNombres = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDetalles = new javax.swing.JTable();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -215,8 +252,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("RUC: ");
 
-        jLabel16.setText("9999999999999");
-
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("N° FACTURA:");
 
@@ -238,19 +273,19 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel21))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
@@ -284,9 +319,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         jLabel7.setText("0106552132");
 
-        jLabel8.setText("Juan Antonio");
+        lblNombres.setText("Juan Antonio");
 
-        jLabel9.setText("Perez Ramirez");
+        lblApellidos.setText("Perez Ramirez");
 
         jLabel10.setText("Yanahurco y sn");
 
@@ -308,11 +343,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)))
+                            .addComponent(lblNombres)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel9)))
+                        .addComponent(lblApellidos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -337,20 +372,20 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel8)
+                    .addComponent(lblNombres)
                     .addComponent(jLabel5)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel9)
+                    .addComponent(lblApellidos)
                     .addComponent(jLabel6)
                     .addComponent(jLabel12)))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -366,7 +401,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDetalles);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -432,7 +467,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(txtBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 22, Short.MAX_VALUE))
                     .addComponent(txtNombreProducto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -572,6 +607,36 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBCedulaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if(cliente != null){
+            Factura factura = new Factura();
+            factura.setFecha(null);
+            factura.setEmpleado(null);
+            factura.setCliente(null);
+
+            double subtotal = 0;
+            double iva = 0;
+            double total = 0;
+
+            for(FacturaDetalle facturaDetalle : facturaDetalles){
+                subtotal += facturaDetalle.getSubtotal();
+                iva += facturaDetalle.getIva();
+                total += facturaDetalle.getTotal();
+            }
+
+            factura.setSubtotal(subtotal);
+            factura.setIva(iva);
+            factura.setTotal(total);
+            try {
+                factura.setEstado(1);
+            } catch (ExcepcionBinaria ex) {
+                Logger.getLogger(CrearFactura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            controladorFactura.create(factura);
+            for(FacturaDetalle facturaDetalle : facturaDetalles){
+                facturaDetalle.setFactura(factura);
+            }
+            cliente = null;
+        }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -580,16 +645,15 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
-
         if (registroCliente == null || !registroCliente.isVisible()) {
             registroCliente = new CrearCliente();
             mainEmpleado.desktopEmpleado.add(registroCliente);
             registroCliente.setVisible(true);           
-         }        
+        }        
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        JOptionPane.showMessageDialog(rootPane, " NO existe el Cliente");
+        cliente = controladorPersona.read(txtBCedula.getText());
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -617,6 +681,19 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if((int) spnCantidad.getValue() > 0 && (int) spnCantidad.getValue() < producto.getStock() && producto != null){
+            FacturaDetalle facturaDetalle = new FacturaDetalle();
+            facturaDetalle.setProducto(producto);
+            facturaDetalle.setCantidad((int) spnCantidad.getValue());
+            facturaDetalle.setSubtotal(facturaDetalle.getProducto().getPrecio() * facturaDetalle.getCantidad());
+            if(facturaDetalle.getProducto().getTieneIva() == 1){
+                facturaDetalle.setIva(facturaDetalle.getSubtotal() * 0.12);
+            }else{
+                facturaDetalle.setIva(0);
+            }
+            facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
+            facturaDetalles.add(facturaDetalle);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -636,7 +713,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -657,8 +733,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -666,11 +740,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblNombres;
     private javax.swing.JSpinner spnCantidad;
+    private javax.swing.JTable tblDetalles;
     private javax.swing.JTextField txtBCedula;
     private javax.swing.JTextField txtBarras;
     private javax.swing.JTextField txtBarras2;
