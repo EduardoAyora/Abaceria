@@ -166,6 +166,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
