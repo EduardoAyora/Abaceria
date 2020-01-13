@@ -6,6 +6,7 @@
 package vista.persona;
 
 import com.placeholder.PlaceHolder;
+import controlador.ControladorPersona;
 import javax.swing.JOptionPane;
 import modelo.Persona;
 
@@ -15,14 +16,20 @@ import modelo.Persona;
  */
 public class CrearCliente extends javax.swing.JInternalFrame {
     private PlaceHolder place;
-
+    
+    private ControladorPersona controladorPersonas;
+    
     /**
      * Creates new form Cliente
      */
     public CrearCliente() {
         initComponents();
         placeHolder();
+        controladorPersonas = new ControladorPersona();
+        JOptionPane.showMessageDialog(null, "Cliente creado con éxxito", "Cliente", JOptionPane.INFORMATION_MESSAGE);
     }
+     
+
     
     public void placeHolder(){
         place = new PlaceHolder(txtId,"Codigo");
@@ -155,7 +162,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             Persona cliente = new Persona();
-           
             cliente.setId(Integer.parseInt(txtId.getText()));
             cliente.setCedula(txtCedula.getText());
             cliente.setNombre(txtNombre.getText());
@@ -163,9 +169,10 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             cliente.setDireccion(txtDireccion.getText());
             cliente.setTelefono(txtConvencional.getText());
             cliente.setCelular(txtCelular.getText());
-            
+            controladorPersonas.create(cliente);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -193,4 +200,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+
 }
