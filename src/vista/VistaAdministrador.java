@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorPersona;
 import vista.compra.EntregaProveedor;
 import vista.producto.CrearCategoria;
   import vista.producto.CrearProducto;
@@ -32,16 +33,19 @@ public class VistaAdministrador extends javax.swing.JFrame {
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
 
-    private CrearProveedor regProveedor;
-    private EditarProveedor editarProveedor;
+      private CrearProveedor regProveedor;
+      private EditarProveedor editarProveedor;
 
       private EntregaProveedor entregaProveedor;
+      
+      private ControladorPersona controladorPersona;
 
     /**
      * Creates new form MainA
      */
     public VistaAdministrador() {
         initComponents();
+        controladorPersona = new ControladorPersona();
         
     }
 
@@ -193,9 +197,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemCrearPActionPerformed(java.awt.event.ActionEvent evt) {                                           
-
-                                           
-
+                                  
         if (crearProducto == null || !crearProducto.isVisible()) {
             crearProducto = new CrearProducto();
             crearProducto.setVisible(true);
@@ -221,7 +223,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void itemRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarProveedorActionPerformed
         if (regProveedor == null || !regProveedor.isVisible()) {
-            regProveedor = new CrearProveedor();
+            regProveedor = new CrearProveedor(controladorPersona);
             regProveedor.setVisible(true);
             regProveedor.setClosable(true);
             regProveedor.setMaximizable(true);

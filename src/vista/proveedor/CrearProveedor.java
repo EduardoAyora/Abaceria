@@ -5,17 +5,23 @@
  */
 package vista.proveedor;
 
+import controlador.ControladorPersona;
+import javax.swing.JOptionPane;
+import modelo.Persona;
+
 /**
  *
  * @author Paul Arichabala
  */
 public class CrearProveedor extends javax.swing.JInternalFrame {
+    private ControladorPersona controladorPersona;
 
     /**
      * Creates new form CrearProveedor
      */
-    public CrearProveedor() {
+    public CrearProveedor(ControladorPersona controladorPersona) {
         initComponents();
+        this.controladorPersona=controladorPersona;
     }
 
     /**
@@ -208,7 +214,31 @@ public class CrearProveedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+try{
+            Persona proveedor = new Persona();
+           
+            proveedor.setCedula(txtCedula.getText());
+            proveedor.setNombre(txtNombre.getText());
+            proveedor.setApellido(txtApellido.getText());
+            proveedor.setDireccion(txtDireccion.getText());
+            proveedor.setTelefono(txtTelefono.getText());
+            proveedor.setCelular(txtCelular.getText());
+            
+            controladorPersona.create(proveedor);
+            
+            JOptionPane.showMessageDialog(rootPane, "Proveedor Creado Exitosamente"," Proveedor",JOptionPane.OK_OPTION);
+            txtCedula.setText("");
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtTelefono.setText("");
+            txtDireccion.setText("");
+            txtCelular.setText("");
+            
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
+        }        
        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
