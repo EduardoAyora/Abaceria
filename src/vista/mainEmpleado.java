@@ -5,7 +5,7 @@
  */
 package vista;
 
-import vista.factura.Factura;
+import vista.factura.CrearFactura;
 import vista.persona.CrearCliente;
 import vista.mainEmpleado;
 import vista.persona.EditarCliente;
@@ -15,7 +15,7 @@ import vista.persona.EditarCliente;
  */
 public class mainEmpleado extends javax.swing.JFrame {
     private CrearCliente registroCliente;
-    private Factura factura;
+    private CrearFactura factura;
     private EditarCliente editarCliente;
     /**
      * Creates new form mainEmpleado
@@ -113,7 +113,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     private void RegFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFacActionPerformed
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
-             factura = new Factura();
+             factura = new CrearFactura();
           factura.setVisible(true);
            desktopPane.add(factura);
         }

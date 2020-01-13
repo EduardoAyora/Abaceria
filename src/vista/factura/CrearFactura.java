@@ -9,13 +9,13 @@ package vista.factura;
  *
  * @author Paul Arichabala
  */
-public class Factura extends javax.swing.JInternalFrame {
+public class CrearFactura extends javax.swing.JInternalFrame {
     
 
     /**
      * Creates new form Factura
      */
-    public Factura() {
+    public CrearFactura() {
         initComponents();
         
         txtBCedula.requestFocus();
@@ -577,8 +577,6 @@ public class Factura extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
