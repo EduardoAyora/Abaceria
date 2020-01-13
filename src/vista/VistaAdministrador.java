@@ -234,7 +234,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void itemRudProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRudProveedorActionPerformed
         if (editarProveedor == null || !editarProveedor.isVisible()) {
-            editarProveedor = new EditarProveedor();
+            editarProveedor = new EditarProveedor(controladorPersona);
             editarProveedor.setVisible(true);
             editarProveedor.setClosable(true);
             editarProveedor.setMaximizable(true);
