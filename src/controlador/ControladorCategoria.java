@@ -8,6 +8,8 @@ package controlador;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Categoria;
 
 /**
@@ -88,6 +90,28 @@ public class ControladorCategoria {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public List<Categoria> list(){
+        List<Categoria> categorias = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM " + TABLE_NAME;
+            dataBaseConnection.connect();
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            while(rs.next()){
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt(CODE_NAME));
+                categoria.setNombre(rs.getString("cat_nombre"));
+                categorias.add(categoria);
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return categorias;
     }
     
 }

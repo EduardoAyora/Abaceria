@@ -31,7 +31,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "CategoriaProducto{" + "id=" + id + ", nombre=" + nombre + '}';
+        return nombre;
     }
    
 }

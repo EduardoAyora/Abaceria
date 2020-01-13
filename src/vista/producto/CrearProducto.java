@@ -8,7 +8,9 @@ package vista.producto;
 import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Categoria;
 import modelo.Producto;
 
 /**
@@ -18,12 +20,26 @@ import modelo.Producto;
 public class CrearProducto extends javax.swing.JInternalFrame {
 
     private ControladorProductos controladorProductos;
+    private ControladorCategoria controladorCategoria;
     /**
      * Creates new form CrearProducto
      */
     public CrearProducto() {
         initComponents();
         controladorProductos = new ControladorProductos();
+        controladorCategoria = new ControladorCategoria();
+        cargarItems();
+        JOptionPane.showMessageDialog(null, "Producto creado con exito", "Producto", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void cargarItems(){
+        for(Categoria categoria : controladorCategoria.list()){
+            itemCategoria.addItem(categoria);
+        }
+    }
+    
+    public void limpiar(){
+        
     }
 
     /**
@@ -41,7 +57,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         txtProducto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        itemCategoria = new javax.swing.JComboBox<String>();
+        itemCategoria = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtUnidadVenta = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
@@ -232,7 +248,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             producto.setUnidadMedida(txtUnidadVenta.getText());
             producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
             producto.setCodigoBarra(txtBarras.getText());
-            producto.setCateriaProducto(new ControladorCategoria().read(1));
+            producto.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
             if(chExtranjero.isSelected()){
                 producto.setNacional(0);
             }else{
@@ -248,6 +264,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -258,7 +275,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     javax.swing.JCheckBox chExtranjero;
     private javax.swing.JCheckBox chIva;
-    private javax.swing.JComboBox<String> itemCategoria;
+    private javax.swing.JComboBox itemCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

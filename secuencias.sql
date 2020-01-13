@@ -28,6 +28,10 @@ START WITH 1
 INCREMENT BY 1
 NOCACHE;
 
+ALTER TABLE aba_productos MODIFY pro_codigo_barras VARCHAR2(14) NULL;
+
+DESC aba_productos;
+
 
 
 

@@ -113,7 +113,7 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
             Categoria categoria = new Categoria();
             categoria.setNombre(txtNombre.getText());
             controladorCategoria.create(categoria);
-            JOptionPane.showMessageDialog(null, "Categoria creada con exito", "Categoria", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Categoria creada con exito", "Categoria", JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception e){
             e.printStackTrace();
         }
