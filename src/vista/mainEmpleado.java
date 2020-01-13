@@ -40,6 +40,8 @@ public class mainEmpleado extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         itemCrearC = new javax.swing.JMenuItem();
         itemEditarC = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +80,18 @@ public class mainEmpleado extends javax.swing.JFrame {
         fileMenu.add(itemEditarC);
 
         menuBar.add(fileMenu);
+
+        jMenu1.setText("Cerrar");
+
+        itemCerrarSesion.setText("Sesion");
+        itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemCerrarSesion);
+
+        menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
 
@@ -126,6 +140,12 @@ public class mainEmpleado extends javax.swing.JFrame {
            desktopEmpleado.add(editarCliente);
         }
     }//GEN-LAST:event_itemEditarCActionPerformed
+
+    private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
+        Inicio i = new Inicio();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_itemCerrarSesionActionPerformed
     
     /**
      * @param args the command line arguments
@@ -167,8 +187,10 @@ public class mainEmpleado extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane desktopEmpleado;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem itemCerrarSesion;
     private javax.swing.JMenuItem itemCrearC;
     private javax.swing.JMenuItem itemEditarC;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

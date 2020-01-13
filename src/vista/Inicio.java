@@ -5,8 +5,10 @@
  */
 package vista;
 
+import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
 import javax.swing.JOptionPane;
+import modelo.Empleado;
 
 /**
  *
@@ -17,6 +19,10 @@ public class Inicio extends javax.swing.JFrame {
     private String admimisrador;
     private String passU;
     private String passA;
+    
+    private Empleado empleado [];
+    
+    private ControladorEmpleado controladorEmpleado;
 
     /**
      * Creates new form Inicio
@@ -29,6 +35,8 @@ public class Inicio extends javax.swing.JFrame {
         admimisrador="2";
         passU="1";
         passA="2";
+        
+        usuarios();
     }
 
     /**
@@ -101,6 +109,9 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void usuarios(){
+        //String u = controladorEmpleado.
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String pass = new String(txtPass.getPassword());
 
