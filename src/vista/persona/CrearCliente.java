@@ -26,7 +26,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         initComponents();
         placeHolder();
         controladorPersonas = new ControladorPersona();
-        JOptionPane.showMessageDialog(null, "Cliente creado con éxxito", "Cliente", JOptionPane.INFORMATION_MESSAGE);
     }
      
 
@@ -170,6 +169,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             cliente.setTelefono(txtConvencional.getText());
             cliente.setCelular(txtCelular.getText());
             controladorPersonas.create(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente creado con éxxito", "Cliente", JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();

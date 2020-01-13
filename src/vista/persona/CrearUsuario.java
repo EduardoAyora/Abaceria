@@ -5,6 +5,7 @@
  */
 package vista.persona;
 
+import controlador.ControladorEmpleado;
 import excepcion.ExcepcionBinaria;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,13 +16,14 @@ import modelo.Empleado;
  * @author Darwin
  */
 public class CrearUsuario extends javax.swing.JInternalFrame {
-
+    private ControladorEmpleado controladorEmpleados;
     /**
      * Creates new form CrearUsuario
      */
     public CrearUsuario() {
         initComponents();
         txtCedula.requestFocus();
+        controladorEmpleados = new ControladorEmpleado();
     }
 
     /**
@@ -219,6 +221,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         try {
             empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
             empleado.setActivo(1);
+            controladorEmpleados.create(empleado);
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
         }
