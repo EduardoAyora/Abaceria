@@ -33,7 +33,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        desktopEmpleado = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         editMenu = new javax.swing.JMenu();
         RegFac = new javax.swing.JMenuItem();
@@ -86,13 +86,13 @@ public class mainEmpleado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -106,7 +106,7 @@ public class mainEmpleado extends javax.swing.JFrame {
              registroCliente = new CrearCliente();
 
            registroCliente.setVisible(true);
-           desktopPane.add(registroCliente);
+           desktopEmpleado.add(registroCliente);
          }
     }//GEN-LAST:event_itemCrearCActionPerformed
     
@@ -115,7 +115,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         if (factura == null || !factura.isVisible()) {
              factura = new CrearFactura();
           factura.setVisible(true);
-           desktopPane.add(factura);
+           desktopEmpleado.add(factura);
         }
     }//GEN-LAST:event_RegFacActionPerformed
 
@@ -123,7 +123,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         if (editarCliente == null || !editarCliente.isVisible()) {
              editarCliente = new EditarCliente();
           editarCliente.setVisible(true);
-           desktopPane.add(editarCliente);
+           desktopEmpleado.add(editarCliente);
         }
     }//GEN-LAST:event_itemEditarCActionPerformed
     
@@ -164,7 +164,7 @@ public class mainEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem RegFac;
-    private javax.swing.JDesktopPane desktopPane;
+    public static javax.swing.JDesktopPane desktopEmpleado;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem itemCrearC;
