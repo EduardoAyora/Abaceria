@@ -23,8 +23,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        ControladorPersona peopleController = new ControladorPersona();
-        System.out.println(peopleController.read("0106073331"));
+      //  ControladorPersona peopleController = new ControladorPersona();
+       // System.out.println(peopleController.read("0106073331"));
         usuario="1";
         admimisrador="2";
         passU="1";
