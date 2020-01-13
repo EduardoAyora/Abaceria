@@ -251,7 +251,9 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try{
-            Empleado em = new Empleado();
+
+
+            Empleado em = controladorEmpleados.read(txtCedula.getText());
             em.setNombre(txtNombre.getText());
             em.setApellido(txtApellido.getText());
             em.setDireccion(txtDireccion.getText());
@@ -261,6 +263,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             char[] arrayC = txtPassword.getPassword();
             em.setContrasenia(new String(arrayC));
             controladorEmpleados.update(em);
+            JOptionPane.showMessageDialog(null, "Datos actualizados", "Empleado", JOptionPane.OK_OPTION);
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
