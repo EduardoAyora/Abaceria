@@ -78,6 +78,62 @@ public class ControladorProductos {
         return producto;
     }
     
+    public Producto readByBarCode(String codigo){
+        Producto producto = null;
+        try{
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE pro_codigo_barras = '" + codigo + "'";
+            dataBaseConnection.connect();
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if(rs.next()){
+                producto = new Producto();
+                producto.setId(rs.getInt(CODE_NAME));
+                producto.setCateriaProducto(new ControladorCategoria().read(rs.getInt("ABA_CATEGORIAS_CAT_ID")));
+                producto.setDescripcion(rs.getString("pro_descripcion"));
+                producto.setStock(rs.getInt("pro_stock"));
+                producto.setTieneIva(rs.getInt("pro_tiene_iva"));
+                producto.setNacional(rs.getInt("pro_nacional"));
+                producto.setUnidadMedida(rs.getString("pro_unidad_medida"));
+                producto.setPrecio(rs.getDouble("pro_precio"));
+                producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return producto;
+    }
+    
+    public Producto readByName(String nombre){
+        Producto producto = null;
+        try{
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE pro_descripcion LIKE LOWER('" + nombre + "%')";
+            dataBaseConnection.connect();
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if(rs.next()){
+                producto = new Producto();
+                producto.setId(rs.getInt(CODE_NAME));
+                producto.setCateriaProducto(new ControladorCategoria().read(rs.getInt("ABA_CATEGORIAS_CAT_ID")));
+                producto.setDescripcion(rs.getString("pro_descripcion"));
+                producto.setStock(rs.getInt("pro_stock"));
+                producto.setTieneIva(rs.getInt("pro_tiene_iva"));
+                producto.setNacional(rs.getInt("pro_nacional"));
+                producto.setUnidadMedida(rs.getString("pro_unidad_medida"));
+                producto.setPrecio(rs.getDouble("pro_precio"));
+                producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return producto;
+    }
+    
     public void update(Producto producto) {
         String sql = "UPDATE " + TABLE_NAME +
                 " SET pro_descripcion = '" + producto.getDescripcion()+ "'," +
