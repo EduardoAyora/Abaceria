@@ -162,7 +162,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             Persona cliente = new Persona();
-           
             cliente.setId(Integer.parseInt(txtId.getText()));
             cliente.setCedula(txtCedula.getText());
             cliente.setNombre(txtNombre.getText());
