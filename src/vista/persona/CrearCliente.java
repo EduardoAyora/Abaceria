@@ -32,7 +32,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         place = new PlaceHolder(txtConvencional, "Convencional");
         place = new PlaceHolder(txtCelular, "Celular");
         place = new PlaceHolder(txtDireccion, "Direccion");
-        
     }
 
     /**
@@ -164,7 +163,6 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             cliente.setDireccion(txtDireccion.getText());
             cliente.setTelefono(txtConvencional.getText());
             cliente.setCelular(txtCelular.getText());
-            
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);

@@ -5,6 +5,7 @@
  */
 package vista;
 
+import vista.factura.CrearFactura;
 import vista.persona.CrearCliente;
 import vista.mainEmpleado;
 import vista.persona.EditarCliente;
@@ -14,7 +15,7 @@ import vista.persona.EditarCliente;
  */
 public class mainEmpleado extends javax.swing.JFrame {
     private CrearCliente registroCliente;
-    private Factura factura;
+    private CrearFactura factura;
     private EditarCliente editarCliente;
     /**
      * Creates new form mainEmpleado
@@ -85,13 +86,13 @@ public class mainEmpleado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -112,7 +113,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     private void RegFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFacActionPerformed
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
-             factura = new Factura();
+             factura = new CrearFactura();
           factura.setVisible(true);
            desktopPane.add(factura);
         }

@@ -24,6 +24,10 @@ public class Abaceria {
 //        ControladorPersona peopleController = new ControladorPersona();
 //        System.out.println(peopleController.read("0106073331"));
         
+//        Inicio i = new Inicio();
+//        i.setVisible(true);
+//        i.toFront();
+        
 //        CrearUsuario crearUsuario = new CrearUsuario();
 //        crearUsuario.setVisible(true);
 //        Persona persona = new Persona();
