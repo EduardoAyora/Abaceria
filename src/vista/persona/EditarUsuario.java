@@ -5,18 +5,26 @@
  */
 package vista.persona;
 
+import controlador.ControladorEmpleado;
+import controlador.ControladorPersona;
+import javax.swing.JOptionPane;
+import modelo.Empleado;
+import modelo.Persona;
+
 /**
  *
  * @author Darwin
  */
 public class EditarUsuario extends javax.swing.JInternalFrame {
-
+    //private ControladorPersona controladorPersonas;
+    private ControladorEmpleado controladorEmpleados; 
     /**
      * Creates new form RudUsuario
      */
     public EditarUsuario() {
         initComponents();
         txtCedula.requestFocus();
+        controladorEmpleados = new ControladorEmpleado();
     }
 
     /**
@@ -48,7 +56,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtPassword = new javax.swing.JPasswordField();
         btnDesactivar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         itemTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -82,17 +90,32 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         jLabel10.setText("Tipo:");
 
         btnDesactivar.setText("DESACTIVAR");
+        btnDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesactivarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("LIMPIAR");
-
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
             }
         });
 
         btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         itemTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
 
@@ -122,7 +145,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                     .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                     .addComponent(txtCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,7 +173,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                         .addComponent(txtUsuario)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtCedula)
@@ -213,17 +236,63 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+   Empleado  aux = controladorEmpleados.read(txtCedula.getText());
+    if(aux!=null){
+        txtNombre.setText(aux.getNombre());
+        txtApellido.setText(aux.getApellido());
+        txtDireccion.setText(aux.getDireccion());
+        txtTelefono.setText(aux.getTelefono());
+        txtCelular.setText(aux.getCelular());
+        txtUsuario.setText(aux.getUsuario());
+    }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        try{
+            Empleado em = new Empleado();
+            em.setNombre(txtNombre.getText());
+            em.setApellido(txtApellido.getText());
+            em.setDireccion(txtDireccion.getText());
+            em.setTelefono(txtTelefono.getText());
+            em.setCelular(txtCelular.getText());
+            em.setUsuario(txtUsuario.getText());
+            char[] arrayC = txtPassword.getPassword();
+            em.setContrasenia(new String(arrayC));
+            controladorEmpleados.update(em);
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setText(" ");
+        txtCedula.setText(" ");
+        txtNombre.setText(" ");
+        txtApellido.setText(" ");
+        txtDireccion.setText(" ");
+        txtTelefono.setText(" ");
+        txtCelular.setText(" ");
+        txtUsuario.setText(" ");
+        txtPassword.setText(" ");
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDesactivarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDesactivar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> itemTipo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
