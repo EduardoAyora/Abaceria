@@ -53,6 +53,10 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Actualizacion del Proveedor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese Datos del Proveedor:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -78,6 +82,11 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setText("LIMPIAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +96,11 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
         });
 
         btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,7 +137,7 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,9 +184,9 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +218,58 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        if(txtCedula.getText().isEmpty() && txtNombre.getText().isEmpty() && txtApellido.getText().isEmpty() 
+                && txtDireccion.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtCelular.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese datos para eliminar","Error", JOptionPane.WARNING_MESSAGE);
+        }else{
+        proveedor = controladorPersona.read(txtCedula.getText());
+        
+        controladorPersona.delete(proveedor.getId());
+        JOptionPane.showMessageDialog(rootPane, "Proveedor Elimnado", " Correcto", JOptionPane.OK_OPTION);
+        
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCelular.setText("");        
+        }
+        txtCedula.requestFocus();  
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+String cedu = txtCedula.getText();
+        if(cedu.isEmpty() && txtNombre.getText().isEmpty() && txtApellido.getText().isEmpty() 
+                && txtDireccion.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtCelular.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "NO existen datos para modificar","Error", JOptionPane.WARNING_MESSAGE);
+        }else{
+            proveedor.setCedula(txtCedula.getText());
+            proveedor.setApellido(txtApellido.getText());
+            proveedor.setNombre(txtNombre.getText());
+            proveedor.setDireccion(txtDireccion.getText());
+            proveedor.setTelefono(txtTelefono.getText());
+            proveedor.setCelular(txtCelular.getText());
+            controladorPersona.update(proveedor);
+            
+            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Ventana Actualizar", JOptionPane.OK_OPTION);
+            txtCedula.setText("");
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtDireccion.setText("");
+            txtTelefono.setText("");
+            txtCelular.setText("");
+        }
+        txtCedula.requestFocus();        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCelular.setText("");
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

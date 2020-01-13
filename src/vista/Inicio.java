@@ -106,18 +106,27 @@ public class Inicio extends javax.swing.JFrame {
 
         if(txtU.getText().equals(usuario) && pass.equals(passU)){
             JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia");
-            //VistaEmpleado u = new VistaEmpleado();
-            //u.setVisible(true);
 
             mainEmpleado e = new mainEmpleado();
             e.setVisible(true);
             dispose();
         }else{
             if(txtU.getText().equals(admimisrador) && pass.equals(passA)){
-                JOptionPane.showMessageDialog(rootPane, "Acceso Correcto :) ");
-                VistaAdministrador a = new VistaAdministrador();
-                a.setVisible(true);
-                dispose();
+                
+                String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
+                        JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
+                
+                if (tipo.equalsIgnoreCase("Administrador")){
+                    JOptionPane.showMessageDialog(rootPane, "Acceso Correcto :) ");
+                    VistaAdministrador a = new VistaAdministrador();
+                    a.setVisible(true);
+                    dispose();  
+                }else {
+                    mainEmpleado e1 = new mainEmpleado();
+                    e1.setVisible(true);
+                    dispose();
+                }
+                
             }else{
                 JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
                 txtPass.setText("");
