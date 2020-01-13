@@ -6,6 +6,9 @@
 package vista.persona;
 
 import com.placeholder.PlaceHolder;
+import controlador.ControladorPersona;
+import javax.swing.JOptionPane;
+import modelo.Persona;
 
 /**
  *
@@ -14,12 +17,14 @@ import com.placeholder.PlaceHolder;
 public class EditarCliente extends javax.swing.JInternalFrame {
     private PlaceHolder place;
    
+    private ControladorPersona controladorPersonas;
     /**
      * Creates new form EditarCliente
      */
     public EditarCliente() {
         initComponents();
         placeHolder();
+        controladorPersonas = new ControladorPersona();
     }
     
     public void placeHolder(){
@@ -128,6 +133,11 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         });
 
         btnDesactivar.setText("DESACTIVAR");
+        btnDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesactivarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,12 +180,35 @@ public class EditarCliente extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        Persona aux = controladorPersonas.read(txtCedula.getText());
+        if(aux!=null){
+            txtNombre.setText(aux.getNombre());
+            txtApellido.setText(aux.getApellido());
+            txtDireccion.setText(aux.getDireccion());
+            txtConvencional.setText(aux.getTelefono());
+            txtCelular.setText(aux.getCelular());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        
+        try{
+        Persona cl = new Persona();
+            cl.setNombre(txtNombre.getText());
+            cl.setApellido(txtApellido.getText());
+            cl.setDireccion(txtDireccion.getText());
+            cl.setTelefono(txtConvencional.getText());
+            cl.setCelular(txtCelular.getText());
+            controladorPersonas.update(cl);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error",JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDesactivarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
