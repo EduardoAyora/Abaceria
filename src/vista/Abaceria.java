@@ -18,11 +18,11 @@ public class Abaceria {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
         // TODO code application logic here
         
-        ControladorPersona peopleController = new ControladorPersona();
-        System.out.println(peopleController.read("0106073331"));
+//        ControladorPersona peopleController = new ControladorPersona();
+//        System.out.println(peopleController.read("0106073331"));
         
 //        CrearUsuario crearUsuario = new CrearUsuario();
 //        crearUsuario.setVisible(true);
@@ -33,10 +33,9 @@ public class Abaceria {
 //        peopleController.create(persona);
 //        Persona persona = peopleController.read("0106073331");
 //        persona.setDireccion("Cuenca");
-//        peopleController.update(persona);
-        
+//        peopleController.update(persona); 
 //        peopleController.delete(5);
         
-    }
+//    }
     
 }
