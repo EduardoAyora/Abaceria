@@ -3,31 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Persona.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Cliente.java</file>
             <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/mainEmpleado.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Factura.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Empleado.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/producto/EditarProducto.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/persona/EditarUsuario.java</file>
             <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Producto.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Proveedor.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/CategoriaProducto.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/persona/EditarCliente.java</file>
             <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/RegistroCliente.java</file>
             <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Abaceria.java</file>
-            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/MainA.java</file>
-=======
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/RegistroCliente.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/Inicio.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/Cliente.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/producto/EditarCategoria.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/modelo/Persona.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/controlador/DataBaseConnection.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/VistaAdministrador.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/excepcion/ExcepcionBinaria.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/controlador/ControladorPersona.java</file>
-            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/mainEmpleado.java</file>
->>>>>>> 2e3744024f0d730956ff1f200e61a98c68e2a167
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Persona.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/proveedor/EditarProveedor.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/proveedor/CrearProveedor.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Factura.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/persona/CrearUsuario.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/modelo/Empleado.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/producto/CrearCategoria.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/VistaAdministrador.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/persona/CrearCliente.java</file>
         </group>
     </open-files>
 </project-private>
