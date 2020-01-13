@@ -9,6 +9,7 @@ import controlador.ControladorFactura;
 import controlador.ControladorPersona;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +45,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         txtBCedula.requestFocus();
         controladorProductos = new ControladorProductos();
         controladorFactura = new ControladorFactura();
+        controladorPersona = new ControladorPersona();
+        facturaDetalles = new ArrayList<>();
     }
 
     public void listar(){
@@ -607,7 +610,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBCedulaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(cliente != null){
+        if(cliente != null && facturaDetalles.size() > 0){
             Factura factura = new Factura();
             factura.setFecha(null);
             factura.setEmpleado(null);
@@ -636,6 +639,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 facturaDetalle.setFactura(factura);
             }
             cliente = null;
+            facturaDetalles = new ArrayList<>();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede generar la factura por falta de datos", "Factura", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -653,7 +659,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        cliente = controladorPersona.read(txtBCedula.getText());
+        try{
+            cliente = controladorPersona.read(txtBCedula.getText());
+            llenarDatosCliente();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -693,6 +705,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             }
             facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
             facturaDetalles.add(facturaDetalle);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
