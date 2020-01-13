@@ -31,14 +31,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
       
       private CrearUsuario crearUsuario;
       private EditarUsuario rudUsuario;
-<<<<<<< HEAD
-//    
+    
     private CrearProveedor regProveedor;
     private EditarProveedor editarProveedor;
-=======
 
       private EntregaProveedor entregaProveedor;
->>>>>>> 593c60ba7288f7480d866ef9fde3174eb7bba4bf
 
     /**
      * Creates new form MainA
