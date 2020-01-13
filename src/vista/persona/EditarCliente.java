@@ -193,7 +193,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         try{
-        Persona cl = new Persona();
+        Persona cl = controladorPersonas.read(txtCedula.getText());
             cl.setNombre(txtNombre.getText());
             cl.setApellido(txtApellido.getText());
             cl.setDireccion(txtDireccion.getText());
