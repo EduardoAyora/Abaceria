@@ -251,6 +251,8 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try{
+
+
             Empleado em = controladorEmpleados.read(txtCedula.getText());
             em.setNombre(txtNombre.getText());
             em.setApellido(txtApellido.getText());
