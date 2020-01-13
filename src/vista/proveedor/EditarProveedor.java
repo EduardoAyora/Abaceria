@@ -5,17 +5,25 @@
  */
 package vista.proveedor;
 
+import controlador.ControladorPersona;
+import javax.swing.JOptionPane;
+import modelo.Persona;
+
 /**
  *
  * @author Paul Arichabala
  */
 public class EditarProveedor extends javax.swing.JInternalFrame {
+    private Persona proveedor;
+    
+    private ControladorPersona controladorPersona;
 
     /**
      * Creates new form EditarProveedor
      */
-    public EditarProveedor() {
+    public EditarProveedor(ControladorPersona controladorPersona) {
         initComponents();
+        this.controladorPersona=controladorPersona;
     }
 
     /**
@@ -177,7 +185,22 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        btnEliminar.setEnabled(true);
+        String cedula = txtCedula.getText();
+        proveedor = controladorPersona.read(cedula);
+        
+        if( proveedor !=null){
+            
+            txtCedula.setText(proveedor.getCedula());
+            txtNombre.setText(proveedor.getNombre());
+            txtApellido.setText(proveedor.getApellido());
+            txtDireccion.setText(proveedor.getDireccion());
+            txtTelefono.setText(proveedor.getTelefono());
+            txtCelular.setText(proveedor.getCelular());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Proveedor no registrado ", "Error", JOptionPane.WARNING_MESSAGE);
+            txtCedula.setText("");
+            txtCedula.requestFocus();
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
