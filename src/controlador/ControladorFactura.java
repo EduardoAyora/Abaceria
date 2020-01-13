@@ -20,7 +20,7 @@ public class ControladorFactura {
     
     private DataBaseConnection dataBaseConnection;
     private static final String TABLE_NAME = "ABA_FACTURAS_CABECERA";
-    private static final String CODE_NAME = "fac_id";
+    private static final String CODE_NAME = "fac_cab_id";
     
     public ControladorFactura() {
         dataBaseConnection = new DataBaseConnection();
