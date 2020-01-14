@@ -118,6 +118,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         jLabel25.setText("Cantidad: ");
 
+        spnCantidad.setToolTipText("0");
+        spnCantidad.setName("0"); // NOI18N
+
         jButton2.setText("AGREGAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +212,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                                 .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
+
+        spnCantidad.getAccessibleContext().setAccessibleName("0");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
