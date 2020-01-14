@@ -29,8 +29,8 @@ public class ControladorFacturaDetalle {
     public void create(FacturaDetalle facturaDetalle) {
         int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
-                "(fac_det_id, fac_det_cantidad, fac_cab_subtotal, fac_cab_iva, fac_cab_total,"
-                + "ABA_PERSONAS_PER_ID1, ABA_PERSONAS_PER_ID)" +
+                "(fac_det_id, fac_det_cantidad, fac_det_subtotal, fac_det_iva, fac_det_total,"
+                + "ABA_PRODUCTOS_PRO_ID, FAC_CAB_ID)" +
                 " VALUES(" +
                 "fac_cab_id_seq.nextval" + "," +
                 facturaDetalle.getCantidad() + "," +

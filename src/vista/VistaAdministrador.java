@@ -58,6 +58,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         helpMenu = new javax.swing.JMenu();
@@ -74,6 +75,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         itemRudProveedor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemEntregaP = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        itemCerrarSesion = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,18 +180,32 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         menuBar.add(jMenu2);
 
+        jMenu3.setText("Cerrar ");
+
+        itemCerrarSesion.setText("Sesion");
+        itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemCerrarSesion);
+
+        menuBar.add(jMenu3);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 911, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -273,6 +292,12 @@ public class VistaAdministrador extends javax.swing.JFrame {
                      } 
     }//GEN-LAST:event_itemEntregaPActionPerformed
 
+    private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
+        Inicio i = new Inicio();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_itemCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,6 +337,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem itemCerrarSesion;
     private javax.swing.JMenuItem itemCrearCat;
     private javax.swing.JMenuItem itemCrearE;
     private javax.swing.JMenuItem itemCrearP;
@@ -323,6 +349,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRudProveedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuProveedor;
