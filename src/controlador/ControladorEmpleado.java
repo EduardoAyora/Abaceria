@@ -85,7 +85,7 @@ public class ControladorEmpleado {
     public Empleado readByUser(String nombre){
         Empleado persona = null;
         try{
-            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + "per_nombre" + " = '" + nombre + "'";
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + "per_usuario" + " = '" + nombre + "'";
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);

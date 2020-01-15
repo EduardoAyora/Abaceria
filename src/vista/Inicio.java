@@ -15,28 +15,21 @@ import modelo.Empleado;
  * @author Darwin
  */
 public class Inicio extends javax.swing.JFrame {
-    private String usuario;
-    private String admimisrador;
-    private String passU;
-    private String passA;
     
-    private Empleado empleado [];
-    
+    private Empleado emp;
     private ControladorEmpleado controladorEmpleado;
+    
+    private String u;
+    private String p;
 
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
-      //  ControladorPersona peopleController = new ControladorPersona();
-       // System.out.println(peopleController.read("0106073331"));
-        usuario="1";
-        admimisrador="2";
-        passU="1";
-        passA="2";
-        
-        usuarios();
+        controladorEmpleado = new ControladorEmpleado();
+        //  ControladorPersona peopleController = new ControladorPersona();
+        // System.out.println(peopleController.read("0106073331"));
     }
 
     /**
@@ -52,7 +45,7 @@ public class Inicio extends javax.swing.JFrame {
         txtU = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,10 +53,10 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel2.setText("PASSWORD:");
 
-        jButton1.setText("CONTINUAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuar.setText("CONTINUAR");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnContinuarActionPerformed(evt);
             }
         });
 
@@ -73,7 +66,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(439, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(248, 248, 248))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -91,7 +84,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(273, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -109,45 +102,47 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void usuarios(){
-        //String u = controladorEmpleado.
-    }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String pass = new String(txtPass.getPassword());
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        Empleado e = controladorEmpleado.readByUser(txtU.getText());
+        //System.out.println(e);
+        p = new String(txtPass.getPassword());
+        if(e != null){
+            
+            if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador()== 0){
+            JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia\n"+e.getUsuario());
 
-        if(txtU.getText().equals(usuario) && pass.equals(passU)){
-            JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia");
-
-            mainEmpleado e = new mainEmpleado();
-            e.setVisible(true);
-            dispose();
-        }else{
-            if(txtU.getText().equals(admimisrador) && pass.equals(passA)){
+            mainEmpleado emp = new mainEmpleado();
+            emp.setVisible(true);
+            dispose();  
                 
-                String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
+            } else{
+                    if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1){
+                
+                    String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
                         JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
                 
-                if (tipo.equalsIgnoreCase("Administrador")){
-                    JOptionPane.showMessageDialog(rootPane, "Acceso Correcto :) ");
-                    VistaAdministrador a = new VistaAdministrador();
-                    a.setVisible(true);
-                    dispose();  
-                }else {
-                    mainEmpleado e1 = new mainEmpleado();
-                    e1.setVisible(true);
-                    dispose();
-                }
+                        if (tipo.equals("Administrador")){
+                        JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Adm: "+e.getUsuario());
+                        VistaAdministrador a = new VistaAdministrador();
+                        a.setVisible(true);
+                        dispose();  
+                        }else {
+                        mainEmpleado e1 = new mainEmpleado();
+                        e1.setVisible(true);
+                        dispose();
+                    }
                 
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
-                txtPass.setText("");
-                txtU.setText("");
-                txtU.requestFocus();
+                    }else{
+                    JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
+                    txtPass.setText("");
+                    txtU.setText("");
+                    txtU.requestFocus();
+                }
             }
-            
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        } else{
+            JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrecto");
+        }  
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +180,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField txtPass;
