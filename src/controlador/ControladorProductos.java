@@ -25,7 +25,6 @@ public class ControladorProductos {
     }
     
     public void create(Producto producto) {
-        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "("+ CODE_NAME +", ABA_CATEGORIAS_CAT_ID, pro_descripcion, pro_stock, pro_tiene_iva, pro_nacional,"
                 + "pro_unidad_medida, pro_precio, pro_codigo_barras)" + 
@@ -44,6 +43,7 @@ public class ControladorProductos {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
+            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             producto.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -139,11 +139,11 @@ public class ControladorProductos {
                 " SET pro_descripcion = '" + producto.getDescripcion()+ "'," +
                 "ABA_CATEGORIAS_CAT_ID = " + producto.getCateriaProducto().getId() + "," +
                 "pro_stock = " + producto.getStock() + "," +
-                "pro_tiene_iva = " + producto.getStock() + "," +
-                "pro_nacional = " + producto.getStock() + "," +
-                "pro_unidad_medida = " + producto.getStock() + "," +
-                "pro_precio = " + producto.getStock() + "," +
-                "pro_codigo_barras = " + producto.getStock() + "," +
+                "pro_tiene_iva = " + producto.getTieneIva() + "," +
+                "pro_nacional = " + producto.getNacional() + "," +
+                "pro_unidad_medida = '" + producto.getUnidadMedida() + "'," +
+                "pro_precio = " + producto.getPrecio() + "," +
+                "pro_codigo_barras = '" + producto.getStock() + "'" +
                 " WHERE " + CODE_NAME + " = " + producto.getId();
         dataBaseConnection.connect();
         try {
