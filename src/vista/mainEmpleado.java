@@ -5,6 +5,7 @@
  */
 package vista;
 
+import vista.factura.BuscarFactura;
 import vista.factura.CrearFactura;
 import vista.persona.CrearCliente;
 import vista.mainEmpleado;
@@ -17,6 +18,8 @@ public class mainEmpleado extends javax.swing.JFrame {
     private CrearCliente registroCliente;
     private CrearFactura factura;
     private EditarCliente editarCliente;
+    private BuscarFactura buscarFactura;
+            
     /**
      * Creates new form mainEmpleado
      */
@@ -37,6 +40,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         editMenu = new javax.swing.JMenu();
         RegFac = new javax.swing.JMenuItem();
+        BusFac = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
         itemCrearC = new javax.swing.JMenuItem();
         itemEditarC = new javax.swing.JMenuItem();
@@ -56,6 +60,14 @@ public class mainEmpleado extends javax.swing.JFrame {
             }
         });
         editMenu.add(RegFac);
+
+        BusFac.setText("Buscar Factura");
+        BusFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BusFacActionPerformed(evt);
+            }
+        });
+        editMenu.add(BusFac);
 
         menuBar.add(editMenu);
 
@@ -141,11 +153,22 @@ public class mainEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemEditarCActionPerformed
 
+
+    private void BusFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusFacActionPerformed
+        if (buscarFactura == null || !buscarFactura.isVisible()) {
+             buscarFactura = new BuscarFactura();
+          buscarFactura.setVisible(true);
+           desktopEmpleado.add(buscarFactura);
+        }
+           
+    }//GEN-LAST:event_BusFacActionPerformed
+
     private void itemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCerrarSesionActionPerformed
         Inicio i = new Inicio();
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_itemCerrarSesionActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -183,6 +206,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BusFac;
     private javax.swing.JMenuItem RegFac;
     public static javax.swing.JDesktopPane desktopEmpleado;
     private javax.swing.JMenu editMenu;

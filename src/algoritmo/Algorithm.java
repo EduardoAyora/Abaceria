@@ -18,7 +18,8 @@ import java.util.GregorianCalendar;
 public class Algorithm {
     
     public static String dateToString(GregorianCalendar date){
-        Format format = new SimpleDateFormat("yyyy-MM-dd");
+        //Format format = new SimpleDateFormat("yyyy-MM-dd");
+        Format format = new SimpleDateFormat("dd-MM-yyyy");
         String dat = format.format(date.getTime());
         return dat;
     }

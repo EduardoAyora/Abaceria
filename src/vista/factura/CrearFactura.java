@@ -5,10 +5,15 @@
  */
 package vista.factura;
 
+import controlador.ControladorEmpleado;
 import controlador.ControladorFactura;
+import controlador.ControladorFacturaDetalle;
 import controlador.ControladorPersona;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +36,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private CrearCliente registroCliente;
     private ControladorProductos controladorProductos;
     private ControladorFactura controladorFactura;
+    private ControladorFacturaDetalle controladorFacturaDetalle;
     private ControladorPersona controladorPersona;
+    private ControladorEmpleado controladorEmpleado;
     private Producto producto;
     private List<FacturaDetalle> facturaDetalles;
     private Persona cliente;
@@ -44,6 +51,10 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         txtBCedula.requestFocus();
         controladorProductos = new ControladorProductos();
         controladorFactura = new ControladorFactura();
+        controladorFacturaDetalle = new ControladorFacturaDetalle();
+        controladorPersona = new ControladorPersona();
+        controladorEmpleado = new ControladorEmpleado();
+        facturaDetalles = new ArrayList<>();
     }
 
     public void listar(){
@@ -155,6 +166,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         jLabel25.setText("Cantidad: ");
 
+        spnCantidad.setToolTipText("0");
+        spnCantidad.setName("0"); // NOI18N
+
         jButton2.setText("AGREGAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +260,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                                 .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
+
+        spnCantidad.getAccessibleContext().setAccessibleName("0");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -607,11 +623,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBCedulaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(cliente != null){
+        if(cliente != null && facturaDetalles.size() > 0){
             Factura factura = new Factura();
-            factura.setFecha(null);
-            factura.setEmpleado(null);
-            factura.setCliente(null);
+            GregorianCalendar cal = new GregorianCalendar();
+            cal.setTime(new java.util.Date());
+            factura.setFecha(cal);
+            factura.setEmpleado(controladorEmpleado.readByCode(2));
+            factura.setCliente(cliente);
 
             double subtotal = 0;
             double iva = 0;
@@ -634,8 +652,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             controladorFactura.create(factura);
             for(FacturaDetalle facturaDetalle : facturaDetalles){
                 facturaDetalle.setFactura(factura);
+                controladorFacturaDetalle.create(facturaDetalle);
             }
             cliente = null;
+            facturaDetalles = new ArrayList<>();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede generar la factura por falta de datos", "Factura", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -653,7 +675,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        cliente = controladorPersona.read(txtBCedula.getText());
+        try{
+            cliente = controladorPersona.read(txtBCedula.getText());
+            llenarDatosCliente();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -681,7 +709,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if((int) spnCantidad.getValue() > 0 && (int) spnCantidad.getValue() < producto.getStock() && producto != null){
+        if((int) spnCantidad.getValue() > 0 && (int) spnCantidad.getValue() <= producto.getStock() && producto != null){
             FacturaDetalle facturaDetalle = new FacturaDetalle();
             facturaDetalle.setProducto(producto);
             facturaDetalle.setCantidad((int) spnCantidad.getValue());
@@ -693,6 +721,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             }
             facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
             facturaDetalles.add(facturaDetalle);
+            listar();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed

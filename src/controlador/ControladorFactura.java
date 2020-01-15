@@ -40,6 +40,7 @@ public class ControladorFactura {
                 factura.getTotal()+ ", " +
                 factura.getCliente().getId() + "," +
                 factura.getEmpleado().getId() + ")";
+        System.out.println(sql);
         dataBaseConnection.connect();
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
