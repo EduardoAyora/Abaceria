@@ -736,6 +736,15 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if((int) spnCantidad.getValue() > 0 && (int) spnCantidad.getValue() <= producto.getStock() && producto != null){
+            
+            boolean existe = false;
+            int cantidad = (int) spnCantidad.getValue();
+            for (FacturaDetalle facturaDetalle : facturaDetalles) {
+                if(facturaDetalle.getProducto().getId() == producto.getId()){
+                    cantidad = cantidad + facturaDetalle.getCantidad();
+                }
+            }
+            
             FacturaDetalle facturaDetalle = new FacturaDetalle();
             facturaDetalle.setProducto(producto);
             facturaDetalle.setCantidad((int) spnCantidad.getValue());
@@ -747,12 +756,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             }
             facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
             facturaDetalles.add(facturaDetalle);
-            listar();
-            actualizar();
         }else{
             JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        
+        listar();
+        actualizar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
