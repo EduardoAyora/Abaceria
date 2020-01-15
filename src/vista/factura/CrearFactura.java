@@ -77,6 +77,27 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblNombres.setText(cliente.getNombre());
         lblApellidos.setText(cliente.getApellido());
     }
+    
+    public void actualizar(){
+        if(facturaDetalles.size() > 0){
+            double subtotal = 0;
+            double iva = 0;
+            double total = 0;
+
+            for(FacturaDetalle facturaDetalle : facturaDetalles){
+                subtotal += facturaDetalle.getSubtotal();
+                iva += facturaDetalle.getIva();
+                total += facturaDetalle.getTotal();
+            }
+            txtSubTotal.setText(Double.toString(subtotal));
+            txtIva.setText(Double.toString(iva));
+            txtTotal.setText(Double.toString(total));
+        }else{
+            txtSubTotal.setText("0");
+            txtIva.setText("0");
+            txtTotal.setText("0");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,9 +157,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtSubTotal = new javax.swing.JTextField();
+        txtIva = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         btnRegistrarCliente1 = new javax.swing.JButton();
 
         setClosable(true);
@@ -514,11 +535,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         jLabel36.setText("TOTAL:");
 
-        jTextField1.setEditable(false);
+        txtSubTotal.setEditable(false);
 
-        jTextField6.setEditable(false);
+        txtIva.setEditable(false);
 
-        jTextField7.setEditable(false);
+        txtTotal.setEditable(false);
 
         btnRegistrarCliente1.setText("QUITAR");
         btnRegistrarCliente1.addActionListener(new java.awt.event.ActionListener() {
@@ -541,9 +562,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                     .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                    .addComponent(txtSubTotal)
+                    .addComponent(txtIva)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
                 .addGap(68, 68, 68))
         );
         jPanel5Layout.setVerticalGroup(
@@ -551,18 +572,18 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(txtSubTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegistrarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtIva, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -771,9 +792,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblNombres;
@@ -782,7 +800,10 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBCedula;
     private javax.swing.JTextField txtBarras;
     private javax.swing.JTextField txtBarras2;
+    private javax.swing.JTextField txtIva;
     private javax.swing.JTextField txtNombrePro2;
     private javax.swing.JTextField txtNombreProducto;
+    private javax.swing.JTextField txtSubTotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
