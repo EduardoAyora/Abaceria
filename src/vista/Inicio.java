@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControladorEmpleado;
-import controlador.ControladorPersona;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 
@@ -21,6 +20,9 @@ public class Inicio extends javax.swing.JFrame {
     
     private String u;
     private String p;
+    
+    private String upadre;
+    private String pPadre;
 
     /**
      * Creates new form Inicio
@@ -30,6 +32,8 @@ public class Inicio extends javax.swing.JFrame {
         controladorEmpleado = new ControladorEmpleado();
         //  ControladorPersona peopleController = new ControladorPersona();
         // System.out.println(peopleController.read("0106073331"));
+        upadre = "1";
+        pPadre="1";
     }
 
     /**
@@ -140,8 +144,28 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrecto");
-        }  
+            System.out.println("1");
+            if(txtU.getText().equalsIgnoreCase(upadre) && p.equalsIgnoreCase(pPadre)){
+            JOptionPane.showMessageDialog(rootPane, "Usuario Padre!\n"+"Adm: "+txtU.getText());
+            VistaAdministrador a = new VistaAdministrador();
+            a.setVisible(true);
+            dispose();  
+            
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrecto","ERROR",JOptionPane.WARNING_MESSAGE);
+                txtPass.setText("");
+                txtU.setText("");
+                txtU.requestFocus();
+                
+            }
+            
+        }
+        
+        
+        
+    
+        
+        
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**
