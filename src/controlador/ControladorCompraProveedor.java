@@ -29,7 +29,6 @@ public class ControladorCompraProveedor {
     }
     
     public void create(CompraProveedor compraProveedor) {
-        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(com_prov_id, com_prov_fecha, com_prov_cantidad, com_prov_numero_factura,"
                 + "ABA_PRODUCTOS_PRO_ID, ABA_PERSONAS_PER_ID)" +
@@ -45,6 +44,7 @@ public class ControladorCompraProveedor {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
+            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             compraProveedor.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();

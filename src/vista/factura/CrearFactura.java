@@ -12,6 +12,7 @@ import controlador.ControladorPersona;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -89,9 +90,10 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 iva += facturaDetalle.getIva();
                 total += facturaDetalle.getTotal();
             }
-            txtSubTotal.setText(Double.toString(subtotal));
-            txtIva.setText(Double.toString(iva));
-            txtTotal.setText(Double.toString(total));
+            DecimalFormat df = new DecimalFormat("#.00");
+            txtSubTotal.setText(df.format(subtotal));
+            txtIva.setText(df.format(iva));
+            txtTotal.setText(df.format(total));
         }else{
             txtSubTotal.setText("0");
             txtIva.setText("0");
@@ -674,6 +676,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             for(FacturaDetalle facturaDetalle : facturaDetalles){
                 facturaDetalle.setFactura(factura);
                 controladorFacturaDetalle.create(facturaDetalle);
+                Producto producto = facturaDetalle.getProducto();
+                producto.setStock(producto.getStock() - facturaDetalle.getCantidad());
+                controladorProductos.update(producto);
             }
             cliente = null;
             facturaDetalles = new ArrayList<>();
@@ -743,6 +748,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
             facturaDetalles.add(facturaDetalle);
             listar();
+            actualizar();
         }else{
             JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
         }
