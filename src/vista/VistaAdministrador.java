@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
 import vista.compra.EntregaProveedor;
 import vista.producto.CrearCategoria;
@@ -39,6 +40,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
       private EntregaProveedor entregaProveedor;
       
       private ControladorPersona controladorPersona;
+      private ControladorEmpleado controladorEmpleado;
 
     /**
      * Creates new form MainA
@@ -223,7 +225,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
         if (crearUsuario == null || !crearUsuario.isVisible()) {
-            crearUsuario = new CrearUsuario();
+            crearUsuario = new CrearUsuario(controladorEmpleado);
             crearUsuario.setVisible(true);
             desktopPane.add(crearUsuario);
          } 
