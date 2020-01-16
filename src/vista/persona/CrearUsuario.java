@@ -9,6 +9,7 @@ import controlador.ControladorEmpleado;
 import excepcion.ExcepcionBinaria;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Empleado;
 
 /**
@@ -16,14 +17,15 @@ import modelo.Empleado;
  * @author Darwin
  */
 public class CrearUsuario extends javax.swing.JInternalFrame {
-    private ControladorEmpleado controladorEmpleados;
+    private ControladorEmpleado controladorEmpleado;
     /**
      * Creates new form CrearUsuario
      */
     public CrearUsuario() {
         initComponents();
         txtCedula.requestFocus();
-        controladorEmpleados = new ControladorEmpleado();
+        controladorEmpleado = new ControladorEmpleado();
+        
     }
 
     /**
@@ -221,7 +223,20 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         try {
             empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
             empleado.setActivo(1);
-            controladorEmpleados.create(empleado);
+            controladorEmpleado.read(txtCedula.getText());
+            if(!empleado.getCedula().equals(txtCedula.getText())){
+                controladorEmpleado.create(empleado);
+                JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
+                txtCedula.setText("");
+                txtNombre.setText("");
+                txtApellido.setText("");
+                txtDireccion.setText("");
+                txtTelefono.setText("");
+                txtCelular.setText("");
+                itemTipo.setSelectedItem("");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario ya registrado con numero de cedula");
+            }
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
         }
