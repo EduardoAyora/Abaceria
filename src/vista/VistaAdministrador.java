@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ControladorCategoria;
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
 import vista.compra.EntregaProveedor;
@@ -41,6 +42,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
       
       private ControladorPersona controladorPersona;
       private ControladorEmpleado controladorEmpleado;
+      private ControladorCategoria controladorCategoria;
 
     /**
      * Creates new form MainA
@@ -48,6 +50,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public VistaAdministrador() {
         initComponents();
         controladorPersona = new ControladorPersona();
+        controladorEmpleado = new ControladorEmpleado();
+        controladorCategoria= new ControladorCategoria();
         
     }
 
@@ -225,7 +229,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void itemCrearEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearEActionPerformed
         if (crearUsuario == null || !crearUsuario.isVisible()) {
-            crearUsuario = new CrearUsuario(controladorEmpleado);
+            crearUsuario = new CrearUsuario();
             crearUsuario.setVisible(true);
             desktopPane.add(crearUsuario);
          } 
@@ -279,7 +283,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void itemEditarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarCatActionPerformed
         if (editarCategoria == null || !editarCategoria.isVisible()) {
-                        editarCategoria = new EditarCategoria();
+                        editarCategoria = new EditarCategoria(controladorCategoria);
                         editarCategoria.setVisible(true);
                         desktopPane.add(editarCategoria);
                      } 

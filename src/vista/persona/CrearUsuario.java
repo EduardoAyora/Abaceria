@@ -18,14 +18,13 @@ import modelo.Empleado;
  */
 public class CrearUsuario extends javax.swing.JInternalFrame {
     private ControladorEmpleado controladorEmpleado;
-    private Empleado empleado;
     /**
      * Creates new form CrearUsuario
      */
-    public CrearUsuario(ControladorEmpleado controladorEmpleado) {
+    public CrearUsuario() {
         initComponents();
         txtCedula.requestFocus();
-        this.controladorEmpleado = controladorEmpleado;
+        controladorEmpleado = new ControladorEmpleado();
         
     }
 
@@ -211,26 +210,22 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-            String cedu = txtCedula.getText();
-            empleado = controladorEmpleado.read(cedu);
-            if(empleado != null){
-                JOptionPane.showMessageDialog(rootPane, "Usuario ya registrado");
-            }else{
-                empleado = new Empleado();
-                empleado.setCedula(txtCedula.getText());
-                empleado.setNombre(txtNombre.getText());
-                empleado.setApellido(txtApellido.getText());
-                empleado.setDireccion(txtDireccion.getText());
-                empleado.setTelefono(txtTelefono.getText());
-                empleado.setCelular(txtCelular.getText());
-                empleado.setUsuario(txtUsuario.getText());
-                char[] arrayC = txtPassword.getPassword();
-                empleado.setContrasenia(new String(arrayC));
-                try {
-                empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
-                empleado.setActivo(1);
+        Empleado empleado = new Empleado();
+        empleado.setCedula(txtCedula.getText());
+        empleado.setNombre(txtNombre.getText());
+        empleado.setApellido(txtApellido.getText());
+        empleado.setDireccion(txtDireccion.getText());
+        empleado.setTelefono(txtTelefono.getText());
+        empleado.setCelular(txtCelular.getText());
+        empleado.setUsuario(txtUsuario.getText());
+        char[] arrayC = txtPassword.getPassword();
+        empleado.setContrasenia(new String(arrayC));
+        try {
+            empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
+            empleado.setActivo(1);
+            controladorEmpleado.read(txtCedula.getText());
+            if(!empleado.getCedula().equals(txtCedula.getText())){
                 controladorEmpleado.create(empleado);
-                
                 JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
                 txtCedula.setText("");
                 txtNombre.setText("");
@@ -239,11 +234,12 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
                 txtTelefono.setText("");
                 txtCelular.setText("");
                 itemTipo.setSelectedItem("");
-            
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario ya registrado con numero de cedula");
+            }
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
         }
-            }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

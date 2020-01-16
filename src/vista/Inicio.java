@@ -15,7 +15,7 @@ import modelo.Empleado;
  */
 public class Inicio extends javax.swing.JFrame {
     
-    private Empleado emp;
+    private Empleado e;
     private ControladorEmpleado controladorEmpleado;
     
     private String u;
@@ -107,8 +107,8 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        Empleado e = controladorEmpleado.readByUser(txtU.getText());
-        //System.out.println(e);
+        e = controladorEmpleado.readByUser(txtU.getText());
+        System.out.println(e);
         p = new String(txtPass.getPassword());
         if(e != null){
             
@@ -134,15 +134,16 @@ public class Inicio extends javax.swing.JFrame {
                         mainEmpleado e1 = new mainEmpleado();
                         e1.setVisible(true);
                         dispose();
-                    }
+                        }
                 
                     }else{
                     JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
                     txtPass.setText("");
                     txtU.setText("");
                     txtU.requestFocus();
-                }
+                    }
             }
+        
         } else{
             System.out.println("1");
             if(txtU.getText().equalsIgnoreCase(upadre) && p.equalsIgnoreCase(pPadre)){
@@ -155,11 +156,11 @@ public class Inicio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrecto","ERROR",JOptionPane.WARNING_MESSAGE);
                 txtPass.setText("");
                 txtU.setText("");
-                txtU.requestFocus();
-                
+                txtU.requestFocus(); 
             }
-            
         }
+            
+        
         
         
         

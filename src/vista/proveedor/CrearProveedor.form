@@ -180,34 +180,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCedula">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCedulaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtApellido">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDireccion">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTelefono">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCelular">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCelularActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
