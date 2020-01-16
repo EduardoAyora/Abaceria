@@ -33,7 +33,7 @@ public class ControladorCompraProveedor {
                 "(com_prov_id, com_prov_fecha, com_prov_cantidad, com_prov_numero_factura,"
                 + "ABA_PRODUCTOS_PRO_ID, ABA_PERSONAS_PER_ID)" +
                 " VALUES(" +
-                "fac_cab_id_seq.nextval" + ",'" +
+                "com_prov_id_seq.nextval" + ",'" +
                 Algorithm.dateToString(compraProveedor.getFecha()) + "'," +
                 compraProveedor.getCantidad() + "," +
                 compraProveedor.getNumeroFacturaProveedor()+ ", " +
