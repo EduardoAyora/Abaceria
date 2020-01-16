@@ -24,7 +24,7 @@ public class ControladorPersona {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public void create(Persona persona) {
+    public void create(Persona persona) throws java.sql.SQLIntegrityConstraintViolationException{
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
                 + "per_activo)" +
@@ -44,7 +44,8 @@ public class ControladorPersona {
             dataBaseConnection.disconnect();
             int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             persona.setId(code);
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
