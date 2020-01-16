@@ -55,6 +55,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel1.setText("USUARIO:");
 
+        txtU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("PASSWORD:");
 
         btnContinuar.setText("CONTINUAR");
@@ -167,6 +173,10 @@ public class Inicio extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void txtUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUActionPerformed
 
     /**
      * @param args the command line arguments
