@@ -77,6 +77,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     public void llenarDatosCliente(){
         lblNombres.setText(cliente.getNombre());
         lblApellidos.setText(cliente.getApellido());
+        
     }
     
     public void actualizar(){
@@ -735,32 +736,57 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if((int) spnCantidad.getValue() > 0 && (int) spnCantidad.getValue() <= producto.getStock() && producto != null){
+        if(producto != null){
             
             boolean existe = false;
             int cantidad = (int) spnCantidad.getValue();
             for (FacturaDetalle facturaDetalle : facturaDetalles) {
                 if(facturaDetalle.getProducto().getId() == producto.getId()){
                     cantidad = cantidad + facturaDetalle.getCantidad();
+                    if(cantidad > 0 && cantidad <= producto.getStock()){
+                        facturaDetalle.setCantidad(cantidad);
+                        facturaDetalle.setSubtotal(facturaDetalle.getProducto().getPrecio() * facturaDetalle.getCantidad());
+                        if(facturaDetalle.getProducto().getTieneIva() == 1){
+                            facturaDetalle.setIva(facturaDetalle.getSubtotal() * 0.12);
+                        }else{
+                            facturaDetalle.setIva(0);
+                        }
+                        facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
+                    }
+                    existe = true;
+                    break;
                 }
             }
             
-            FacturaDetalle facturaDetalle = new FacturaDetalle();
-            facturaDetalle.setProducto(producto);
-            facturaDetalle.setCantidad((int) spnCantidad.getValue());
-            facturaDetalle.setSubtotal(facturaDetalle.getProducto().getPrecio() * facturaDetalle.getCantidad());
-            if(facturaDetalle.getProducto().getTieneIva() == 1){
-                facturaDetalle.setIva(facturaDetalle.getSubtotal() * 0.12);
+            if(cantidad > 0 && cantidad <= producto.getStock() && existe == false){
+                
+                FacturaDetalle facturaDetalle = new FacturaDetalle();
+                facturaDetalle.setProducto(producto);
+                facturaDetalle.setCantidad(cantidad);
+                facturaDetalle.setSubtotal(facturaDetalle.getProducto().getPrecio() * facturaDetalle.getCantidad());
+                if(facturaDetalle.getProducto().getTieneIva() == 1){
+                    facturaDetalle.setIva(facturaDetalle.getSubtotal() * 0.12);
+                }else{
+                    facturaDetalle.setIva(0);
+                }
+                facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
+                facturaDetalles.add(facturaDetalle);
+                
             }else{
-                facturaDetalle.setIva(0);
+                if(existe == false){
+                    JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
+                }
             }
-            facturaDetalle.setTotal(facturaDetalle.getSubtotal() + facturaDetalle.getIva());
-            facturaDetalles.add(facturaDetalle);
+            
+            listar();
+            actualizar();
+            
         }else{
             JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        listar();
-        actualizar();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
