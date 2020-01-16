@@ -160,6 +160,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         try{
+            
             Persona cliente = new Persona();
             cliente.setId(Integer.parseInt(txtId.getText()));
             cliente.setCedula(txtCedula.getText());

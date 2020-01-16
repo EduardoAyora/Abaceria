@@ -158,6 +158,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         if (buscarFactura == null || !buscarFactura.isVisible()) {
              buscarFactura = new BuscarFactura();
           buscarFactura.setVisible(true);
+          buscarFactura.setClosable(true);
            desktopEmpleado.add(buscarFactura);
         }
            

@@ -59,6 +59,10 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         facturaDetalles = new ArrayList<>();
         llenarCabecera();
     }
+    
+    public void setEmpleado(Empleado empleado){
+        this.empleado = empleado;
+    }
 
     public void listar(){
         tblDetalles.setRowHeight(55);
@@ -751,6 +755,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
     private void btnRegistrarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCliente1ActionPerformed
         // TODO add your handling code here:
+        int numeroDetalle = tblDetalles.getSelectedRow();
+        facturaDetalles.remove(numeroDetalle);
+        listar();
     }//GEN-LAST:event_btnRegistrarCliente1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
