@@ -5,6 +5,7 @@
  */
 package vista.producto;
 
+import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
 import java.util.Locale;
 import javax.swing.Box;
@@ -18,12 +19,35 @@ import modelo.Producto;
  */
 public class EditarProducto extends javax.swing.JInternalFrame {
         private ControladorProductos controladorProductos;
+        private ControladorCategoria controladorCategoria;
+        private Producto producto;
     /**
      * Creates new form RudProducto
      */
     public EditarProducto() {
         initComponents();
         controladorProductos = new ControladorProductos();
+        controladorCategoria = new ControladorCategoria();
+        cargarItems();
+    }
+    
+    public void cargarItems(){
+        for(Categoria categoria : controladorCategoria.list()){
+            itemCategoria.addItem(categoria);
+        }
+    }
+    
+    public void seleccionados(){
+        boolean extranjero = false;
+        boolean iva = false;
+        if(producto.getNacional() == 0){
+            extranjero = true;
+        }
+        if(producto.getTieneIva() == 1){
+            iva = true;
+        }
+        ChBEx.setSelected(extranjero);
+        ChIva.setSelected(iva);
     }
 
     /**
@@ -48,7 +72,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        CbCat = new javax.swing.JComboBox<>();
+        itemCategoria = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         txtBarras = new javax.swing.JTextField();
         ChBEx = new javax.swing.JCheckBox();
@@ -116,9 +140,9 @@ public class EditarProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        CbCat.addActionListener(new java.awt.event.ActionListener() {
+        itemCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CbCatActionPerformed(evt);
+                itemCategoriaActionPerformed(evt);
             }
         });
 
@@ -202,7 +226,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
                                     .addComponent(txtProducto)
                                     .addComponent(txtCantidad)
                                     .addComponent(txtPrecio)
-                                    .addComponent(CbCat, 0, 126, Short.MAX_VALUE))))
+                                    .addComponent(itemCategoria, 0, 126, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -224,7 +248,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CbCat, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                    .addComponent(itemCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,14 +302,14 @@ public class EditarProducto extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        Producto aux= controladorProductos.readByBarCode(txtBarras.getText());
-        if(aux!=null){
-            txtProducto.setText(aux.getDescripcion());
-            txtCantidad.setText(Integer.toString(aux.getStock()));
-            txtPrecio.setText(Double.toString(aux.getPrecio()));
-            txtUnidad.setText(aux.getUnidadMedida());
-            CbCat.setSelectedItem((Categoria)aux.getCateriaProducto());
-            ChBEx.isSelected();
+        producto = controladorProductos.readByBarCode(txtBarras.getText());
+        if(producto!=null){
+            txtProducto.setText(producto.getDescripcion());
+            txtCantidad.setText(Integer.toString(producto.getStock()));
+            txtPrecio.setText(Double.toString(producto.getPrecio()));
+            txtUnidad.setText(producto.getUnidadMedida());
+            itemCategoria.setSelectedItem((Categoria)producto.getCateriaProducto());
+            seleccionados();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
     
@@ -297,7 +321,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
           pr.setStock(Integer.parseInt(txtCantidad.getText()));
           pr.setPrecio(Double.parseDouble(txtPrecio.getText()));
           pr.setUnidadMedida(txtUnidad.getText());
-          pr.setCateriaProducto((Categoria) CbCat.getSelectedItem());
+          pr.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
           if(ChIva.isSelected()){
                 pr.setNacional(1);
             }else{
@@ -331,9 +355,9 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChIvaActionPerformed
 
-    private void CbCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbCatActionPerformed
+    private void itemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CbCatActionPerformed
+    }//GEN-LAST:event_itemCategoriaActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -345,13 +369,13 @@ public class EditarProducto extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CbCat;
     private javax.swing.JCheckBox ChBEx;
     private javax.swing.JCheckBox ChIva;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox itemCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

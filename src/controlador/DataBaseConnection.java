@@ -25,7 +25,7 @@ public class DataBaseConnection {
     
     public void connect(){
         try {
-            connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "abaceria", "abaceria123");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "abaceria", "abaceria123");
             if (connection.isValid(4000)) {
                 System.out.println("Conectado!");
             } else {

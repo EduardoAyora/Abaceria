@@ -273,9 +273,9 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             producto.setCodigoBarra(txtBarras.getText());
             producto.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
             if(chExtranjero.isSelected()){
-                producto.setNacional(1);
-            }else{
                 producto.setNacional(0);
+            }else{
+                producto.setNacional(1);
             }
             if(chIva.isSelected()){
                 producto.setTieneIva(1);
