@@ -27,7 +27,6 @@ public class ControladorFactura {
     }
     
     public void create(Factura factura) {
-        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(fac_cab_id, fac_cab_estado, fac_cab_fecha, fac_cab_subtotal, fac_cab_iva, fac_cab_total,"
                 + "ABA_PERSONAS_PER_ID1, ABA_PERSONAS_PER_ID)" +
@@ -40,12 +39,12 @@ public class ControladorFactura {
                 factura.getTotal()+ ", " +
                 factura.getCliente().getId() + "," +
                 factura.getEmpleado().getId() + ")";
-        System.out.println(sql);
         dataBaseConnection.connect();
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
+            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             factura.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -26,7 +26,7 @@ public class DataBaseConnection {
     public void connect(){
         try {
             connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "abaceria", "abaceria123");
-            if (connection.isValid(2000)) {
+            if (connection.isValid(4000)) {
                 System.out.println("Conectado!");
             } else {
                 System.out.println("No se pudo conectar!");
@@ -58,7 +58,6 @@ public class DataBaseConnection {
             ResultSet rs = sta.executeQuery(sql);
             if (rs.next()) {
                 code = rs.getInt(1);
-                code++;
             }
             rs.close();
             sta.close();

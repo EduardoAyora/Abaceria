@@ -25,7 +25,6 @@ public class ControladorPersona {
     }
     
     public void create(Persona persona) {
-        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
                 + "per_activo)" +
@@ -43,6 +42,7 @@ public class ControladorPersona {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
+            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             persona.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();

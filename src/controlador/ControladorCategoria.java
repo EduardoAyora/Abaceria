@@ -27,7 +27,6 @@ public class ControladorCategoria {
     }
     
     public void create(Categoria categoria) {
-        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(cat_id, cat_nombre)" + 
                 " VALUES(" +
@@ -38,6 +37,7 @@ public class ControladorCategoria {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
+            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
             categoria.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();
