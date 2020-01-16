@@ -65,6 +65,27 @@ public class ControladorCategoria {
         return categoria;
     }
     
+    public Categoria read(String nombre){
+        Categoria categoria = null;
+        try{
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE cat_nombre = '" + nombre + "'";
+            dataBaseConnection.connect();
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if(rs.next()){
+                categoria = new Categoria();
+                categoria.setId(rs.getInt(CODE_NAME));
+                categoria.setNombre(rs.getString("cat_nombre"));
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return categoria;
+    }
+    
     public void update(Categoria categoria) {
         String sql = "UPDATE " + TABLE_NAME +
                 " SET cat_nombre = '" + categoria.getNombre()+ "'" +
