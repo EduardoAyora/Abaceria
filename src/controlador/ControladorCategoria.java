@@ -234,6 +234,18 @@ public class ControladorCategoria {
         }
     }
     
+    public void deleteByName(String nombre){
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + "cat_nombre" + " ='" + nombre+"'";
+        dataBaseConnection.connect();
+        try {
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            sta.executeUpdate(sql);
+            dataBaseConnection.disconnect();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public List<Categoria> list(){
         List<Categoria> categorias = new ArrayList<>();
         try{

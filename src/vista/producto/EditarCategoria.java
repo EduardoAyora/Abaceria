@@ -63,6 +63,11 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
         btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(0, 0, 0));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,17 +137,17 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -151,22 +156,33 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
     private void tableCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoriaMouseClicked
         int selec = tableCategoria.rowAtPoint(evt.getPoint());
         txtCategoria.setText(String.valueOf(tableCategoria.getValueAt(selec, 1)));
-        buscar();
+        categoria = controladorCategoria.read(txtCategoria.getText());
+       // buscar();
     }//GEN-LAST:event_tableCategoriaMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try{
-        Categoria categoria = controladorCategoria.read(txtCategoria.getText());
             categoria.setNombre(txtCategoria.getText());
             controladorCategoria.update(categoria);
             JOptionPane.showMessageDialog(this, " Datos Actualizados", "Categoria", JOptionPane.OK_OPTION);
             txtCategoria.setText("");
-
-        
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        llenarCategoria();
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try{
+            controladorCategoria.deleteByName(txtCategoria.getText());
+            JOptionPane.showMessageDialog(this, " Dato Eliminado", "Categoria", JOptionPane.OK_OPTION);
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+            
+        }
+        llenarCategoria();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     public void buscar(){
         try{
@@ -181,6 +197,7 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
     public void llenarCategoria(){
         
         DefaultTableModel modelo = (DefaultTableModel) tableCategoria.getModel();
+        modelo.setRowCount(0);
         List<Categoria> lista = controladorCategoria.list();
         for (Categoria producto : lista) {
             Object[] datos = {producto.getId(),
