@@ -308,7 +308,10 @@ public class EditarProducto extends javax.swing.JInternalFrame {
             txtCantidad.setText(Integer.toString(producto.getStock()));
             txtPrecio.setText(Double.toString(producto.getPrecio()));
             txtUnidad.setText(producto.getUnidadMedida());
-            itemCategoria.setSelectedItem((Categoria)producto.getCateriaProducto());
+            Categoria aux = producto.getCateriaProducto();
+            aux = null;
+            itemCategoria.setSelectedItem(aux);
+            itemCategoria.setSelectedIndex(WIDTH);
             seleccionados();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -333,6 +336,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
                 pr.setTieneIva(0);
             }
            controladorProductos.update(pr);
+           JOptionPane.showMessageDialog(null, "Producto actualizado con exito", "Producto",JOptionPane.OK_OPTION);
         }catch(Exception ex){
           JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error",JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();   
