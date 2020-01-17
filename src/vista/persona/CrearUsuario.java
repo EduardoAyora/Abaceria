@@ -27,6 +27,16 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         controladorEmpleado = new ControladorEmpleado();
         
     }
+    
+    public void vaciarCajas(){
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCelular.setText("");
+        itemTipo.setSelectedItem("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -224,19 +234,9 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             empleado.setTipoAdministrador(itemTipo.getSelectedIndex());
             empleado.setActivo(1);
             controladorEmpleado.read(txtCedula.getText());
-            if(!empleado.getCedula().equals(txtCedula.getText())){
-                controladorEmpleado.create(empleado);
-                JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
-                txtCedula.setText("");
-                txtNombre.setText("");
-                txtApellido.setText("");
-                txtDireccion.setText("");
-                txtTelefono.setText("");
-                txtCelular.setText("");
-                itemTipo.setSelectedItem("");
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "Usuario ya registrado con numero de cedula");
-            }
+            controladorEmpleado.create(empleado);
+            JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
+            
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
         }

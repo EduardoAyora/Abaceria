@@ -283,6 +283,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                 producto.setTieneIva(0);
             }
             controladorProductos.create(producto);
+            JOptionPane.showMessageDialog(null, "Producto creado con exito", "Producto", JOptionPane.OK_OPTION);
         }catch(ExcepcionBinaria ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }catch(Exception ex){
