@@ -273,9 +273,9 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             producto.setCodigoBarra(txtBarras.getText());
             producto.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
             if(chExtranjero.isSelected()){
-                producto.setNacional(1);
-            }else{
                 producto.setNacional(0);
+            }else{
+                producto.setNacional(1);
             }
             if(chIva.isSelected()){
                 producto.setTieneIva(1);
@@ -283,6 +283,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                 producto.setTieneIva(0);
             }
             controladorProductos.create(producto);
+            JOptionPane.showMessageDialog(null, "Producto creado con exito", "Producto", JOptionPane.OK_OPTION);
         }catch(ExcepcionBinaria ex){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }catch(Exception ex){

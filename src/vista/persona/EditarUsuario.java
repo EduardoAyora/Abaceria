@@ -7,6 +7,9 @@ package vista.persona;
 
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
+import excepcion.ExcepcionBinaria;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.Persona;
@@ -18,6 +21,7 @@ import modelo.Persona;
 public class EditarUsuario extends javax.swing.JInternalFrame {
     //private ControladorPersona controladorPersonas;
     private ControladorEmpleado controladorEmpleados; 
+    private Empleado empleado;
     /**
      * Creates new form RudUsuario
      */
@@ -26,7 +30,14 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtCedula.requestFocus();
         controladorEmpleados = new ControladorEmpleado();
     }
-
+    
+    public void setTipo(){
+        if(empleado.getTipoAdministrador() == 1){
+            itemTipo.setSelectedIndex(0);
+        }else{
+            itemTipo.setSelectedIndex(1);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +69,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        itemTipo = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
+        itemTipo = new javax.swing.JComboBox<String>();
 
         setClosable(true);
         setIconifiable(true);
@@ -117,9 +126,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        itemTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
-
-        jLabel1.setText("Codigo");
+        itemTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Usuario" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,7 +135,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
@@ -142,8 +148,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                     .addComponent(txtApellido)
                     .addComponent(txtDireccion)
                     .addComponent(txtTelefono)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(txtCodigo))
+                    .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
@@ -164,13 +169,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(txtCodigo))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
@@ -237,22 +236,23 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-   Empleado  aux = controladorEmpleados.read(txtCedula.getText());
-    if(aux!=null){
-        txtNombre.setText(aux.getNombre());
-        txtApellido.setText(aux.getApellido());
-        txtDireccion.setText(aux.getDireccion());
-        txtTelefono.setText(aux.getTelefono());
-        txtCelular.setText(aux.getCelular());
-        txtUsuario.setText(aux.getUsuario());
+   empleado = controladorEmpleados.read(txtCedula.getText());
+    if(empleado!=null){
+        txtNombre.setText(empleado.getNombre());
+        txtApellido.setText(empleado.getApellido());
+        txtDireccion.setText(empleado.getDireccion());
+        txtTelefono.setText(empleado.getTelefono());
+        txtCelular.setText(empleado.getCelular());
+        txtUsuario.setText(empleado.getUsuario());
+        setTipo();
+    }else{
+        JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado"," Editar",JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try{
-
-
             Empleado em = controladorEmpleados.read(txtCedula.getText());
             em.setNombre(txtNombre.getText());
             em.setApellido(txtApellido.getText());
@@ -260,6 +260,9 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             em.setTelefono(txtTelefono.getText());
             em.setCelular(txtCelular.getText());
             em.setUsuario(txtUsuario.getText());
+            if(itemTipo.getSelectedIndex() == 0){
+                em.setTipoAdministrador(1);
+            }
             char[] arrayC = txtPassword.getPassword();
             em.setContrasenia(new String(arrayC));
             controladorEmpleados.update(em);
@@ -273,7 +276,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        txtCodigo.setText(" ");
         txtCedula.setText(" ");
         txtNombre.setText(" ");
         txtApellido.setText(" ");
@@ -287,6 +289,17 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
 
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
         // TODO add your handling code here:
+        if(empleado != null){
+            try {
+                empleado.setActivo(0);
+            } catch (ExcepcionBinaria ex) {
+                ex.printStackTrace();
+            }
+            controladorEmpleados.update(empleado);
+            JOptionPane.showMessageDialog(null, "Usuario desactivado", "Error", JOptionPane.OK_OPTION);
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnDesactivarActionPerformed
 
 
@@ -296,7 +309,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDesactivar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> itemTipo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -310,7 +322,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCelular;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPassword;
