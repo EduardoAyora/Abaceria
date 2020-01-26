@@ -7,11 +7,13 @@ package vista.producto;
 
 import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
+import controlador.ControladorUnidadMedida;
 import java.util.Locale;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Producto;
+import modelo.UnidadMedida;
 
 /**
  *
@@ -20,6 +22,7 @@ import modelo.Producto;
 public class EditarProducto extends javax.swing.JInternalFrame {
         private ControladorProductos controladorProductos;
         private ControladorCategoria controladorCategoria;
+        private ControladorUnidadMedida controladorUnidadMedida;
         private Producto producto;
     /**
      * Creates new form RudProducto
@@ -28,12 +31,16 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         initComponents();
         controladorProductos = new ControladorProductos();
         controladorCategoria = new ControladorCategoria();
+        controladorUnidadMedida = new ControladorUnidadMedida();
         cargarItems();
     }
     
     public void cargarItems(){
         for(Categoria categoria : controladorCategoria.list()){
             itemCategoria.addItem(categoria);
+        }
+        for(UnidadMedida unidadMedida : controladorUnidadMedida.list()){
+            itemUnidad.addItem(unidadMedida);
         }
     }
     
@@ -80,7 +87,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         ChIva = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtUnidad = new javax.swing.JTextField();
+        itemUnidad = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -172,6 +179,8 @@ public class EditarProducto extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Unidad de venta:");
 
+        itemUnidad.setToolTipText("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -203,7 +212,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUnidad))
+                                .addComponent(itemUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,10 +266,10 @@ public class EditarProducto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemUnidad, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,11 +316,10 @@ public class EditarProducto extends javax.swing.JInternalFrame {
             txtProducto.setText(producto.getDescripcion());
             txtCantidad.setText(Integer.toString(producto.getStock()));
             txtPrecio.setText(Double.toString(producto.getPrecio()));
-            txtUnidad.setText(producto.getUnidadMedida());
             Categoria aux = producto.getCateriaProducto();
-            aux = null;
             itemCategoria.setSelectedItem(aux);
-            itemCategoria.setSelectedIndex(WIDTH);
+            UnidadMedida uni = producto.getUnidadMedida();
+            itemUnidad.setSelectedItem(uni);
             seleccionados();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -319,16 +327,16 @@ public class EditarProducto extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try{
-          Producto pr = controladorProductos.readByBarCode(txtBarras.getText());
-          pr.setDescripcion(txtProducto.getText());
-          pr.setStock(Integer.parseInt(txtCantidad.getText()));
-          pr.setPrecio(Double.parseDouble(txtPrecio.getText()));
-          pr.setUnidadMedida(txtUnidad.getText());
-          pr.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
-          if(ChIva.isSelected()){
-                pr.setNacional(1);
-            }else{
+            Producto pr = controladorProductos.readByBarCode(txtBarras.getText());
+            pr.setDescripcion(txtProducto.getText());
+            pr.setStock(Integer.parseInt(txtCantidad.getText()));
+            pr.setPrecio(Double.parseDouble(txtPrecio.getText()));
+            pr.setUnidadMedida((UnidadMedida) itemUnidad.getSelectedItem());
+            pr.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
+            if(ChBEx.isSelected()){
                 pr.setNacional(0);
+            }else{
+                pr.setNacional(1);
             }
             if(ChIva.isSelected()){
                 pr.setTieneIva(1);
@@ -380,6 +388,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox itemCategoria;
+    private javax.swing.JComboBox itemUnidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -394,6 +403,5 @@ public class EditarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtProducto;
-    private javax.swing.JTextField txtUnidad;
     // End of variables declaration//GEN-END:variables
 }

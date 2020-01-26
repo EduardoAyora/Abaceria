@@ -7,11 +7,13 @@ package vista.producto;
 
 import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
+import controlador.ControladorUnidadMedida;
 import excepcion.ExcepcionBinaria;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Producto;
+import modelo.UnidadMedida;
 
 /**
  *
@@ -21,6 +23,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
 
     private ControladorProductos controladorProductos;
     private ControladorCategoria controladorCategoria;
+    private ControladorUnidadMedida controladorUnidadMedida;
     /**
      * Creates new form CrearProducto
      */
@@ -28,6 +31,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         initComponents();
         controladorProductos = new ControladorProductos();
         controladorCategoria = new ControladorCategoria();
+        controladorUnidadMedida = new ControladorUnidadMedida();
         cargarItems();
         
     }
@@ -35,6 +39,9 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     public void cargarItems(){
         for(Categoria categoria : controladorCategoria.list()){
             itemCategoria.addItem(categoria);
+        }
+        for(UnidadMedida unidadMedida : controladorUnidadMedida.list()){
+            itemUnidad.addItem(unidadMedida);
         }
     }
     
@@ -59,7 +66,6 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         itemCategoria = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        txtUnidadVenta = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         chExtranjero = new javax.swing.JCheckBox();
@@ -71,6 +77,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        itemUnidad = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -125,6 +132,8 @@ public class CrearProducto extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Stock");
 
+        itemUnidad.setToolTipText("");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -163,9 +172,9 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(itemCategoria, 0, 124, Short.MAX_VALUE)
-                                            .addComponent(txtUnidadVenta)))
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(itemUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,19 +196,16 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                         .addComponent(txtBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
                     .addComponent(itemCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUnidadVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(itemUnidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,10 +274,10 @@ public class CrearProducto extends javax.swing.JInternalFrame {
             Producto producto = new Producto();
             producto.setDescripcion(txtProducto.getText());
             producto.setStock(Integer.parseInt(txtCantidad.getText()));
-            producto.setUnidadMedida(txtUnidadVenta.getText());
             producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
             producto.setCodigoBarra(txtBarras.getText());
             producto.setCateriaProducto((Categoria) itemCategoria.getSelectedItem());
+            producto.setUnidadMedida((UnidadMedida) itemUnidad.getSelectedItem());
             if(chExtranjero.isSelected()){
                 producto.setNacional(0);
             }else{
@@ -312,6 +318,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     javax.swing.JCheckBox chExtranjero;
     private javax.swing.JCheckBox chIva;
     private javax.swing.JComboBox itemCategoria;
+    private javax.swing.JComboBox itemUnidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -326,6 +333,5 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtProducto;
-    private javax.swing.JTextField txtUnidadVenta;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,55 +9,52 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import modelo.Categoria;
+import modelo.UnidadMedida;
 
 /**
  *
  * @author Eduardo Ayora
  */
-public class ControladorCategoria {
+public class ControladorUnidadMedida {
     
     private DataBaseConnection dataBaseConnection;
-    private static final String TABLE_NAME = "ABA_CATEGORIAS";
-    private static final String CODE_NAME = "cat_id";
+    private static final String TABLE_NAME = "ABA_UNIDADES_MEDIDA";
+    private static final String CODE_NAME = "uni_med_id";
 
-    public ControladorCategoria() {
+    public ControladorUnidadMedida() {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public void create(Categoria categoria) {
+    public void create(UnidadMedida unidadMedida) {
         String sql = "INSERT INTO " + TABLE_NAME + 
-                "(cat_id, cat_nombre)" + 
+                "(uni_med_id, uni_med_descripcion)" + 
                 " VALUES(" +
-                "cat_id_seq.nextval" + ",'" +
-                categoria.getNombre()+ "')";
+                "uni_med_id_seq.nextval" + ",'" +
+                unidadMedida.getDescripcion() + "')";
         dataBaseConnection.connect();
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
             sta.execute(sql);
             dataBaseConnection.disconnect();
             int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
-            categoria.setId(code);
+            unidadMedida.setId(code);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
     
-    public Categoria read(int codigo){
-        Categoria categoria = null;
+    public UnidadMedida read(int codigo){
+        UnidadMedida unidadMedida = null;
         try{
             String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + CODE_NAME + " = " + codigo;
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
-                categoria = new Categoria();
-                categoria.setId(rs.getInt(CODE_NAME));
-                categoria.setNombre(rs.getString("cat_nombre"));
+                unidadMedida = new UnidadMedida();
+                unidadMedida.setId(rs.getInt(CODE_NAME));
+                unidadMedida.setDescripcion(rs.getString("uni_med_descripcion"));
             }
             rs.close();
             sta.close();
@@ -65,20 +62,20 @@ public class ControladorCategoria {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return categoria;
+        return unidadMedida;
     }
     
-    public Categoria read(String nombre){
-        Categoria categoria = null;
+    public UnidadMedida read(String nombre){
+        UnidadMedida unidadMedida = null;
         try{
-            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE cat_nombre = '" + nombre + "'";
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE uni_med_descripcion = '" + nombre + "'";
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if(rs.next()){
-                categoria = new Categoria();
-                categoria.setId(rs.getInt(CODE_NAME));
-                categoria.setNombre(rs.getString("cat_nombre"));
+                unidadMedida = new UnidadMedida();
+                unidadMedida.setId(rs.getInt(CODE_NAME));
+                unidadMedida.setDescripcion(rs.getString("uni_med_descripcion"));
             }
             rs.close();
             sta.close();
@@ -86,13 +83,13 @@ public class ControladorCategoria {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return categoria;
+        return unidadMedida;
     }
     
-    public void update(Categoria categoria) {
+    public void update(UnidadMedida unidadMedida) {
         String sql = "UPDATE " + TABLE_NAME +
-                " SET cat_nombre = '" + categoria.getNombre()+ "'" +
-                " WHERE " + CODE_NAME + " = " + categoria.getId();
+                " SET uni_med_descripcion = '" + unidadMedida.getDescripcion()+ "'" +
+                " WHERE " + CODE_NAME + " = " + unidadMedida.getId();
         dataBaseConnection.connect();
 
         try {
@@ -117,7 +114,7 @@ public class ControladorCategoria {
     }
     
     public void deleteByName(String nombre){
-        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + "cat_nombre" + " ='" + nombre+"'";
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + "uni_med_descripcion" + " ='" + nombre+"'";
         dataBaseConnection.connect();
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
@@ -128,18 +125,18 @@ public class ControladorCategoria {
         }
     }
     
-    public List<Categoria> list(){
-        List<Categoria> categorias = new ArrayList<>();
+    public List<UnidadMedida> list(){
+        List<UnidadMedida> categorias = new ArrayList<>();
         try{
             String sql = "SELECT * FROM " + TABLE_NAME;
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             while(rs.next()){
-                Categoria categoria = new Categoria();
-                categoria.setId(rs.getInt(CODE_NAME));
-                categoria.setNombre(rs.getString("cat_nombre"));
-                categorias.add(categoria);
+                UnidadMedida unidadMedida = new UnidadMedida();
+                unidadMedida.setId(rs.getInt(CODE_NAME));
+                unidadMedida.setDescripcion(rs.getString("uni_med_descripcion"));
+                categorias.add(unidadMedida);
             }
             rs.close();
             sta.close();

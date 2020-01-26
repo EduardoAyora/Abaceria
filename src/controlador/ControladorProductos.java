@@ -27,14 +27,14 @@ public class ControladorProductos {
     public void create(Producto producto) {
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "("+ CODE_NAME +", ABA_CATEGORIAS_CAT_ID, pro_descripcion, pro_stock, pro_tiene_iva, pro_nacional,"
-                + "pro_unidad_medida, pro_precio, pro_codigo_barras)" + 
+                + "uni_med_id, pro_precio, pro_codigo_barras)" + 
                 " VALUES(" + CODE_NAME + "_seq.nextval" + "," +
                 producto.getCateriaProducto().getId() + ",'" +
                 producto.getDescripcion() + "'," +
                 producto.getStock() + "," +
                 producto.getTieneIva() + "," +
-                producto.getNacional() + ",'" +
-                producto.getUnidadMedida() + "'," +
+                producto.getNacional() + "," +
+                producto.getUnidadMedida().getId() + "," +
                 producto.getPrecio() + ",'" +
                 producto.getCodigoBarra() + "')";
         dataBaseConnection.connect();
@@ -65,7 +65,7 @@ public class ControladorProductos {
                 producto.setStock(rs.getInt("pro_stock"));
                 producto.setTieneIva(rs.getInt("pro_tiene_iva"));
                 producto.setNacional(rs.getInt("pro_nacional"));
-                producto.setUnidadMedida(rs.getString("pro_unidad_medida"));
+                producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
             }
@@ -93,7 +93,7 @@ public class ControladorProductos {
                 producto.setStock(rs.getInt("pro_stock"));
                 producto.setTieneIva(rs.getInt("pro_tiene_iva"));
                 producto.setNacional(rs.getInt("pro_nacional"));
-                producto.setUnidadMedida(rs.getString("pro_unidad_medida"));
+                producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
             }
@@ -121,7 +121,7 @@ public class ControladorProductos {
                 producto.setStock(rs.getInt("pro_stock"));
                 producto.setTieneIva(rs.getInt("pro_tiene_iva"));
                 producto.setNacional(rs.getInt("pro_nacional"));
-                producto.setUnidadMedida(rs.getString("pro_unidad_medida"));
+                producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
             }
@@ -141,9 +141,9 @@ public class ControladorProductos {
                 "pro_stock = " + producto.getStock() + "," +
                 "pro_tiene_iva = " + producto.getTieneIva() + "," +
                 "pro_nacional = " + producto.getNacional() + "," +
-                "pro_unidad_medida = '" + producto.getUnidadMedida() + "'," +
+                "uni_med_id = " + producto.getUnidadMedida().getId() + "," +
                 "pro_precio = " + producto.getPrecio() + "," +
-                "pro_codigo_barras = '" + producto.getStock() + "'" +
+                "pro_codigo_barras = '" + producto.getCodigoBarra() + "'" +
                 " WHERE " + CODE_NAME + " = " + producto.getId();
         dataBaseConnection.connect();
         try {

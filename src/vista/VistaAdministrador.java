@@ -76,6 +76,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         itemCrearCat = new javax.swing.JMenuItem();
         itemEditarCat = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         menuProveedor = new javax.swing.JMenu();
         itemRegistrarProveedor = new javax.swing.JMenuItem();
         itemRudProveedor = new javax.swing.JMenuItem();
@@ -153,6 +154,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu1.add(itemEditarCat);
 
         menuBar.add(jMenu1);
+
+        jMenu4.setText("Unidad de Venta");
+        menuBar.add(jMenu4);
 
         menuProveedor.setText("Proveedor");
 
@@ -356,6 +360,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuProducto;

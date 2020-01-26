@@ -19,7 +19,7 @@ public class Producto {
     private String codigoBarra;
     private String descripcion;
     private int nacional;
-    private String unidadMedida;
+    private UnidadMedida unidadMedida;
     private int stock;
     private double precio;
     private int tieneIva;
@@ -57,11 +57,11 @@ public class Producto {
         this.nacional = Algorithm.verificacionBinaria(nacional);
     }
 
-    public String getUnidadMedida() {
+    public UnidadMedida getUnidadMedida() {
         return unidadMedida;
     }
 
-    public void setUnidadMedida(String unidadMedida) {
+    public void setUnidadMedida(UnidadMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
 
