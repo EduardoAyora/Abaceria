@@ -103,6 +103,7 @@ public class ControladorProductos {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        System.out.println(producto);
         return producto;
     }
     
@@ -131,6 +132,7 @@ public class ControladorProductos {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        System.out.println(producto);
         return producto;
     }
     

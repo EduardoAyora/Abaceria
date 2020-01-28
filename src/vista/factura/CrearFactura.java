@@ -68,13 +68,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         tblDetalles.setRowHeight(55);
         DefaultTableModel modelo = (DefaultTableModel) tblDetalles.getModel();
         modelo.setRowCount(0);
+        DecimalFormat df = new DecimalFormat("#.00");
         for (FacturaDetalle facturaDetalle : facturaDetalles) {
             Object[] datos = {
                 facturaDetalle.getProducto().getDescripcion(),
                 facturaDetalle.getCantidad(),
-                facturaDetalle.getIva() + " $",
-                facturaDetalle.getSubtotal() + " $",
-                facturaDetalle.getTotal() + " $"
+                df.format(facturaDetalle.getIva()) + " $",
+                df.format(facturaDetalle.getSubtotal()) + " $",
+                df.format(facturaDetalle.getTotal()) + " $"
             };
             modelo.addRow(datos);
         }
@@ -668,7 +669,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             GregorianCalendar cal = new GregorianCalendar();
             cal.setTime(new java.util.Date());
             factura.setFecha(cal);
-            factura.setEmpleado(controladorEmpleado.readByCode(2));
+            factura.setEmpleado(controladorEmpleado.readByCode(34));
             factura.setCliente(cliente);
 
             double subtotal = 0;
