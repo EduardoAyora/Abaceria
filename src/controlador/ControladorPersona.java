@@ -27,7 +27,7 @@ public class ControladorPersona {
     public void create(Persona persona) throws java.sql.SQLIntegrityConstraintViolationException{
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
-                + "per_activo)" +
+                + "per_activo, per_ruc, per_empresa)" +
                 " VALUES(" +
                 "per_id_seq.nextval" + ",'" +
                 persona.getCedula() + "', '" +
@@ -36,7 +36,9 @@ public class ControladorPersona {
                 persona.getDireccion() + "', '" +
                 persona.getTelefono() + "', '" +
                 persona.getCelular() + "'," +
-                persona.getActivo() + ")";
+                persona.getActivo() + ",'" +
+                persona.getRuc() + "','" +
+                persona.getEmpresa() + "')";
         dataBaseConnection.connect();
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
@@ -67,6 +69,8 @@ public class ControladorPersona {
                 persona.setTelefono(rs.getString("per_telefono"));
                 persona.setCelular(rs.getString("per_celular"));
                 persona.setActivo(rs.getInt("per_activo"));
+                persona.setRuc(rs.getString("per_ruc"));
+                persona.setEmpresa(rs.getString("per_empresa"));
             }
             rs.close();
             sta.close();
@@ -94,6 +98,8 @@ public class ControladorPersona {
                 persona.setTelefono(rs.getString("per_telefono"));
                 persona.setCelular(rs.getString("per_celular"));
                 persona.setActivo(rs.getInt("per_activo"));
+                persona.setRuc(rs.getString("per_ruc"));
+                persona.setEmpresa(rs.getString("per_empresa"));
             }
             rs.close();
             sta.close();
@@ -112,7 +118,9 @@ public class ControladorPersona {
                 "per_direccion = '" + persona.getDireccion() + "'," + 
                 "per_telefono = '" + persona.getTelefono() + "'," + 
                 "per_celular = '" + persona.getCelular() + "'," + 
-                "per_activo = " + persona.getActivo() + 
+                "per_activo = " + persona.getActivo() + "'," + 
+                "per_ruc = '" + persona.getRuc() + "'," + 
+                "per_empresa = " + persona.getEmpresa() +
                 " WHERE " + CODE_NAME + " = " + persona.getId();
         dataBaseConnection.connect();
 

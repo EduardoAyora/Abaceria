@@ -22,6 +22,8 @@ public class Persona {
     private String telefono;
     private String celular;
     private int activo;
+    private String ruc;
+    private String empresa;
 
     public int getId() {
         return id;
@@ -85,6 +87,22 @@ public class Persona {
 
     public void setActivo(int activo) throws ExcepcionBinaria {
         this.activo = Algorithm.verificacionBinaria(activo);
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
     @Override
