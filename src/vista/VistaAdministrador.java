@@ -8,6 +8,7 @@ package vista;
 import controlador.ControladorCategoria;
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
+import controlador.ControladorUnidadMedida;
 import vista.compra.EntregaProveedor;
 import vista.producto.CrearCategoria;
   import vista.producto.CrearProducto;
@@ -18,6 +19,8 @@ import vista.producto.EditarCategoria;
 //import ec.edu.ups.vista.proveedor.RudProveedor;
   import vista.persona.CrearUsuario;
   import vista.persona.EditarUsuario;
+import vista.producto.CrearUnidadMedida;
+import vista.producto.EditarUnidadMedida;
   import vista.proveedor.CrearProveedor;
   import vista.proveedor.EditarProveedor;
 /**
@@ -37,12 +40,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
       private CrearProveedor regProveedor;
       private EditarProveedor editarProveedor;
-
+      
+      private CrearUnidadMedida regUnMed;
+      private EditarUnidadMedida editarUnMed;
+      
       private EntregaProveedor entregaProveedor;
       
       private ControladorPersona controladorPersona;
       private ControladorEmpleado controladorEmpleado;
       private ControladorCategoria controladorCategoria;
+      private ControladorUnidadMedida controladorUnidadMedida;
 
     /**
      * Creates new form MainA
@@ -52,6 +59,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         controladorPersona = new ControladorPersona();
         controladorEmpleado = new ControladorEmpleado();
         controladorCategoria= new ControladorCategoria();
+        controladorUnidadMedida= new ControladorUnidadMedida();
         
     }
 
@@ -76,7 +84,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         itemCrearCat = new javax.swing.JMenuItem();
         itemEditarCat = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        CrearUnMed = new javax.swing.JMenuItem();
+        EditarUnMed = new javax.swing.JMenuItem();
         menuProveedor = new javax.swing.JMenu();
         itemRegistrarProveedor = new javax.swing.JMenuItem();
         itemRudProveedor = new javax.swing.JMenuItem();
@@ -155,10 +165,28 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         menuBar.add(jMenu1);
 
-        jMenu4.setText("Unidad de Venta");
-        menuBar.add(jMenu4);
+        jMenu5.setText("Unidad de Medida");
+
+        CrearUnMed.setText("Crear");
+        CrearUnMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearUnMedActionPerformed(evt);
+            }
+        });
+        jMenu5.add(CrearUnMed);
+
+        EditarUnMed.setText("Editar");
+        EditarUnMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarUnMedActionPerformed(evt);
+            }
+        });
+        jMenu5.add(EditarUnMed);
+
+        menuBar.add(jMenu5);
 
         menuProveedor.setText("Proveedor");
+        menuProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         itemRegistrarProveedor.setText("Crear");
         itemRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -308,6 +336,27 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_itemCerrarSesionActionPerformed
 
+    private void EditarUnMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUnMedActionPerformed
+                        if (editarUnMed == null || !editarUnMed.isVisible()) {
+                        editarUnMed = new EditarUnidadMedida();
+                        editarUnMed.setVisible(true);
+                        editarUnMed.setClosable(true);
+                        editarUnMed.setMaximizable(true);
+                        desktopPane.add(editarUnMed);
+ }
+    }//GEN-LAST:event_EditarUnMedActionPerformed
+
+    private void CrearUnMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUnMedActionPerformed
+        if (regUnMed == null || !regUnMed.isVisible()) {
+            regUnMed = new CrearUnidadMedida();
+            regUnMed.setVisible(true);
+            regUnMed.setClosable(true);
+            regUnMed.setMaximizable(true);
+//            regProveedor.setMinimizable(true);
+            desktopPane.add(regUnMed);
+        }
+    }//GEN-LAST:event_CrearUnMedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +394,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem CrearUnMed;
+    private javax.swing.JMenuItem EditarUnMed;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem itemCerrarSesion;
@@ -360,7 +411,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuProducto;

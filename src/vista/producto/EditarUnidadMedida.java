@@ -5,28 +5,27 @@
  */
 package vista.producto;
 
-import controlador.ControladorCategoria;
+import controlador.ControladorUnidadMedida;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Categoria;
+import modelo.UnidadMedida;
 
 /**
  *
- * @author Darwin
+ * @author Paul Arichabala
  */
-public class EditarCategoria extends javax.swing.JInternalFrame {
-    private ControladorCategoria controladorCategoria;
-    private Categoria categoria;
+public class EditarUnidadMedida extends javax.swing.JInternalFrame {
+    private ControladorUnidadMedida controladorUnidadMedida;
+    private UnidadMedida unidadMed;
     private String cate;
-
     /**
-     * Creates new form EditarCategoria
+     * Creates new form EditarUnidadMedida
      */
-    public EditarCategoria(ControladorCategoria controladorCategoria) {
+    public EditarUnidadMedida() {
         initComponents();
-        this.controladorCategoria = controladorCategoria;
-        llenarCategoria();
+        this.controladorUnidadMedida = new ControladorUnidadMedida();
+        llenarUnidadMedida();
     }
 
     /**
@@ -40,21 +39,22 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtCategoria = new javax.swing.JTextField();
+        txtUnidadMedida = new javax.swing.JTextField();
         btnLimpar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCategoria = new javax.swing.JTable();
+        tableUnidadMedida = new javax.swing.JTable();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setTitle("Editar Categoria");
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese Datos para Buscar Categoria"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese Datos para Buscar Unidad de Medida"));
 
         jLabel2.setText("Nuevo Nombre:");
+
+        txtUnidadMedida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUnidadMedidaActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setBackground(new java.awt.Color(0, 0, 0));
         btnLimpar.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,7 +78,7 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
             }
         });
 
-        tableCategoria.setModel(new javax.swing.table.DefaultTableModel(
+        tableUnidadMedida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -86,12 +86,12 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
                 "Codigo", "Nombre"
             }
         ));
-        tableCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableUnidadMedida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableCategoriaMouseClicked(evt);
+                tableUnidadMedidaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableCategoria);
+        jScrollPane1.setViewportView(tableUnidadMedida);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,7 +106,7 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtUnidadMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -123,7 +123,7 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCategoria, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(txtUnidadMedida, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,60 +150,53 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("Ingrese Datos para Buscar Unidad de Medida");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoriaMouseClicked
-        int selec = tableCategoria.rowAtPoint(evt.getPoint());
-        txtCategoria.setText(String.valueOf(tableCategoria.getValueAt(selec, 1)));
-        categoria = controladorCategoria.read(txtCategoria.getText());
-       // buscar();
-    }//GEN-LAST:event_tableCategoriaMouseClicked
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        try{
-            categoria.setNombre(txtCategoria.getText());
-            controladorCategoria.update(categoria);
-            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Categoria", JOptionPane.OK_OPTION);
-            txtCategoria.setText("");
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        llenarCategoria();
-    }//GEN-LAST:event_btnModificarActionPerformed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try{
-            controladorCategoria.deleteByName(txtCategoria.getText());
-            JOptionPane.showMessageDialog(this, " Dato Eliminado", "Categoria", JOptionPane.OK_OPTION);
-
+            controladorUnidadMedida.deleteByName(txtUnidadMedida.getText());
+            JOptionPane.showMessageDialog(this, " Dato Eliminado", "Unidad de Medida", JOptionPane.OK_OPTION);
         }catch(Exception ex){
             ex.printStackTrace();
-            
         }
-        llenarCategoria();
+        llenarUnidadMedida();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    public void buscar(){
-        try{
-            cate = txtCategoria.getText();
-            categoria = controladorCategoria.read(cate);
-            
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-    
-    public void llenarCategoria(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) tableCategoria.getModel();
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+     try{
+         unidadMed.setDescripcion(txtUnidadMedida.getText());
+         controladorUnidadMedida.update(unidadMed);
+         JOptionPane.showMessageDialog(this, " Datos Actualizados", "Unidad de Medida", JOptionPane.OK_OPTION);
+         txtUnidadMedida.setText("");
+         
+     }catch(Exception ex){
+         ex.printStackTrace();
+     }
+     llenarUnidadMedida();
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void tableUnidadMedidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUnidadMedidaMouseClicked
+        int selec = tableUnidadMedida.rowAtPoint(evt.getPoint());
+        txtUnidadMedida.setText(String.valueOf(tableUnidadMedida.getValueAt(selec, 1)));
+        unidadMed = controladorUnidadMedida.read(txtUnidadMedida.getText());
+        // buscar();
+    }//GEN-LAST:event_tableUnidadMedidaMouseClicked
+
+    private void txtUnidadMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnidadMedidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUnidadMedidaActionPerformed
+ private void llenarUnidadMedida() {
+               DefaultTableModel modelo = (DefaultTableModel) tableUnidadMedida.getModel();
         modelo.setRowCount(0);
-        List<Categoria> lista = controladorCategoria.list();
-        for (Categoria producto : lista) {
+        List<UnidadMedida> lista = controladorUnidadMedida.list();
+        for (UnidadMedida producto : lista) {
             Object[] datos = {producto.getId(),
-            producto.getNombre()};
+            producto.getDescripcion()};
             modelo.addRow(datos);
-        }
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -213,7 +206,11 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableCategoria;
-    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JTable tableUnidadMedida;
+    private javax.swing.JTextField txtUnidadMedida;
     // End of variables declaration//GEN-END:variables
+
+    //To change body of generated methods, choose Tools | Templates.
+
+   
 }
