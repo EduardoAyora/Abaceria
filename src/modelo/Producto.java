@@ -23,8 +23,8 @@ public class Producto {
     private int stock;
     private double precio;
     private int tieneIva;
-    private Categoria categoria;
     private int activo;
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -32,14 +32,6 @@ public class Producto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getActivo() {
-        return activo;
-    }
-
-    public void setActivo(int activo) {
-        this.activo = activo;
     }
 
     public String getCodigoBarra() {
@@ -106,9 +98,21 @@ public class Producto {
         this.categoria = cateriaProducto;
     }
 
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
+   
+    
+    
+
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", descripcion=" + descripcion + ", nacional=" + nacional + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", precio=" + precio + ", tieneIva=" + tieneIva + ", cateriaProducto=" + categoria + '}';
+        return "Producto{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", descripcion=" + descripcion + ", nacional=" + nacional + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", precio=" + precio + ", tieneIva=" + tieneIva + ", cateriaProducto=" + categoria + ", activo=" + activo + '}';
     }
 
 }
