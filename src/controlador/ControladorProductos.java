@@ -97,6 +97,7 @@ public class ControladorProductos {
                 producto.setNacional(rs.getInt("pro_nacional"));
                 producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
+                producto.setActivo(rs.getInt("pro_activo"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
             }
             rs.close();
@@ -127,6 +128,7 @@ public class ControladorProductos {
                 producto.setNacional(rs.getInt("pro_nacional"));
                 producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
+                producto.setActivo(rs.getInt("pro_activo"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
             }
             rs.close();
@@ -147,6 +149,7 @@ public class ControladorProductos {
                 "pro_nacional = " + producto.getNacional() + "," +
                 "uni_med_id = " + producto.getUnidadMedida().getId() + "," +
                 "pro_precio = " + producto.getPrecio() + "," +
+                "pro_activo = " + producto.getActivo() + "," +
                 "pro_codigo_barras = '" + producto.getCodigoBarra() + "'" +
                 " WHERE " + CODE_NAME + " = " + producto.getId();
         dataBaseConnection.connect();
