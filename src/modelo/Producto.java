@@ -24,6 +24,7 @@ public class Producto {
     private double precio;
     private int tieneIva;
     private Categoria categoria;
+    private int activo;
 
     public int getId() {
         return id;
@@ -31,6 +32,14 @@ public class Producto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
     public String getCodigoBarra() {
