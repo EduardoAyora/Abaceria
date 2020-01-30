@@ -200,6 +200,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             cl.setTelefono(txtConvencional.getText());
             cl.setCelular(txtCelular.getText());
             controladorPersonas.update(cl);
+            JOptionPane.showMessageDialog(null, "Datos Actualizados", "Actualizar",JOptionPane.OK_OPTION);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error",JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();
@@ -207,7 +208,13 @@ public class EditarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
-        // TODO add your handling code here:
+        try{
+            Persona p = controladorPersonas.read(txtCedula.getText());
+            
+            
+        }catch(Exception ex){
+            
+        }
     }//GEN-LAST:event_btnDesactivarActionPerformed
 
 

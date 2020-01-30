@@ -59,6 +59,11 @@ public class EditarUnidadMedida extends javax.swing.JInternalFrame {
         btnLimpar.setBackground(new java.awt.Color(0, 0, 0));
         btnLimpar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpar.setText("Limpiar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,8 +155,6 @@ public class EditarUnidadMedida extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Ingrese Datos para Buscar Unidad de Medida");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,6 +162,7 @@ public class EditarUnidadMedida extends javax.swing.JInternalFrame {
         try{
             controladorUnidadMedida.deleteByName(txtUnidadMedida.getText());
             JOptionPane.showMessageDialog(this, " Dato Eliminado", "Unidad de Medida", JOptionPane.OK_OPTION);
+            txtUnidadMedida.setText("");
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -188,8 +192,13 @@ public class EditarUnidadMedida extends javax.swing.JInternalFrame {
     private void txtUnidadMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnidadMedidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUnidadMedidaActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        txtUnidadMedida.setText("");
+        //txtUnidadMedida.requestFocus();
+    }//GEN-LAST:event_btnLimparActionPerformed
  private void llenarUnidadMedida() {
-               DefaultTableModel modelo = (DefaultTableModel) tableUnidadMedida.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tableUnidadMedida.getModel();
         modelo.setRowCount(0);
         List<UnidadMedida> lista = controladorUnidadMedida.list();
         for (UnidadMedida producto : lista) {
