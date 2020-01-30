@@ -739,19 +739,27 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         try{
             if(!txtBarras.getText().equals("")){
                 producto = controladorProductos.readByBarCode(txtBarras.getText());
-                txtBarras2.setText(producto.getCodigoBarra());
-                txtNombrePro2.setText(producto.getDescripcion());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
             }else if (!txtNombreProducto.getText().equals("")){
                 producto = controladorProductos.readByName(txtNombreProducto.getText());
-                txtBarras2.setText(producto.getCodigoBarra());
-                txtNombrePro2.setText(producto.getDescripcion());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
             }
             vaciarDatosBuscar();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRegistrarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCliente1ActionPerformed
@@ -759,6 +767,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         int numeroDetalle = tblDetalles.getSelectedRow();
         facturaDetalles.remove(numeroDetalle);
         listar();
+        actualizar();
     }//GEN-LAST:event_btnRegistrarCliente1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -804,7 +813,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             }else{
                 if(existe == false){
                     JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
-                    producto = null;
+//                    producto = null;
+//                    vaciarDatosProducto();
                 }
             }
             
@@ -812,6 +822,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             actualizar();
         }else{
             JOptionPane.showMessageDialog(null, "No se puede vender esta cantidad", "Error", JOptionPane.WARNING_MESSAGE);
+            vaciarDatosProducto();
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed

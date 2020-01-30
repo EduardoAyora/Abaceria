@@ -110,7 +110,8 @@ public class ControladorProductos {
     public Producto readByName(String nombre){
         Producto producto = null;
         try{
-            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE pro_descripcion LIKE LOWER('" + nombre + "%')";
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE LOWER(pro_descripcion) LIKE LOWER('" + nombre + "%')";
+            System.out.println(sql);
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);
