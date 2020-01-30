@@ -3,12 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/persona/CrearCliente.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/Inicio.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/persona/CrearUsuario.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/VistaAdministrador.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/VistaEmpleado.java</file>
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/controlador/ControladorEmpleado.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorUnidadMedida.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorEmpleado.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorProductos.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/factura/CrearFactura.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorFactura.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/DataBaseConnection.java</file>
+=======
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/controlador/ControladorEmpleado.java</file>
+            <file>file:/C:/Users/Paul%20Arichabala/Documents/Abaceria/src/vista/Inicio.java</file>
+>>>>>>> fb24b1d1c0a6dbc2ab8778a51cacc63b9099cc0b
+>>>>>>> 1829a4613013605b70ac7749c5f824b1d706ffd7
         </group>
     </open-files>
 </project-private>
