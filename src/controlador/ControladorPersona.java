@@ -24,7 +24,7 @@ public class ControladorPersona {
         dataBaseConnection = new DataBaseConnection();
     }
     
-    public void create(Persona persona) throws java.sql.SQLIntegrityConstraintViolationException{
+    public void create(Persona persona) throws java.sql.SQLIntegrityConstraintViolationException, SQLException{
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "(per_id, per_cedula, per_nombre, per_apellido, per_direccion, per_telefono, per_celular,"
                 + "per_activo, per_ruc, per_empresa)" +
@@ -40,16 +40,11 @@ public class ControladorPersona {
                 persona.getRuc() + "','" +
                 persona.getEmpresa() + "')";
         dataBaseConnection.connect();
-        try {
-            Statement sta = dataBaseConnection.getConnection().createStatement();
-            sta.execute(sql);
-            dataBaseConnection.disconnect();
-            int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
-            persona.setId(code);
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        Statement sta = dataBaseConnection.getConnection().createStatement();
+        sta.execute(sql);
+        dataBaseConnection.disconnect();
+        int code = dataBaseConnection.getCode(CODE_NAME, TABLE_NAME);
+        persona.setId(code);
     }
     
     public Persona read(String cedula){

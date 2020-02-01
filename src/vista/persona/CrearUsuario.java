@@ -7,6 +7,7 @@ package vista.persona;
 
 import controlador.ControladorEmpleado;
 import excepcion.ExcepcionBinaria;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -239,6 +240,11 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             
         } catch (ExcepcionBinaria ex) {
             ex.printStackTrace();
+        } catch (java.sql.SQLIntegrityConstraintViolationException ex){
+            JOptionPane.showMessageDialog(null, "La cedula o el usuario ya estan registrados", "Error", JOptionPane.WARNING_MESSAGE);
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "No se ha podido crear Usuario", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
