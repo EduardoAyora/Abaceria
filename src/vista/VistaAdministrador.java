@@ -104,6 +104,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         helpMenu.setMnemonic('h');
         helpMenu.setText("Empleados");
 
+        itemCrearE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadirPersona.png"))); // NOI18N
         itemCrearE.setText("Crear");
         itemCrearE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +113,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         helpMenu.add(itemCrearE);
 
+        itemEditarE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         itemEditarE.setText("Editar");
         itemEditarE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +127,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         menuProducto.setMnemonic('f');
         menuProducto.setText("Productos");
 
+        itemCrearP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.jpg"))); // NOI18N
         itemCrearP.setMnemonic('o');
         itemCrearP.setText("Crear");
         itemCrearP.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +137,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         menuProducto.add(itemCrearP);
 
+        itemRProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         itemRProducto.setMnemonic('a');
         itemRProducto.setText("Editar");
         itemRProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +151,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenu1.setText("Categoria");
 
+        itemCrearCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.jpg"))); // NOI18N
         itemCrearCat.setText("Crear");
         itemCrearCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +160,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         jMenu1.add(itemCrearCat);
 
+        itemEditarCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         itemEditarCat.setText("Editar");
         itemEditarCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +173,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenu5.setText("Unidad de Medida");
 
+        CrearUnMed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/unidadMedida.png"))); // NOI18N
         CrearUnMed.setText("Crear");
         CrearUnMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +182,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         jMenu5.add(CrearUnMed);
 
+        EditarUnMed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         EditarUnMed.setText("Editar");
         EditarUnMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +196,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         menuProveedor.setText("Proveedor");
         menuProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        itemRegistrarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadirPersona.png"))); // NOI18N
         itemRegistrarProveedor.setText("Crear");
         itemRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +205,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         });
         menuProveedor.add(itemRegistrarProveedor);
 
+        itemRudProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editarPersoa.png"))); // NOI18N
         itemRudProveedor.setText("Editar");
         itemRudProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +218,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenu2.setText("Compras de Mercancia");
 
+        itemEntregaP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mercaderia.png"))); // NOI18N
         itemEntregaP.setText("Entrega de Proveedor");
         itemEntregaP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +231,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenu3.setText("Cerrar ");
 
+        itemCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarSesion.png"))); // NOI18N
         itemCerrarSesion.setText("Sesion");
         itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,17 +298,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
          } 
     }//GEN-LAST:event_itemRegistrarProveedorActionPerformed
 
-    private void itemRudProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRudProveedorActionPerformed
-        if (editarProveedor == null || !editarProveedor.isVisible()) {
-            editarProveedor = new EditarProveedor(controladorPersona);
-            editarProveedor.setVisible(true);
-            editarProveedor.setClosable(true);
-            editarProveedor.setMaximizable(true);
-//           editarProveedor.setMinimizable(true);
-           desktopPane.add(editarProveedor);
-         } 
-    }//GEN-LAST:event_itemRudProveedorActionPerformed
-
     private void itemRProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRProductoActionPerformed
                 if (rudProducto == null || !rudProducto.isVisible()) {
                         rudProducto = new EditarProducto();
@@ -356,6 +357,38 @@ public class VistaAdministrador extends javax.swing.JFrame {
             desktopPane.add(regUnMed);
         }
     }//GEN-LAST:event_CrearUnMedActionPerformed
+
+                                          
+
+//    private void itemEditarEActionPerformed(java.awt.event.ActionEvent evt) {                                            
+//       if (rudUsuario == null || !rudUsuario.isVisible()) {
+//            rudUsuario = new EditarUsuario();
+//            rudUsuario.setVisible(true);
+//            desktopPane.add(rudUsuario);
+//         }  
+//    }                                           
+
+//    private void itemRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+//        if (regProveedor == null || !regProveedor.isVisible()) {
+//            regProveedor = new CrearProveedor(controladorPersona);
+//            regProveedor.setVisible(true);
+//            regProveedor.setClosable(true);
+//            regProveedor.setMaximizable(true);
+////            regProveedor.setMinimizable(true);
+//            desktopPane.add(regProveedor);
+//         } 
+//    }                                                      
+
+    private void itemRudProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRudProveedorActionPerformed
+        if (editarProveedor == null || !editarProveedor.isVisible()) {
+            editarProveedor = new EditarProveedor(controladorPersona);
+            editarProveedor.setVisible(true);
+            editarProveedor.setClosable(true);
+            editarProveedor.setMaximizable(true);
+            //           editarProveedor.setMinimizable(true);
+            desktopPane.add(editarProveedor);
+        }
+    }//GEN-LAST:event_itemRudProveedorActionPerformed
 
     /**
      * @param args the command line arguments

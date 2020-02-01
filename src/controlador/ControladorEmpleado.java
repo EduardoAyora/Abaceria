@@ -30,7 +30,7 @@ public class ControladorEmpleado {
                 + "per_usuario ,per_contrasenia, per_activo)" +
                 " VALUES(" +
                 "per_id_seq.nextval" + "," +
-                persona.getTipoAdministrador() + ",'" +
+                persona.getTipoAdministrador() + ", '" +
                 persona.getCedula() + "', '" +
                 persona.getNombre() + "', '" +
                 persona.getApellido() + "', '" +

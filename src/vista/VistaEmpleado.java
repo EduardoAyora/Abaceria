@@ -8,13 +8,13 @@ package vista;
 import vista.factura.BuscarFactura;
 import vista.factura.CrearFactura;
 import vista.persona.CrearCliente;
-import vista.mainEmpleado;
+import vista.VistaEmpleado;
 import vista.persona.EditarCliente;
 /**
  *
  * @author Paul Arichabala
  */
-public class mainEmpleado extends javax.swing.JFrame {
+public class VistaEmpleado extends javax.swing.JFrame {
     private CrearCliente registroCliente;
     private CrearFactura factura;
     private EditarCliente editarCliente;
@@ -23,7 +23,7 @@ public class mainEmpleado extends javax.swing.JFrame {
     /**
      * Creates new form mainEmpleado
      */
-    public mainEmpleado() {
+    public VistaEmpleado() {
         initComponents();
     }
 
@@ -52,6 +52,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         editMenu.setMnemonic('e');
         editMenu.setText("Factura");
 
+        RegFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.jpg"))); // NOI18N
         RegFac.setMnemonic('t');
         RegFac.setText("Crear");
         RegFac.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +62,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         });
         editMenu.add(RegFac);
 
+        BusFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         BusFac.setText("Buscar Factura");
         BusFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Registro Cliente");
 
+        itemCrearC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadirPersona.png"))); // NOI18N
         itemCrearC.setMnemonic('o');
         itemCrearC.setText("Crear");
         itemCrearC.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +86,7 @@ public class mainEmpleado extends javax.swing.JFrame {
         });
         fileMenu.add(itemCrearC);
 
+        itemEditarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         itemEditarC.setText("Editar");
         itemEditarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +99,7 @@ public class mainEmpleado extends javax.swing.JFrame {
 
         jMenu1.setText("Cerrar");
 
+        itemCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarSesion.png"))); // NOI18N
         itemCerrarSesion.setText("Sesion");
         itemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,20 +193,21 @@ public class mainEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainEmpleado().setVisible(true);
+                new VistaEmpleado().setVisible(true);
             }
         });
     }

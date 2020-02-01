@@ -12,6 +12,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="RegFac">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/nuevo.jpg"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="116"/>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
@@ -21,6 +24,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="BusFac">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/buscar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar Factura"/>
               </Properties>
               <Events>
@@ -37,6 +43,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemCrearC">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/anadirPersona.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
@@ -46,6 +55,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemEditarC">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/configuracion.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
               <Events>
@@ -61,6 +73,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemCerrarSesion">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/cerrarSesion.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sesion"/>
               </Properties>
               <Events>

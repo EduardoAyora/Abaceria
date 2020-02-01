@@ -26,7 +26,7 @@ import modelo.Factura;
 import modelo.FacturaDetalle;
 import modelo.Persona;
 import modelo.Producto;
-import vista.mainEmpleado;
+import vista.VistaEmpleado;
 import vista.persona.CrearCliente;
 
 /**
@@ -719,7 +719,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
         if (registroCliente == null || !registroCliente.isVisible()) {
             registroCliente = new CrearCliente();
-            mainEmpleado.desktopEmpleado.add(registroCliente);
+            VistaEmpleado.desktopEmpleado.add(registroCliente);
             registroCliente.setVisible(true);           
         }        
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
