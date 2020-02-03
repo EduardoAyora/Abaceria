@@ -39,6 +39,15 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         place = new PlaceHolder(txtCelular, "Celular");
         place = new PlaceHolder(txtDireccion, "Direccion");
     }
+        public void vaciar(){
+        txtApellido.setText("");
+        txtCedula.setText("");
+        txtCelular.setText("");
+        txtConvencional.setText("");
+        txtDireccion.setText("");
+        txtNombre.setText("");
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,6 +178,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             cliente.setActivo(1);
             if(cliente.getCelular() != null || cliente.getTelefono() != null){
                 controladorPersonas.create(cliente);
+                vaciar();
                 JOptionPane.showMessageDialog(null, "Cliente creado con éxito", "Cliente", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(null, "El cliente debe tener numero de celular o convencional", "Cliente", JOptionPane.WARNING_MESSAGE);
@@ -184,6 +194,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();
         }
+       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed

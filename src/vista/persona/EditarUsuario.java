@@ -38,6 +38,15 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             itemTipo.setSelectedIndex(1);
         }
     }
+    public void vaciar(){
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCelular.setText("");
+        txtUsuario.setText("");
+        txtPassword.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -266,6 +275,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             char[] arrayC = txtPassword.getPassword();
             em.setContrasenia(new String(arrayC));
             controladorEmpleados.update(em);
+            vaciar();
             JOptionPane.showMessageDialog(null, "Datos actualizados", "Empleado", JOptionPane.OK_OPTION);
             
         }catch(Exception ex){
@@ -276,14 +286,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        txtCedula.setText(" ");
-        txtNombre.setText(" ");
-        txtApellido.setText(" ");
-        txtDireccion.setText(" ");
-        txtTelefono.setText(" ");
-        txtCelular.setText(" ");
-        txtUsuario.setText(" ");
-        txtPassword.setText(" ");
+       vaciar();
         
     }//GEN-LAST:event_btnCancelarActionPerformed
 

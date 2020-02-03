@@ -37,6 +37,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
     }
     
     public void vaciar(){
+        txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
         txtConvencional.setText("");
@@ -246,6 +247,14 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+public void vaciarDatos(){
+    txtApellido.setText("");
+    txtCedula.setText("");
+    txtCelular.setText("");
+    txtConvencional.setText("");
+    txtDireccion.setText("");
+    txtNombre.setText("");
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
