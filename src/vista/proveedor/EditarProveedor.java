@@ -6,6 +6,7 @@
 package vista.proveedor;
 
 import controlador.ControladorPersona;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import modelo.Persona;
 
@@ -80,6 +81,12 @@ public class EditarProveedor extends javax.swing.JInternalFrame {
         jLabel6.setText("Telefono:");
 
         jLabel7.setText("Celular:");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setToolTipText("");
@@ -274,6 +281,27 @@ String cedu = txtCedula.getText();
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         vaciar();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    String cedula = txtCedula.getText();
+        proveedor = controladorPersona.read(cedula);
+        
+        if( proveedor !=null){
+            
+            txtCedula.setText(proveedor.getCedula());
+            txtNombre.setText(proveedor.getNombre());
+            txtApellido.setText(proveedor.getApellido());
+            txtDireccion.setText(proveedor.getDireccion());
+            txtTelefono.setText(proveedor.getTelefono());
+            txtCelular.setText(proveedor.getCelular());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Proveedor no registrado ", "Error", JOptionPane.WARNING_MESSAGE);
+            txtCedula.setText("");
+            txtCedula.requestFocus();
+        }  
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

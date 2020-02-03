@@ -8,6 +8,7 @@ package vista.compra;
 import controlador.ControladorCompraProveedor;
 import controlador.ControladorPersona;
 import controlador.ControladorProductos;
+import java.awt.event.KeyEvent;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import modelo.CompraProveedor;
@@ -89,6 +90,12 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Cedula proveedor:");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
+
         jLabel4.setText("Nombre:");
 
         btnBuscar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -127,7 +134,7 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel27)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -139,8 +146,8 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(88, 88, 88)
-                        .addComponent(btnBuscarP, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnBuscarP, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,6 +327,25 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_btnBuscarPActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+                try{
+            if(!txtCodigoBarras.getText().equals("")){
+                producto = controladorProductos.readByBarCode(txtCodigoBarras.getText());
+                lblProducto.setText(producto.getDescripcion());
+            }else if (!txtNombreProducto.getText().equals("")){
+                producto = controladorProductos.readByName(txtNombreProducto.getText());
+                lblProducto.setText(producto.getDescripcion());
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+            ex.printStackTrace();
+        }
+            
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

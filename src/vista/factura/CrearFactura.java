@@ -11,6 +11,7 @@ import controlador.ControladorFacturaDetalle;
 import controlador.ControladorPersona;
 import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
+import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -125,6 +126,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     public void vaciarDatosProducto(){
         txtBarras2.setText("");
         txtNombrePro2.setText("");
+        spnCantidad.setValue(new Integer(0));
     }
     
     public void actualizar(){
@@ -222,6 +224,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         txtBCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBCedulaActionPerformed(evt);
+            }
+        });
+        txtBCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBCedulaKeyPressed(evt);
             }
         });
 
@@ -506,6 +513,18 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel34.setText("NOMBRE:");
 
+        txtBarras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBarrasKeyPressed(evt);
+            }
+        });
+
+        txtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreProductoKeyPressed(evt);
+            }
+        });
+
         jButton1.setText("BUSCAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -709,7 +728,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             vaciarDatosBuscar();
             vaciarDatosProducto();
             vaciarValores();
-            JOptionPane.showMessageDialog(null, "Factura creada con exito", "Factura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Factura " + controladorFactura.getUltimaFactura() + " creada con exito", "Factura", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "No se puede generar la factura por falta de datos", "Factura", JOptionPane.ERROR_MESSAGE);
         }
@@ -830,6 +849,81 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtBCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                try{
+            cliente = controladorPersona.read(txtBCedula.getText());
+            llenarDatosCliente();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);
+        }
+            
+        }
+    }//GEN-LAST:event_txtBCedulaKeyPressed
+
+    private void txtBarrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarrasKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            try{
+            if(!txtBarras.getText().equals("")){
+                producto = controladorProductos.readByBarCode(txtBarras.getText());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }else if (!txtNombreProducto.getText().equals("")){
+                producto = controladorProductos.readByName(txtNombreProducto.getText());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            vaciarDatosBuscar();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+            
+        }
+    }//GEN-LAST:event_txtBarrasKeyPressed
+
+    private void txtNombreProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            try{
+            if(!txtBarras.getText().equals("")){
+                producto = controladorProductos.readByBarCode(txtBarras.getText());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }else if (!txtNombreProducto.getText().equals("")){
+                producto = controladorProductos.readByName(txtNombreProducto.getText());
+                if(producto != null){
+                    txtBarras2.setText(producto.getCodigoBarra());
+                    txtNombrePro2.setText(producto.getDescripcion());
+                }else{
+                    vaciarDatosProducto();
+                    JOptionPane.showMessageDialog(null, "La busqueda no produce ningun resultado", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            vaciarDatosBuscar();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+            
+        }
+    }//GEN-LAST:event_txtNombreProductoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

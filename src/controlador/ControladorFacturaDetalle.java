@@ -76,10 +76,10 @@ public class ControladorFacturaDetalle {
         return factura;
     }
     
-    public List<FacturaDetalle> list(){
+    public List<FacturaDetalle> listByFactura(String numeroFactura){
         List<FacturaDetalle> facturaDetalles = new ArrayList<>();
         try{
-            String sql = "SELECT * FROM " + TABLE_NAME;
+            String sql = "SELECT * FROM " + TABLE_NAME + " WHERE FAC_CAB_ID = " + numeroFactura;
             dataBaseConnection.connect();
             Statement sta = dataBaseConnection.getConnection().createStatement();
             ResultSet rs = sta.executeQuery(sql);

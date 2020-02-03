@@ -94,4 +94,23 @@ public class ControladorFactura {
         }
     }
     
+    public int getUltimaFactura(){
+        int code = 0;
+        String sql = "SELECT MAX(" + CODE_NAME + ") FROM " + TABLE_NAME;
+        dataBaseConnection.connect();
+        try {
+            Statement sta = dataBaseConnection.getConnection().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                code = rs.getInt(1);
+            }
+            rs.close();
+            sta.close();
+            dataBaseConnection.disconnect();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return code;
+    }
+    
 }
