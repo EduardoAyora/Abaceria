@@ -7,6 +7,7 @@ package vista.persona;
 
 import com.placeholder.PlaceHolder;
 import controlador.ControladorPersona;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import modelo.Persona;
 
@@ -62,6 +63,12 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Actualizacion de Cliente");
         setToolTipText("");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +223,20 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             
         }
     }//GEN-LAST:event_btnDesactivarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Persona aux = controladorPersonas.read(txtCedula.getText());
+            if(aux!=null){
+            txtNombre.setText(aux.getNombre());
+            txtApellido.setText(aux.getApellido());
+            txtDireccion.setText(aux.getDireccion());
+            txtConvencional.setText(aux.getTelefono());
+            txtCelular.setText(aux.getCelular());
+            }
+            
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

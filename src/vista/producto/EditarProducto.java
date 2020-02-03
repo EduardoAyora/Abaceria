@@ -8,6 +8,7 @@ package vista.producto;
 import controlador.ControladorCategoria;
 import controlador.ControladorProductos;
 import controlador.ControladorUnidadMedida;
+import java.awt.event.KeyEvent;
 import java.util.Locale;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
@@ -165,6 +166,11 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         txtBarras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBarrasActionPerformed(evt);
+            }
+        });
+        txtBarras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBarrasKeyPressed(evt);
             }
         });
 
@@ -403,6 +409,23 @@ public class EditarProducto extends javax.swing.JInternalFrame {
     private void CbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbActivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CbActivoActionPerformed
+
+    private void txtBarrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarrasKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            producto = controladorProductos.readByBarCode(txtBarras.getText());
+        if(producto!=null){
+            txtProducto.setText(producto.getDescripcion());
+            txtCantidad.setText(Integer.toString(producto.getStock()));
+            txtPrecio.setText(Double.toString(producto.getPrecio()));
+            Categoria aux = producto.getCateriaProducto();
+            itemCategoria.setSelectedItem(aux);
+            UnidadMedida uni = producto.getUnidadMedida();
+            itemUnidad.setSelectedItem(uni);
+            seleccionados();
+        }
+            
+        }
+    }//GEN-LAST:event_txtBarrasKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

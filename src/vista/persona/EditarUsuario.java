@@ -8,6 +8,7 @@ package vista.persona;
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
 import excepcion.ExcepcionBinaria;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -69,7 +70,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        itemTipo = new javax.swing.JComboBox<String>();
+        itemTipo = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,6 +98,12 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         jLabel9.setText("Contrasena:");
 
         jLabel10.setText("Tipo:");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
 
         btnDesactivar.setText("DESACTIVAR");
         btnDesactivar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +133,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        itemTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Usuario" }));
+        itemTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -301,6 +308,24 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDesactivarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            empleado = controladorEmpleados.read(txtCedula.getText());
+            if(empleado!=null){
+            txtNombre.setText(empleado.getNombre());
+            txtApellido.setText(empleado.getApellido());
+            txtDireccion.setText(empleado.getDireccion());
+            txtTelefono.setText(empleado.getTelefono());
+            txtCelular.setText(empleado.getCelular());
+            txtUsuario.setText(empleado.getUsuario());
+            setTipo();
+            }else{
+            JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado"," Editar",JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

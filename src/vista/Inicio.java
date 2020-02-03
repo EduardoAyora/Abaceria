@@ -7,7 +7,11 @@ package vista;
 
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import modelo.Empleado;
 
 /**
@@ -25,6 +29,12 @@ public class Inicio extends javax.swing.JFrame {
     
     private String upadre;
     private String pPadre;
+    
+    private Timer tiempo;
+    private int cont;
+    public final static int two_second = 5;
+     
+    
 
     /**
      * Creates new form Inicio
@@ -36,6 +46,8 @@ public class Inicio extends javax.swing.JFrame {
         // System.out.println(peopleController.read("0106073331"));
         upadre = "1";
         pPadre="1";
+        progres.setVisible(false);
+        
     }
 
     /**
@@ -53,18 +65,19 @@ public class Inicio extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
         btnContinuar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        progres = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("USUARIO:");
 
-        txtU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUActionPerformed(evt);
+        jLabel2.setText("PASSWORD:");
+
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
-
-        jLabel2.setText("PASSWORD:");
 
         btnContinuar.setText("CONTINUAR");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,13 +90,15 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setText("     INICIAR   SESSION");
         jLabel3.setToolTipText("");
 
+        progres.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(295, 295, 295)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,9 +107,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtU)
                             .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnContinuar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(btnContinuar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(progres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,13 +127,95 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
+                .addGap(18, 18, 18)
+                .addComponent(progres, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    class TimerListener implements ActionListener{
+
+        public void actionPerformed(ActionEvent e) {
+            cont ++;
+            progres.setValue(cont);
+            if(cont==100){
+                tiempo.stop();
+                esconder();
+                VistaAdministrador adm = new VistaAdministrador();
+                adm.setVisible(true);
+                dispose();  
+            }
+        }   
+    }
+    
+    public void esconder(){this.setVisible(false);}
+    public void activar(){tiempo.start();}
+    
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        e = controladorEmpleado.readByUser(txtU.getText());
+        System.out.println(e);
+        p = new String(txtPass.getPassword());
+        if(e != null){
+            
+            if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador()== 0){
+            JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia\n"+e.getUsuario());
+            VistaEmpleado emp = new VistaEmpleado();
+            emp.setVisible(true);
+            setVisible(false);
+              
+            } else{
+                    if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1){
+                
+                    String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
+                        JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
+                
+                        if (tipo.equals("Administrador")){
+                            progres.setVisible(true);
+                            cont =-1;
+                            progres.setValue(0);
+                            progres.setStringPainted(true);
+                            tiempo = new Timer(two_second, new TimerListener());
+                            activar();
+                       
+                        }else {
+                            VistaEmpleado e1 = new VistaEmpleado();
+                            e1.setVisible(true);
+                            dispose();
+                            JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Empleado: "+e.getUsuario());
+                        }
+                
+                    }else{
+                    JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
+                    txtPass.setText("");
+                    txtU.setText("");
+                    txtU.requestFocus();
+                    }
+            }
+        
+        } else{
+            System.out.println("1");
+            if(txtU.getText().equalsIgnoreCase(upadre) && p.equalsIgnoreCase(pPadre)){
+            JOptionPane.showMessageDialog(rootPane, "Usuario Padre!\n"+"Adm: "+txtU.getText());
+            VistaAdministrador a = new VistaAdministrador();
+            a.setVisible(true);
+            dispose();  
+            
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrecto","ERROR",JOptionPane.WARNING_MESSAGE);
+                txtPass.setText("");
+                txtU.setText("");
+                txtU.requestFocus(); 
+            }
+        }
+                     
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //System.out.println(" kk");
+             
         e = controladorEmpleado.readByUser(txtU.getText());
         System.out.println(e);
         p = new String(txtPass.getPassword());
@@ -138,10 +235,12 @@ public class Inicio extends javax.swing.JFrame {
                         JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
                 
                         if (tipo.equals("Administrador")){
-                        JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Adm: "+e.getUsuario());
-                        VistaAdministrador a = new VistaAdministrador();
-                        a.setVisible(true);
-                        dispose();  
+                            progres.setVisible(true);
+                            cont =-1;
+                            progres.setValue(0);
+                            progres.setStringPainted(true);
+                            tiempo = new Timer(two_second, new TimerListener());
+                            activar();  
                         }else {
                         VistaEmpleado e1 = new VistaEmpleado();
                         e1.setVisible(true);
@@ -171,12 +270,9 @@ public class Inicio extends javax.swing.JFrame {
                 txtU.requestFocus(); 
             }
         }
-                     
-    }//GEN-LAST:event_btnContinuarActionPerformed
-
-    private void txtUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUActionPerformed
+            
+        }    
+    }//GEN-LAST:event_txtPassKeyPressed
 
     /**
      * @param args the command line arguments
@@ -218,6 +314,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JProgressBar progres;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtU;
     // End of variables declaration//GEN-END:variables
