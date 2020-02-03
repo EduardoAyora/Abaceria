@@ -10,9 +10,12 @@ import controlador.ControladorEmpleado;
 import controlador.ControladorFactura;
 import controlador.ControladorFacturaDetalle;
 import controlador.ControladorPersona;
+import excepcion.ExcepcionBinaria;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
@@ -72,6 +75,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     }
     
     public void completarFactura(){
+        if(factura.getEstado() == 0){
+            btnAnular.setEnabled(false);
+        }else{
+            btnAnular.setEnabled(true);
+        }
         txtFecha.setText(Algorithm.dateToString(factura.getFecha()));
         DecimalFormat df = new DecimalFormat("#.00");
         txtSubtotal.setText(df.format(factura.getSubtotal()));
@@ -86,7 +94,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         empleado = null;
         
         listar();
-        
+        lblEmpleado.setText("");
         txtNumeroFactura.setText("");
         
         txtCedula.setText("");
@@ -100,6 +108,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         txtSubtotal.setText("");
         txtIva.setText("");
         txtTotal.setText("");
+        
+        btnAnular.setEnabled(true);
     }
     
 
@@ -412,7 +422,13 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularActionPerformed
-
+        if(factura != null){
+            controladorFactura.anular(factura.getId());
+            JOptionPane.showMessageDialog(null, "La factura se ha anulado correctamente", "Factura", JOptionPane.INFORMATION_MESSAGE);
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Primero busque una factura", "Factura", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAnularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -423,6 +439,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         factura = controladorFactura.read(Integer.parseInt(txtNumeroFactura.getText()));
         if(factura != null){
+            
             completarFactura();
             
             cliente = controladorPersona.readByCode(factura.getCliente().getId());
@@ -436,8 +453,6 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(null, "La factura no existe", "Factura", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
