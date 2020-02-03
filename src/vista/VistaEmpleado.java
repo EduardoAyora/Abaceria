@@ -5,6 +5,7 @@
  */
 package vista;
 
+import modelo.Empleado;
 import vista.factura.BuscarFactura;
 import vista.factura.CrearFactura;
 import vista.persona.CrearCliente;
@@ -19,12 +20,17 @@ public class VistaEmpleado extends javax.swing.JFrame {
     private CrearFactura factura;
     private EditarCliente editarCliente;
     private BuscarFactura buscarFactura;
+    private Empleado empleado;
             
     /**
      * Creates new form mainEmpleado
      */
     public VistaEmpleado() {
         initComponents();
+    }
+    
+    public void setEmpleado(Empleado empleado){
+        this.empleado = empleado;
     }
 
     /**
@@ -145,6 +151,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
              factura = new CrearFactura();
+             factura.setEmpleado(empleado);
           factura.setVisible(true);
            desktopEmpleado.add(factura);
         }

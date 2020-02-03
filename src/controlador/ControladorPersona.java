@@ -113,14 +113,14 @@ public class ControladorPersona {
                 "per_direccion = '" + persona.getDireccion() + "'," + 
                 "per_telefono = '" + persona.getTelefono() + "'," + 
                 "per_celular = '" + persona.getCelular() + "'," + 
-                "per_activo = " + persona.getActivo() + "'," + 
+                "per_activo = '" + persona.getActivo() + "'," + 
                 "per_ruc = '" + persona.getRuc() + "'," + 
                 "per_empresa = " + persona.getEmpresa() +
                 " WHERE " + CODE_NAME + " = " + persona.getId();
         dataBaseConnection.connect();
-
         try {
             Statement sta = dataBaseConnection.getConnection().createStatement();
+            System.out.println(sql);
             sta.execute(sql);
             dataBaseConnection.disconnect();
         } catch (SQLException ex) {
