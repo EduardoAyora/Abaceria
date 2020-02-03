@@ -7,6 +7,7 @@ package vista.persona;
 
 import com.placeholder.PlaceHolder;
 import controlador.ControladorPersona;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import modelo.Persona;
 
@@ -37,6 +38,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
     }
     
     public void vaciar(){
+        txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
         txtConvencional.setText("");
@@ -83,6 +85,12 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -246,6 +254,42 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+public void vaciarDatos(){
+    txtApellido.setText("");
+    txtCedula.setText("");
+    txtCelular.setText("");
+    txtConvencional.setText("");
+    txtDireccion.setText("");
+    txtNombre.setText("");
+}
+
+    private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
+        try{
+            Persona p = controladorPersonas.read(txtCedula.getText());
+            
+            
+        }catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_btnDesactivarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Persona aux = controladorPersonas.read(txtCedula.getText());
+            if(aux!=null){
+            txtNombre.setText(aux.getNombre());
+            txtApellido.setText(aux.getApellido());
+            txtDireccion.setText(aux.getDireccion());
+            txtConvencional.setText(aux.getTelefono());
+            txtCelular.setText(aux.getCelular());
+            }
+            
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
