@@ -327,11 +327,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-<<<<<<< HEAD
+
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
+
                     .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> dfc867d519dadfe3c93eeeb050356e90861149b8
+
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -485,15 +485,15 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-    private javax.swing.JButton btnBuscar;
+
+  
     public static javax.swing.JButton btnCancelar;
     public static javax.swing.JButton btnGuardar;
-=======
+
     public static javax.swing.JButton btnAnular;
     private javax.swing.JButton btnBuscar;
     public static javax.swing.JButton btnLimpiar;
->>>>>>> dfc867d519dadfe3c93eeeb050356e90861149b8
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
