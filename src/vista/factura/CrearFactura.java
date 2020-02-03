@@ -92,8 +92,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblApellidos.setText(cliente.getApellido());
         lblCedulaCli.setText(cliente.getCedula());
         lblDireccion.setText(cliente.getDireccion());
-        lblConvencional.setText(cliente.getTelefono());
-        lblCelular.setText(cliente.getCelular());
+        if(cliente.getTelefono() != null && !cliente.getTelefono().equals("null")){
+            lblConvencional.setText(cliente.getTelefono());
+        }
+        if(cliente.getCelular() != null && !cliente.getCelular().equals("null")){
+            lblCelular.setText(cliente.getCelular());
+        }
     }
     
     public void vaciarDatosCliente(){
@@ -669,7 +673,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             GregorianCalendar cal = new GregorianCalendar();
             cal.setTime(new java.util.Date());
             factura.setFecha(cal);
-            factura.setEmpleado(controladorEmpleado.readByCode(34));
+            factura.setEmpleado(this.empleado);
             factura.setCliente(cliente);
 
             double subtotal = 0;

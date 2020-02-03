@@ -128,6 +128,7 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia\n"+e.getUsuario());
 
             VistaEmpleado emp = new VistaEmpleado();
+            emp.setEmpleado(e);
             emp.setVisible(true);
             dispose();  
                 
@@ -144,6 +145,7 @@ public class Inicio extends javax.swing.JFrame {
                         dispose();  
                         }else {
                         VistaEmpleado e1 = new VistaEmpleado();
+                        e1.setEmpleado(e);
                         e1.setVisible(true);
                         dispose();
                         }
