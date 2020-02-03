@@ -29,7 +29,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         
     }
     
-    public void vaciarCajas(){
+    public void vaciar(){
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
@@ -69,7 +69,6 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         itemTipo = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -151,7 +150,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
                     .addComponent(txtPassword)
                     .addComponent(itemTipo, 0, 130, Short.MAX_VALUE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,17 +199,13 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/equipo.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -218,9 +213,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -244,10 +237,11 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             //empleado = controladorEmpleado.read(txtCedula.getText());
             
                 controladorEmpleado.create(empleado);
+                vaciar();
                 JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
-            
                 
         } catch (ExcepcionBinaria ex) {
+            
             ex.printStackTrace();
         } catch (java.sql.SQLIntegrityConstraintViolationException ex){
             JOptionPane.showMessageDialog(null, "La cedula o el usuario ya estan registrados", "Error", JOptionPane.WARNING_MESSAGE);
@@ -255,11 +249,12 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "No se ha podido crear Usuario", "Error", JOptionPane.WARNING_MESSAGE);
         }
+       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-
+        vaciar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 
@@ -267,7 +262,6 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> itemTipo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
