@@ -10,9 +10,12 @@ import controlador.ControladorEmpleado;
 import controlador.ControladorFactura;
 import controlador.ControladorFacturaDetalle;
 import controlador.ControladorPersona;
+import excepcion.ExcepcionBinaria;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
@@ -72,6 +75,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     }
     
     public void completarFactura(){
+        if(factura.getEstado() == 0){
+            btnAnular.setEnabled(false);
+        }else{
+            btnAnular.setEnabled(true);
+        }
         txtFecha.setText(Algorithm.dateToString(factura.getFecha()));
         DecimalFormat df = new DecimalFormat("#.00");
         txtSubtotal.setText(df.format(factura.getSubtotal()));
@@ -86,7 +94,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         empleado = null;
         
         listar();
-        
+        lblEmpleado.setText("");
         txtNumeroFactura.setText("");
         
         txtCedula.setText("");
@@ -100,6 +108,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         txtSubtotal.setText("");
         txtIva.setText("");
         txtTotal.setText("");
+        
+        btnAnular.setEnabled(true);
     }
     
 
@@ -134,16 +144,9 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         txtNumeroFactura = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jTextField1 = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-=======
         lblEmpleado = new javax.swing.JLabel();
         btnAnular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
->>>>>>> dfc867d519dadfe3c93eeeb050356e90861149b8
         jPanel5 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -272,22 +275,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setText("Empleado:");
 
-<<<<<<< HEAD
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-=======
         lblEmpleado.setText(" ");
->>>>>>> dfc867d519dadfe3c93eeeb050356e90861149b8
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -299,13 +287,6 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-<<<<<<< HEAD
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscar)))
-=======
                         .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 101, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -318,7 +299,6 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> dfc867d519dadfe3c93eeeb050356e90861149b8
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -327,11 +307,15 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
+<<<<<<< HEAD
 
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 
                     .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 
+=======
+                    .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 2b659de6482d42352d95904ed82a46328767951d
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -446,7 +430,13 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularActionPerformed
-
+        if(factura != null){
+            controladorFactura.anular(factura.getId());
+            JOptionPane.showMessageDialog(null, "La factura se ha anulado correctamente", "Factura", JOptionPane.INFORMATION_MESSAGE);
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Primero busque una factura", "Factura", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAnularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -457,6 +447,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         factura = controladorFactura.read(Integer.parseInt(txtNumeroFactura.getText()));
         if(factura != null){
+            
             completarFactura();
             
             cliente = controladorPersona.readByCode(factura.getCliente().getId());
@@ -471,20 +462,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "La factura no existe", "Factura", JOptionPane.ERROR_MESSAGE);
         }
         
-        
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
 
   
     public static javax.swing.JButton btnCancelar;
@@ -494,6 +476,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     public static javax.swing.JButton btnLimpiar;
 
+=======
+    public static javax.swing.JButton btnAnular;
+    private javax.swing.JButton btnBuscar;
+    public static javax.swing.JButton btnLimpiar;
+>>>>>>> 2b659de6482d42352d95904ed82a46328767951d
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
