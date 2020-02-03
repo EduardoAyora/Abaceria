@@ -27,7 +27,7 @@ public class ControladorProductos {
     public void create(Producto producto) {
         String sql = "INSERT INTO " + TABLE_NAME + 
                 "("+ CODE_NAME +", ABA_CATEGORIAS_CAT_ID, pro_descripcion, pro_stock, pro_tiene_iva, pro_nacional,"
-                + "uni_med_id, pro_precio, pro_codigo_barras)" + 
+                + "uni_med_id, pro_precio, pro_codigo_barras, pro_activo)" + 
                 " VALUES(" + CODE_NAME + "_seq.nextval" + "," +
                 producto.getCateriaProducto().getId() + ",'" +
                 producto.getDescripcion() + "'," +
@@ -36,9 +36,8 @@ public class ControladorProductos {
                 producto.getNacional() + "," +
                 producto.getUnidadMedida().getId() + "," +
                 producto.getPrecio() + ",'" +
-                producto.getActivo() + ",'" +
-                producto.getCodigoBarra() + "')";
-                
+                producto.getCodigoBarra() + "'," +
+                producto.getActivo() + ")";
         dataBaseConnection.connect();
         System.out.println(sql);
         try {
@@ -69,8 +68,8 @@ public class ControladorProductos {
                 producto.setNacional(rs.getInt("pro_nacional"));
                 producto.setUnidadMedida(new ControladorUnidadMedida().read(rs.getInt("uni_med_id")));
                 producto.setPrecio(rs.getDouble("pro_precio"));
-                producto.setActivo(rs.getInt("pro_activo"));
                 producto.setCodigoBarra(rs.getString("pro_codigo_barras"));
+                producto.setActivo(rs.getInt("pro_activo"));
             }
             rs.close();
             sta.close();
@@ -138,7 +137,6 @@ public class ControladorProductos {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        System.out.println(producto);
         return producto;
     }
     
