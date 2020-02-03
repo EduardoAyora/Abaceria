@@ -5,17 +5,58 @@
  */
 package vista.factura;
 
+import controlador.ControladorFactura;
+import controlador.ControladorFacturaDetalle;
+import controlador.ControladorPersona;
+import java.text.DecimalFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Factura;
+import modelo.FacturaDetalle;
+import modelo.Persona;
+
 /**
  *
  * @author Darwin
  */
 public class BuscarFactura extends javax.swing.JInternalFrame {
 
+    private ControladorFactura controladorFactura;
+    private ControladorFacturaDetalle controladorFacturaDetalle;
+    private ControladorPersona controladorPersona;
+    private List<FacturaDetalle> facturaDetalles;
+    private Factura factura;
+    private Persona cliente;
     /**
      * Creates new form EditarFactura
      */
     public BuscarFactura() {
         initComponents();
+        controladorFactura = new ControladorFactura();
+        controladorFacturaDetalle = new ControladorFacturaDetalle();
+        controladorPersona = new ControladorPersona();
+    }
+    
+    public void listar(){
+        tblDetalles.setRowHeight(55);
+        DefaultTableModel modelo = (DefaultTableModel) tblDetalles.getModel();
+        modelo.setRowCount(0);
+        DecimalFormat df = new DecimalFormat("#.00");
+        for (FacturaDetalle facturaDetalle : facturaDetalles) {
+            Object[] datos = {
+                facturaDetalle.getProducto().getDescripcion(),
+                facturaDetalle.getCantidad(),
+                df.format(facturaDetalle.getIva()) + " $",
+                df.format(facturaDetalle.getSubtotal()) + " $",
+                df.format(facturaDetalle.getTotal()) + " $"
+            };
+            modelo.addRow(datos);
+        }
+    }
+    
+    public void completarCliente(){
+        
     }
 
     /**
@@ -41,7 +82,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDetalles = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -50,8 +91,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNumeroFactura = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -148,7 +189,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                     .addComponent(jLabel12)))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -164,7 +205,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDetalles);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -186,7 +227,12 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
 
         jLabel21.setText("18/12/2019");
 
-        jButton1.setText("BUSCAR");
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -210,9 +256,9 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
+                            .addComponent(txtNumeroFactura))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnBuscar)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -225,8 +271,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -345,11 +391,24 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        factura = controladorFactura.read(Integer.parseInt(txtNumeroFactura.getText()));
+        cliente = controladorPersona.readByCode(factura.getCliente().getId());
+        facturaDetalles = controladorFacturaDetalle.listByFactura(txtNumeroFactura.getText());
+        if(facturaDetalles.size() > 0){
+            listar();
+        }else{
+            JOptionPane.showMessageDialog(null, "La factura no existe", "Factura", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     public static javax.swing.JButton btnCancelar;
     public static javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -376,10 +435,10 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tblDetalles;
+    private javax.swing.JTextField txtNumeroFactura;
     // End of variables declaration//GEN-END:variables
 }
