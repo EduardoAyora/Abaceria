@@ -80,31 +80,16 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         setTitle("Actualizacion de Cliente");
         setToolTipText("");
 
-<<<<<<< HEAD
-        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCedulaKeyPressed(evt);
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
             }
         });
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
-            }
-        });
-
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-
-=======
->>>>>>> e37cba9b6d33910dcc2b7bb3d2af82d2eaa70358
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -269,7 +254,6 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-<<<<<<< HEAD
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
         try{
             Persona p = controladorPersonas.read(txtCedula.getText());
@@ -294,8 +278,10 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtCedulaKeyPressed
 
-=======
->>>>>>> e37cba9b6d33910dcc2b7bb3d2af82d2eaa70358
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;

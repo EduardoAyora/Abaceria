@@ -331,7 +331,7 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
     private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             
-                try{
+            try{
             if(!txtCodigoBarras.getText().equals("")){
                 producto = controladorProductos.readByBarCode(txtCodigoBarras.getText());
                 lblProducto.setText(producto.getDescripcion());
