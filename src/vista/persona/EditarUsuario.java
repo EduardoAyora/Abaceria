@@ -20,7 +20,6 @@ import modelo.Persona;
  * @author Darwin
  */
 public class EditarUsuario extends javax.swing.JInternalFrame {
-    //private ControladorPersona controladorPersonas;
     private ControladorEmpleado controladorEmpleados; 
     private Empleado empleado;
     /**
@@ -47,6 +46,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtCelular.setText("");
         txtUsuario.setText("");
         txtPassword.setText("");
+        chActivo.setSelected(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,11 +75,11 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtCelular = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btnDesactivar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        itemTipo = new javax.swing.JComboBox<>();
+        itemTipo = new javax.swing.JComboBox<String>();
+        chActivo = new javax.swing.JCheckBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -114,13 +114,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDesactivar.setText("DESACTIVAR");
-        btnDesactivar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDesactivarActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setText("LIMPIAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +135,9 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        itemTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
+        itemTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Usuario" }));
+
+        chActivo.setText("Activo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,22 +160,27 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                     .addComponent(txtDireccion)
                     .addComponent(txtTelefono)
                     .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(itemTipo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 130, Short.MAX_VALUE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDesactivar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(itemTipo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 130, Short.MAX_VALUE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chActivo)
+                        .addGap(62, 62, 62))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +211,9 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                .addComponent(chActivo))
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -222,11 +224,9 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(67, 67, 67)
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -261,6 +261,11 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtCelular.setText(empleado.getCelular());
         txtUsuario.setText(empleado.getUsuario());
         setTipo();
+        if(empleado.getActivo() == 1){
+            chActivo.setSelected(true);
+        }else{
+            chActivo.setSelected(false);
+        }
     }else{
         JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado"," Editar",JOptionPane.ERROR_MESSAGE);
     }
@@ -279,6 +284,14 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             if(itemTipo.getSelectedIndex() == 0){
                 em.setTipoAdministrador(1);
             }
+            if(itemTipo.getSelectedIndex() == 1){
+                em.setTipoAdministrador(0);
+            }
+            if(chActivo.isSelected()){
+                em.setActivo(1);
+            }else{
+                em.setActivo(0);
+            }
             char[] arrayC = txtPassword.getPassword();
             em.setContrasenia(new String(arrayC));
             controladorEmpleados.update(em);
@@ -296,21 +309,6 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
        vaciar();
         
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
-        // TODO add your handling code here:
-        if(empleado != null){
-            try {
-                empleado.setActivo(0);
-            } catch (ExcepcionBinaria ex) {
-                ex.printStackTrace();
-            }
-            controladorEmpleados.update(empleado);
-            JOptionPane.showMessageDialog(null, "Usuario desactivado", "Error", JOptionPane.OK_OPTION);
-        }else{
-            JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnDesactivarActionPerformed
 
     private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -334,8 +332,8 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnDesactivar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JCheckBox chActivo;
     private javax.swing.JComboBox<String> itemTipo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

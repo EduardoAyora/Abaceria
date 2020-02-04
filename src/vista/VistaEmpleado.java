@@ -151,7 +151,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (factura == null || !factura.isVisible()) {
              factura = new CrearFactura();
-             factura.setEmpleado(empleado);
+             factura.setEmpleado(this.empleado);
           factura.setVisible(true);
            desktopEmpleado.add(factura);
         }

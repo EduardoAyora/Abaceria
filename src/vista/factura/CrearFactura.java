@@ -150,6 +150,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             txtTotal.setText("0");
         }
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -729,6 +731,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             vaciarDatosProducto();
             vaciarValores();
             JOptionPane.showMessageDialog(null, "Factura " + controladorFactura.getUltimaFactura() + " creada con exito", "Factura", JOptionPane.INFORMATION_MESSAGE);
+            controladorFactura.imprimirFactura();
         }else{
             JOptionPane.showMessageDialog(null, "No se puede generar la factura por falta de datos", "Factura", JOptionPane.ERROR_MESSAGE);
         }

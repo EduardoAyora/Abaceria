@@ -6,11 +6,22 @@
 package controlador;
 
 import algoritmo.Algorithm;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import modelo.Factura;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -111,6 +122,28 @@ public class ControladorFactura {
             ex.printStackTrace();
         }
         return code;
+    }
+    
+    public void imprimirFactura() {
+        try {
+            dataBaseConnection.connect();
+            File reporteArchivo = new File("src/reporteFactura/factura2.jasper");
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteArchivo);
+            Map parametro = new HashMap();
+            int factura = getUltimaFactura();
+            System.out.println("Codigo factura = " + factura);
+            //Puse el parametro CEDULA porque lo llame de la misma forma en el .jrxml - REPPORT INSPECTOR - PARAMETERS
+            //El resto de codigo está en la sentencia sql
+            parametro.put("FACTURA", factura);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataBaseConnection.getConnection());
+            JasperPrintManager.printReport(jasperPrint, true);//Poner en false-------------------------------------------------
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "reporteDireccion.pdf");//
+            JasperViewer.viewReport(jasperPrint, false);//
+            dataBaseConnection.disconnect();
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        }
+        
     }
     
 }

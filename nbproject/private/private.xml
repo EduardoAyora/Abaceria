@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/algoritmo/Algorithm.java</file>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorFacturaDetalle.java</file>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorEmpleado.java</file>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/factura/CrearFactura.java</file>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorFactura.java</file>
-            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/factura/BuscarFactura.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/compra/EntregaProveedor.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/proveedor/CrearProveedor.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorPersona.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/persona/EditarCliente.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/persona/EditarUsuario.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/proveedor/EditarProveedor.java</file>
         </group>
     </open-files>
 </project-private>
