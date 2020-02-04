@@ -78,24 +78,32 @@
                       <Component id="txtTelefono" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtCelular" alignment="0" pref="111" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnBuscar" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel8" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnBuscar" min="-2" pref="103" max="-2" attributes="0"/>
+                          <EmptySpace pref="98" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel8" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtPassword" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtUsuario" alignment="1" max="32767" attributes="0"/>
+                              <Component id="itemTipo" alignment="1" pref="130" max="32767" attributes="0"/>
+                              <Component id="btnModificar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnCancelar" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="chActivo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtPassword" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtUsuario" alignment="1" max="32767" attributes="0"/>
-                      <Component id="itemTipo" alignment="1" pref="130" max="32767" attributes="0"/>
-                      <Component id="btnModificar" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnDesactivar" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnCancelar" alignment="1" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,7 +142,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtDireccion" alignment="0" pref="35" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="txtDireccion" alignment="3" pref="35" max="32767" attributes="0"/>
+                                  <Component id="chActivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -149,11 +160,9 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Component id="btnModificar" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnDesactivar" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnCancelar" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -227,14 +236,6 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPassword">
         </Component>
-        <Component class="javax.swing.JButton" name="btnDesactivar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="DESACTIVAR"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesactivarActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="LIMPIAR"/>
@@ -271,6 +272,11 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chActivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Activo"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

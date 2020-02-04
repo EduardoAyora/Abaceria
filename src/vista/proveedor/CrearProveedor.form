@@ -80,19 +80,14 @@
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel5" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtDireccion" min="-2" pref="111" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
                                       <Component id="jLabel6" min="-2" pref="60" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtTelefono" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="txtRuc" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" pref="60" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtCelular" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="txtEmpresa" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -111,7 +106,7 @@
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
-                              <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
@@ -120,7 +115,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtCedula" alignment="3" max="32767" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtRuc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel2" max="32767" attributes="0"/>
                           </Group>
@@ -132,8 +127,6 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtApellido" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -164,19 +157,14 @@
             <Property name="text" type="java.lang.String" value="Apellido:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Direccion:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Telefono:"/>
+            <Property name="text" type="java.lang.String" value="RUC:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Celular:"/>
+            <Property name="text" type="java.lang.String" value="Empresa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCedula">
@@ -185,14 +173,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtApellido">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDireccion">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtTelefono">
+        <Component class="javax.swing.JTextField" name="txtRuc">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRucActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCelular">
+        <Component class="javax.swing.JTextField" name="txtEmpresa">
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>

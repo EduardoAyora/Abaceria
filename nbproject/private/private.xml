@@ -4,6 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/compra/EntregaProveedor.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/proveedor/CrearProveedor.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorPersona.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/persona/EditarCliente.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/persona/EditarUsuario.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/proveedor/EditarProveedor.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/factura/BuscarFactura.java</file>
 =======
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/algoritmo/Algorithm.java</file>
@@ -13,6 +22,7 @@
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/ControladorFactura.java</file>
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/factura/BuscarFactura.java</file>
 >>>>>>> 86d004a0b13af3df0e0759a620559577f0bfe674
+>>>>>>> c6c92dba629bd2694325ac03ff5b147cf64f4aff
         </group>
     </open-files>
 </project-private>

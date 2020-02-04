@@ -164,6 +164,7 @@ public class Inicio extends javax.swing.JFrame {
             if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador()== 0){
             JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia\n"+e.getUsuario());
             VistaEmpleado emp = new VistaEmpleado();
+            emp.setEmpleado(e);
             emp.setVisible(true);
             setVisible(false);
               
@@ -184,6 +185,7 @@ public class Inicio extends javax.swing.JFrame {
                         }else {
                             JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Empleado: "+e.getUsuario());
                             VistaEmpleado e1 = new VistaEmpleado();
+                            e1.setEmpleado(e);
                             e1.setVisible(true);
                             dispose();
                             
