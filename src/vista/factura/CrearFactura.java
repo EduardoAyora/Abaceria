@@ -753,7 +753,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         try{
             cliente = controladorPersona.read(txtBCedula.getText());
-            llenarDatosCliente();
+            if(cliente.getActivo() == 0){
+                JOptionPane.showMessageDialog(null, "El cliente esta desactivado", "Cliente", JOptionPane.ERROR_MESSAGE);
+                cliente = null;
+            }else{
+                llenarDatosCliente();
+            }
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);

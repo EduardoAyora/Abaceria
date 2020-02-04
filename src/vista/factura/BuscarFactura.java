@@ -461,6 +461,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             listar();
         }else{
             JOptionPane.showMessageDialog(null, "La factura no existe", "Factura", JOptionPane.ERROR_MESSAGE);
+            limpiar();
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
