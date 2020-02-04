@@ -10,6 +10,7 @@ import controlador.ControladorEmpleado;
 import controlador.ControladorFactura;
 import controlador.ControladorFacturaDetalle;
 import controlador.ControladorPersona;
+import controlador.ControladorProductos;
 import excepcion.ExcepcionBinaria;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import modelo.Empleado;
 import modelo.Factura;
 import modelo.FacturaDetalle;
 import modelo.Persona;
+import modelo.Producto;
 
 /**
  *
@@ -33,6 +35,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private ControladorFacturaDetalle controladorFacturaDetalle;
     private ControladorPersona controladorPersona;
     private ControladorEmpleado controladorEmpleado;
+    private ControladorProductos controladorProductos;
     private List<FacturaDetalle> facturaDetalles;
     private Factura factura;
     private Persona cliente;
@@ -46,6 +49,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         controladorFacturaDetalle = new ControladorFacturaDetalle();
         controladorPersona = new ControladorPersona();
         controladorEmpleado = new ControladorEmpleado();
+        controladorProductos = new ControladorProductos();
     }
 
     public void listar(){
@@ -424,6 +428,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private void btnAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularActionPerformed
         if(factura != null){
             controladorFactura.anular(factura.getId());
+            for(FacturaDetalle facturaDetalle : facturaDetalles){
+                Producto producto = facturaDetalle.getProducto();
+                producto.setStock(producto.getStock() + facturaDetalle.getCantidad());
+                controladorProductos.update(producto);
+            }
             JOptionPane.showMessageDialog(null, "La factura se ha anulado correctamente", "Factura", JOptionPane.INFORMATION_MESSAGE);
             limpiar();
         }else{

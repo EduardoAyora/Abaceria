@@ -38,7 +38,6 @@ public class EditarCliente extends javax.swing.JInternalFrame {
     }
     
     public void vaciar(){
-        txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
         txtConvencional.setText("");
@@ -212,8 +211,8 @@ public class EditarCliente extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        vaciar();
         Persona aux = controladorPersonas.read(txtCedula.getText());
+        vaciar();
         if(aux!=null){
             txtNombre.setText(aux.getNombre());
             txtApellido.setText(aux.getApellido());
@@ -229,6 +228,8 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             }else{
                 chActivo.setSelected(false);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "La persona no ha sido encontrada", "Error",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -264,13 +265,7 @@ public void vaciarDatos(){
 }
 
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
-        try{
-            Persona p = controladorPersonas.read(txtCedula.getText());
-            
-            
-        }catch(Exception ex){
-            
-        }
+        
     }//GEN-LAST:event_btnDesactivarActionPerformed
 
     private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
