@@ -124,17 +124,13 @@ public class ControladorFactura {
         return code;
     }
     
-    public void imprimirFactura() {
+    public void imprimirFactura(int codigo) {
         try {
             dataBaseConnection.connect();
             File reporteArchivo = new File("src/reporteFactura/factura2.jasper");
             JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteArchivo);
             Map parametro = new HashMap();
-            int factura = getUltimaFactura();
-            //System.out.println("Codigo factura = " + factura);
-            //Puse el parametro CEDULA porque lo llame de la misma forma en el .jrxml - REPPORT INSPECTOR - PARAMETERS
-            //El resto de codigo está en la sentencia sql
-            parametro.put("FACTURA", factura);
+            parametro.put("FACTURA", codigo);
             JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataBaseConnection.getConnection());
             //JasperPrintManager.printReport(jasperPrint, false);//Poner en false-------------------------------------------------
             JasperExportManager.exportReportToPdfFile(jasperPrint, "reporteDireccion.pdf");//

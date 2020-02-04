@@ -730,8 +730,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             vaciarDatosBuscar();
             vaciarDatosProducto();
             vaciarValores();
-            JOptionPane.showMessageDialog(null, "Factura " + controladorFactura.getUltimaFactura() + " creada con exito", "Factura", JOptionPane.INFORMATION_MESSAGE);
-            controladorFactura.imprimirFactura();
+            JOptionPane.showMessageDialog(null, "Factura creada con exito", "Factura", JOptionPane.INFORMATION_MESSAGE);
+            controladorFactura.imprimirFactura(factura.getId());
         }else{
             JOptionPane.showMessageDialog(null, "No se puede generar la factura por falta de datos", "Factura", JOptionPane.ERROR_MESSAGE);
         }
