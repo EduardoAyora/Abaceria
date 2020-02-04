@@ -1,133 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e49d48d-3859-4fb4-ae3f-ea47421fe49e">
-	<queryString language="SQL">
-		<![CDATA[SELECT
-     ABA_CATEGORIAS."CAT_ID" AS ABA_CATEGORIAS_CAT_ID,
-     ABA_CATEGORIAS."CAT_NOMBRE" AS ABA_CATEGORIAS_CAT_NOMBRE,
-     ABA_COMPRAS_PROVEEDOR."COM_PROV_ID" AS ABA_COMPRAS_PROVEEDOR_COM_PROV_ID,
-     ABA_COMPRAS_PROVEEDOR."COM_PROV_FECHA" AS ABA_COMPRAS_PROVEEDOR_COM_PROV_FECHA,
-     ABA_COMPRAS_PROVEEDOR."COM_PROV_CANTIDAD" AS ABA_COMPRAS_PROVEEDOR_COM_PROV_CANTIDAD,
-     ABA_COMPRAS_PROVEEDOR."ABA_PRODUCTOS_PRO_ID" AS ABA_COMPRAS_PROVEEDOR_ABA_PRODUCTOS_PRO_ID,
-     ABA_COMPRAS_PROVEEDOR."ABA_PERSONAS_PER_ID" AS ABA_COMPRAS_PROVEEDOR_ABA_PERSONAS_PER_ID,
-     ABA_COMPRAS_PROVEEDOR."COM_PROV_NUMERO_FACTURA" AS ABA_COMPRAS_PROVEEDOR_COM_PROV_NUMERO_FACTURA,
-     ABA_FACTURAS_CABECERA."FAC_CAB_ID" AS ABA_FACTURAS_CABECERA_FAC_CAB_ID,
-     ABA_FACTURAS_CABECERA."FAC_CAB_ESTADO" AS ABA_FACTURAS_CABECERA_FAC_CAB_ESTADO,
-     ABA_FACTURAS_CABECERA."FAC_CAB_FECHA" AS ABA_FACTURAS_CABECERA_FAC_CAB_FECHA,
-     ABA_FACTURAS_CABECERA."FAC_CAB_SUBTOTAL" AS ABA_FACTURAS_CABECERA_FAC_CAB_SUBTOTAL,
-     ABA_FACTURAS_CABECERA."FAC_CAB_IVA" AS ABA_FACTURAS_CABECERA_FAC_CAB_IVA,
-     ABA_FACTURAS_CABECERA."FAC_CAB_TOTAL" AS ABA_FACTURAS_CABECERA_FAC_CAB_TOTAL,
-     ABA_FACTURAS_CABECERA."ABA_PERSONAS_PER_ID1" AS ABA_FACTURAS_CABECERA_ABA_PERSONAS_PER_ID1,
-     ABA_FACTURAS_CABECERA."ABA_PERSONAS_PER_ID" AS ABA_FACTURAS_CABECERA_ABA_PERSONAS_PER_ID,
-     ABA_FACTURAS_DETALLE."FAC_DET_ID" AS ABA_FACTURAS_DETALLE_FAC_DET_ID,
-     ABA_FACTURAS_DETALLE."FAC_CAB_ID" AS ABA_FACTURAS_DETALLE_FAC_CAB_ID,
-     ABA_FACTURAS_DETALLE."ABA_PRODUCTOS_PRO_ID" AS ABA_FACTURAS_DETALLE_ABA_PRODUCTOS_PRO_ID,
-     ABA_FACTURAS_DETALLE."FAC_DET_CANTIDAD" AS ABA_FACTURAS_DETALLE_FAC_DET_CANTIDAD,
-     ABA_FACTURAS_DETALLE."FAC_DET_SUBTOTAL" AS ABA_FACTURAS_DETALLE_FAC_DET_SUBTOTAL,
-     ABA_FACTURAS_DETALLE."FAC_DET_IVA" AS ABA_FACTURAS_DETALLE_FAC_DET_IVA,
-     ABA_FACTURAS_DETALLE."FAC_DET_TOTAL" AS ABA_FACTURAS_DETALLE_FAC_DET_TOTAL,
-     ABA_PERSONAS."PER_ID" AS ABA_PERSONAS_PER_ID,
-     ABA_PERSONAS."PER_TIPO_ADMINISTRADOR" AS ABA_PERSONAS_PER_TIPO_ADMINISTRADOR,
-     ABA_PERSONAS."PER_CEDULA" AS ABA_PERSONAS_PER_CEDULA,
-     ABA_PERSONAS."PER_NOMBRE" AS ABA_PERSONAS_PER_NOMBRE,
-     ABA_PERSONAS."PER_APELLIDO" AS ABA_PERSONAS_PER_APELLIDO,
-     ABA_PERSONAS."PER_DIRECCION" AS ABA_PERSONAS_PER_DIRECCION,
-     ABA_PERSONAS."PER_TELEFONO" AS ABA_PERSONAS_PER_TELEFONO,
-     ABA_PERSONAS."PER_CELULAR" AS ABA_PERSONAS_PER_CELULAR,
-     ABA_PERSONAS."PER_USUARIO" AS ABA_PERSONAS_PER_USUARIO,
-     ABA_PERSONAS."PER_CONTRASENIA" AS ABA_PERSONAS_PER_CONTRASENIA,
-     ABA_PERSONAS."PER_ACTIVO" AS ABA_PERSONAS_PER_ACTIVO,
-     ABA_PERSONAS."PER_RUC" AS ABA_PERSONAS_PER_RUC,
-     ABA_PERSONAS."PER_EMPRESA" AS ABA_PERSONAS_PER_EMPRESA,
-     ABA_PRODUCTOS."PRO_ID" AS ABA_PRODUCTOS_PRO_ID,
-     ABA_PRODUCTOS."ABA_CATEGORIAS_CAT_ID" AS ABA_PRODUCTOS_ABA_CATEGORIAS_CAT_ID,
-     ABA_PRODUCTOS."PRO_DESCRIPCION" AS ABA_PRODUCTOS_PRO_DESCRIPCION,
-     ABA_PRODUCTOS."PRO_STOCK" AS ABA_PRODUCTOS_PRO_STOCK,
-     ABA_PRODUCTOS."PRO_TIENE_IVA" AS ABA_PRODUCTOS_PRO_TIENE_IVA,
-     ABA_PRODUCTOS."PRO_NACIONAL" AS ABA_PRODUCTOS_PRO_NACIONAL,
-     ABA_PRODUCTOS."PRO_PRECIO" AS ABA_PRODUCTOS_PRO_PRECIO,
-     ABA_PRODUCTOS."PRO_CODIGO_BARRAS" AS ABA_PRODUCTOS_PRO_CODIGO_BARRAS,
-     ABA_PRODUCTOS."UNI_MED_ID" AS ABA_PRODUCTOS_UNI_MED_ID,
-     ABA_PRODUCTOS."PRO_ACTIVO" AS ABA_PRODUCTOS_PRO_ACTIVO,
-     ABA_UNIDADES_MEDIDA."UNI_MED_ID" AS ABA_UNIDADES_MEDIDA_UNI_MED_ID,
-     ABA_UNIDADES_MEDIDA."UNI_MED_DESCRIPCION" AS ABA_UNIDADES_MEDIDA_UNI_MED_DESCRIPCION
-FROM
-     "ABACERIA"."ABA_FACTURAS_CABECERA" ABA_FACTURAS_CABECERA INNER JOIN "ABACERIA"."ABA_FACTURAS_DETALLE" ABA_FACTURAS_DETALLE ON ABA_FACTURAS_CABECERA."FAC_CAB_ID" = ABA_FACTURAS_DETALLE."FAC_CAB_ID"
-     INNER JOIN "ABACERIA"."ABA_PERSONAS" ABA_PERSONAS ON ABA_FACTURAS_CABECERA."ABA_PERSONAS_PER_ID1" = ABA_PERSONAS."PER_ID"
-     AND ABA_PERSONAS."PER_ID" = ABA_FACTURAS_CABECERA."ABA_PERSONAS_PER_ID"
-     INNER JOIN "ABACERIA"."ABA_COMPRAS_PROVEEDOR" ABA_COMPRAS_PROVEEDOR ON ABA_PERSONAS."PER_ID" = ABA_COMPRAS_PROVEEDOR."ABA_PERSONAS_PER_ID"
-     INNER JOIN "ABACERIA"."ABA_PRODUCTOS" ABA_PRODUCTOS ON ABA_COMPRAS_PROVEEDOR."ABA_PRODUCTOS_PRO_ID" = ABA_PRODUCTOS."PRO_ID"
-     AND ABA_PRODUCTOS."PRO_ID" = ABA_FACTURAS_DETALLE."ABA_PRODUCTOS_PRO_ID"
-     INNER JOIN "ABACERIA"."ABA_CATEGORIAS" ABA_CATEGORIAS ON ABA_PRODUCTOS."ABA_CATEGORIAS_CAT_ID" = ABA_CATEGORIAS."CAT_ID"
-     INNER JOIN "ABACERIA"."ABA_UNIDADES_MEDIDA" ABA_UNIDADES_MEDIDA ON ABA_PRODUCTOS."UNI_MED_ID" = ABA_UNIDADES_MEDIDA."UNI_MED_ID"]]>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e49d48d-3859-4fb4-ae3f-ea47421fe49e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="85"/>
+	<subDataset name="Table Dataset 1" uuid="f85a6558-b25d-4061-b061-e50c65251289"/>
+	<parameter name="FACTURA" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * 
+FROM (SELECT cab.fac_cab_id fac_id, fac_cab_fecha fecha, ABA_PERSONAS_PER_ID emp_id, per_cedula cedula, per_nombre nombre, per_apellido apellido, per_direccion direccion, per_telefono telefono, per_celular celular, pro.pro_descripcion producto, pro.pro_precio precio, det.fac_det_cantidad cantidad, det.fac_det_subtotal subtotal, det.fac_det_iva iva, det.fac_det_total total, cab.fac_cab_subtotal fac_subtotal, cab.fac_cab_iva fac_iva, cab.fac_cab_total fac_total
+FROM ABA_FACTURAS_CABECERA CAB, ABA_FACTURAS_DETALLE DET, ABA_PERSONAS PER, ABA_PRODUCTOS PRO
+WHERE CAB.fac_cab_id = DET.fac_cab_id AND ABA_PERSONAS_PER_ID1 = PER.PER_ID AND ABA_PRODUCTOS_PRO_ID = PRO.PRO_ID
+AND CAB.FAC_CAB_ID = $P{FACTURA}) SEL, ABA_PERSONAS per
+WHERE SEL.emp_id = per.PER_ID]]>
 	</queryString>
-	<field name="ABA_CATEGORIAS_CAT_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_CATEGORIAS_CAT_NOMBRE" class="java.lang.String"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_COM_PROV_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_COM_PROV_FECHA" class="java.sql.Timestamp"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_COM_PROV_CANTIDAD" class="java.math.BigDecimal"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_ABA_PRODUCTOS_PRO_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_ABA_PERSONAS_PER_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_COMPRAS_PROVEEDOR_COM_PROV_NUMERO_FACTURA" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_ESTADO" class="java.lang.String"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_FECHA" class="java.sql.Timestamp"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_SUBTOTAL" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_IVA" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_FAC_CAB_TOTAL" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_ABA_PERSONAS_PER_ID1" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_CABECERA_ABA_PERSONAS_PER_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_DET_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_CAB_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_ABA_PRODUCTOS_PRO_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_DET_CANTIDAD" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_DET_SUBTOTAL" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_DET_IVA" class="java.math.BigDecimal"/>
-	<field name="ABA_FACTURAS_DETALLE_FAC_DET_TOTAL" class="java.math.BigDecimal"/>
-	<field name="ABA_PERSONAS_PER_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_PERSONAS_PER_TIPO_ADMINISTRADOR" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_CEDULA" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_NOMBRE" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_APELLIDO" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_DIRECCION" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_TELEFONO" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_CELULAR" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_USUARIO" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_CONTRASENIA" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_ACTIVO" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_RUC" class="java.lang.String"/>
-	<field name="ABA_PERSONAS_PER_EMPRESA" class="java.lang.String"/>
-	<field name="ABA_PRODUCTOS_PRO_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_PRODUCTOS_ABA_CATEGORIAS_CAT_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_PRODUCTOS_PRO_DESCRIPCION" class="java.lang.String"/>
-	<field name="ABA_PRODUCTOS_PRO_STOCK" class="java.math.BigDecimal"/>
-	<field name="ABA_PRODUCTOS_PRO_TIENE_IVA" class="java.lang.String"/>
-	<field name="ABA_PRODUCTOS_PRO_NACIONAL" class="java.lang.String"/>
-	<field name="ABA_PRODUCTOS_PRO_PRECIO" class="java.math.BigDecimal"/>
-	<field name="ABA_PRODUCTOS_PRO_CODIGO_BARRAS" class="java.lang.String"/>
-	<field name="ABA_PRODUCTOS_UNI_MED_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_PRODUCTOS_PRO_ACTIVO" class="java.lang.String"/>
-	<field name="ABA_UNIDADES_MEDIDA_UNI_MED_ID" class="java.math.BigDecimal"/>
-	<field name="ABA_UNIDADES_MEDIDA_UNI_MED_DESCRIPCION" class="java.lang.String"/>
+	<field name="FAC_ID" class="java.math.BigDecimal"/>
+	<field name="FECHA" class="java.sql.Timestamp"/>
+	<field name="EMP_ID" class="java.math.BigDecimal"/>
+	<field name="CEDULA" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDO" class="java.lang.String"/>
+	<field name="DIRECCION" class="java.lang.String"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="CELULAR" class="java.lang.String"/>
+	<field name="PRODUCTO" class="java.lang.String"/>
+	<field name="PRECIO" class="java.math.BigDecimal"/>
+	<field name="CANTIDAD" class="java.math.BigDecimal"/>
+	<field name="SUBTOTAL" class="java.math.BigDecimal"/>
+	<field name="IVA" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="FAC_SUBTOTAL" class="java.math.BigDecimal"/>
+	<field name="FAC_IVA" class="java.math.BigDecimal"/>
+	<field name="FAC_TOTAL" class="java.math.BigDecimal"/>
+	<field name="PER_ID" class="java.math.BigDecimal"/>
+	<field name="PER_TIPO_ADMINISTRADOR" class="java.lang.String"/>
+	<field name="PER_CEDULA" class="java.lang.String"/>
+	<field name="PER_NOMBRE" class="java.lang.String"/>
+	<field name="PER_APELLIDO" class="java.lang.String"/>
+	<field name="PER_DIRECCION" class="java.lang.String"/>
+	<field name="PER_TELEFONO" class="java.lang.String"/>
+	<field name="PER_CELULAR" class="java.lang.String"/>
+	<field name="PER_USUARIO" class="java.lang.String"/>
+	<field name="PER_CONTRASENIA" class="java.lang.String"/>
+	<field name="PER_ACTIVO" class="java.lang.String"/>
+	<field name="PER_RUC" class="java.lang.String"/>
+	<field name="PER_EMPRESA" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="25" width="110" height="38" uuid="82c14607-6a89-479d-a649-e42cf051a368"/>
+				<textElement>
+					<font fontName="Berlin Sans FB" size="24"/>
+				</textElement>
+				<text><![CDATA[Factura]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement x="25" y="0" width="258" height="79" uuid="c1d96d02-492c-4f29-a33f-bcf5a6725d78"/>
+				<staticText>
+					<reportElement x="0" y="40" width="100" height="20" uuid="39a00a17-e222-477f-98ea-d1a55593a6aa"/>
+					<text><![CDATA[Fecha:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="100" height="20" uuid="956e52a1-1635-41ac-b872-a1d17a1d8538"/>
+					<text><![CDATA[Nro:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="20" width="100" height="20" uuid="635faae7-1228-4367-b51f-02691e883d03"/>
+					<textFieldExpression><![CDATA[$F{FAC_ID}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="100" y="40" width="100" height="20" uuid="9c7cd973-f81a-4b50-ba7e-5bdeb1d00f25"/>
+					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="283" y="0" width="230" height="79" uuid="8b093d03-fe4e-4f70-bdf8-9a724696d2db"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" uuid="d54fff22-9c51-4e4d-9e67-b4160aeeea40"/>
+					<text><![CDATA[Empleado:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="100" height="20" uuid="23b0911e-2c4b-40a2-86c3-be8d3d088522"/>
+					<textFieldExpression><![CDATA[$F{PER_NOMBRE} + " " + $F{PER_APELLIDO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="117" splitType="Stretch">
+			<frame>
+				<reportElement x="15" y="12" width="510" height="75" uuid="12e20cb7-3aa6-4596-b095-30c40f989fef"/>
+				<staticText>
+					<reportElement x="10" y="0" width="100" height="20" uuid="de86cae3-5adc-4a42-bc7e-17829d67cbb2"/>
+					<text><![CDATA[Cedula:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="20" width="100" height="20" uuid="9b43920b-d9c0-4582-9a6d-a9ef822d8bca"/>
+					<text><![CDATA[Nombre:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="40" width="100" height="20" uuid="0feb48f6-9ffa-41c7-abc4-87835c16b7fc"/>
+					<text><![CDATA[Apellido:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="268" y="20" width="100" height="20" uuid="3fc1c3e8-d4b6-43bb-84d2-0cb08f677d52"/>
+					<text><![CDATA[Telefono:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="268" y="40" width="100" height="20" uuid="d8594699-dc55-4f4f-a61b-9d8e8a1e670d"/>
+					<text><![CDATA[Celular:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="110" y="0" width="100" height="20" uuid="23a55f79-a118-4d28-bb50-b224820478bc"/>
+					<textFieldExpression><![CDATA[$F{CEDULA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="368" y="0" width="100" height="20" uuid="528eecfe-ff61-4fb7-b7e9-074f46066a71"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="110" y="40" width="100" height="20" uuid="b6e92201-28e3-4aa8-8252-c7c5cef4ebb8"/>
+					<textFieldExpression><![CDATA[$F{APELLIDO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="110" y="20" width="100" height="20" uuid="dffd5e18-d9c2-45c1-8979-4f6b63c07bf9"/>
+					<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="368" y="20" width="100" height="20" uuid="16a9796b-44aa-44e4-ba34-f481bb6cba62"/>
+					<textFieldExpression><![CDATA[$F{TELEFONO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="368" y="40" width="100" height="20" uuid="7735e1e6-be6d-47a5-bd1e-64e216ae9c08"/>
+					<textFieldExpression><![CDATA[$F{CELULAR}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="283" y="12" width="100" height="20" uuid="379ff558-6130-4cd1-ac73-6a1f8615501f"/>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="87" width="100" height="20" uuid="43a1afe2-8325-45cb-a763-40435801e296"/>
+				<text><![CDATA[Descripcion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="87" width="100" height="20" uuid="fd56472f-6dad-4411-9981-7ecaa061f461"/>
+				<text><![CDATA[Precio Unitario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="87" width="74" height="20" uuid="3c0f5552-dc2c-4c6b-8fcb-7335b4bdbf4b"/>
+				<text><![CDATA[Cantidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="87" width="74" height="20" uuid="576689d6-f84b-44fe-9e5c-ce0461657c08"/>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="87" width="67" height="20" uuid="5f7512ea-8816-44c2-bfe7-257db32cffe5"/>
+				<text><![CDATA[Iva:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="87" width="85" height="20" uuid="d3556978-1396-41a3-b269-f1e0a44b11cd"/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="39" splitType="Stretch">
+			<frame>
+				<reportElement x="25" y="9" width="500" height="21" uuid="c3d501c9-ba75-4cb8-a5ca-9fd35fb040ab"/>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="20" uuid="5497b7f3-e132-4ee8-9b3c-674ea98a62c1"/>
+					<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="100" y="1" width="100" height="20" uuid="fd8c63bd-06f5-42c6-a98a-5c748ff5cd75"/>
+					<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="200" y="1" width="74" height="20" uuid="6fdfba50-67fa-4a98-8473-6f4717e760bb"/>
+					<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="274" y="1" width="74" height="20" uuid="3eb3ef5a-77b8-4c5f-90db-e8de7d8633e3"/>
+					<textFieldExpression><![CDATA[$F{SUBTOTAL}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="348" y="1" width="67" height="20" uuid="034631e2-b8b6-4e94-9b63-dba48f8787f4"/>
+					<textFieldExpression><![CDATA[$F{IVA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="415" y="1" width="85" height="20" uuid="4ae6c14b-5f95-4577-b26a-7a0a2e4629dd"/>
+					<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="37" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="128" splitType="Stretch">
+			<staticText>
+				<reportElement x="299" y="18" width="100" height="20" uuid="e3eb6d1e-bd12-49f1-91b1-68cb9a11301e"/>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="50" width="100" height="20" uuid="3cefd74a-d6ea-497c-9b17-24f333336274"/>
+				<text><![CDATA[Iva:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="90" width="100" height="20" uuid="329db3e6-5df3-458a-8123-f548dc22fb7d"/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="425" y="18" width="100" height="20" uuid="231292f4-b727-4867-ada2-c8322c64fb3c"/>
+				<textFieldExpression><![CDATA[$F{FAC_SUBTOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="50" width="100" height="20" uuid="6de3150f-45a5-4617-94e8-029b130b32df"/>
+				<textFieldExpression><![CDATA[$F{FAC_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="90" width="100" height="20" uuid="efcdcf9d-89a9-442c-8117-b51a9ca65fae"/>
+				<textFieldExpression><![CDATA[$F{FAC_TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
