@@ -259,12 +259,13 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
         txtDireccion.setText(empleado.getDireccion());
         txtTelefono.setText(empleado.getTelefono());
         txtCelular.setText(empleado.getCelular());
-        txtUsuario.setText(empleado.getUsuario());
+        txtUsuario.setText(empleado.getUsuario());   
         setTipo();
         if(empleado.getActivo() == 1){
             chActivo.setSelected(true);
         }else{
             chActivo.setSelected(false);
+            JOptionPane.showMessageDialog(null, "Usuario inactivo", "Actividad",JOptionPane.OK_OPTION);
         }
     }else{
         JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado"," Editar",JOptionPane.ERROR_MESSAGE);
@@ -289,8 +290,11 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
             if(chActivo.isSelected()){
                 em.setActivo(1);
+                JOptionPane.showMessageDialog(null, "Se activó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
             }else{
                 em.setActivo(0);
+                JOptionPane.showMessageDialog(null, "Se inactivó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
+
             }
             char[] arrayC = txtPassword.getPassword();
             em.setContrasenia(new String(arrayC));
