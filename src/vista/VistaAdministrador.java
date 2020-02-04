@@ -6,10 +6,12 @@
 package vista;
 
 import controlador.ControladorCategoria;
+import controlador.ControladorCompraProveedor;
 import controlador.ControladorEmpleado;
 import controlador.ControladorPersona;
 import controlador.ControladorUnidadMedida;
 import vista.compra.EntregaProveedor;
+import vista.compra.ListaProdcuto;
 import vista.producto.CrearCategoria;
   import vista.producto.CrearProducto;
 import vista.producto.EditarCategoria;
@@ -45,11 +47,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
       private EditarUnidadMedida editarUnMed;
       
       private EntregaProveedor entregaProveedor;
+      private ListaProdcuto listaEntrega;
       
       private ControladorPersona controladorPersona;
       private ControladorEmpleado controladorEmpleado;
       private ControladorCategoria controladorCategoria;
       private ControladorUnidadMedida controladorUnidadMedida;
+      private ControladorCompraProveedor controladorCompraProveedor;
 
     /**
      * Creates new form MainA
@@ -60,6 +64,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         controladorEmpleado = new ControladorEmpleado();
         controladorCategoria= new ControladorCategoria();
         controladorUnidadMedida= new ControladorUnidadMedida();
+        controladorCompraProveedor= new ControladorCompraProveedor();
         
     }
 
@@ -92,6 +97,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         itemRudProveedor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemEntregaP = new javax.swing.JMenuItem();
+        itemListaEntrega = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         itemCerrarSesion = new javax.swing.JMenuItem();
 
@@ -226,6 +232,15 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
         jMenu2.add(itemEntregaP);
+
+        itemListaEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listaCompras.png"))); // NOI18N
+        itemListaEntrega.setText("Lista de Entrega");
+        itemListaEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListaEntregaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemListaEntrega);
 
         menuBar.add(jMenu2);
 
@@ -390,6 +405,17 @@ public class VistaAdministrador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemRudProveedorActionPerformed
 
+    private void itemListaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListaEntregaActionPerformed
+        if (listaEntrega == null || !listaEntrega.isVisible()) {
+            listaEntrega = new ListaProdcuto(controladorCompraProveedor);
+            listaEntrega.setVisible(true);
+            listaEntrega.setClosable(true);
+            listaEntrega.setMaximizable(true);
+            //           editarProveedor.setMinimizable(true);
+            desktopPane.add(listaEntrega);
+        }
+    }//GEN-LAST:event_itemListaEntregaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +464,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemEditarCat;
     private javax.swing.JMenuItem itemEditarE;
     private javax.swing.JMenuItem itemEntregaP;
+    private javax.swing.JMenuItem itemListaEntrega;
     private javax.swing.JMenuItem itemRProducto;
     private javax.swing.JMenuItem itemRegistrarProveedor;
     private javax.swing.JMenuItem itemRudProveedor;
