@@ -37,6 +37,8 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         txtTelefono.setText("");
         txtCelular.setText("");
         itemTipo.setSelectedItem("");
+        txtUsuario.setText("");
+        txtPassword.setText("");
     }
 
     /**
@@ -99,7 +101,8 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         itemTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Administrador" }));
         itemTipo.setToolTipText("");
 
-        btnGuardar.setBackground(new java.awt.Color(102, 102, 102));
+        btnGuardar.setBackground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +111,8 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(51, 0, 0));
+        btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("LIMPIAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +248,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             
             ex.printStackTrace();
         } catch (java.sql.SQLIntegrityConstraintViolationException ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "La cedula o el usuario ya estan registrados", "Error", JOptionPane.WARNING_MESSAGE);
         }catch (SQLException ex){
             ex.printStackTrace();
