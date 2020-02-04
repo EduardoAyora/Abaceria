@@ -142,10 +142,12 @@ public class Inicio extends javax.swing.JFrame {
             progres.setValue(cont);
             if(cont==100){
                 tiempo.stop();
-                esconder();
+                //esconder();
+                JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n");
                 VistaAdministrador adm = new VistaAdministrador();
                 adm.setVisible(true);
-                dispose();  
+                dispose(); 
+                
             }
         }   
     }
@@ -180,10 +182,11 @@ public class Inicio extends javax.swing.JFrame {
                             activar();
                        
                         }else {
+                            JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Empleado: "+e.getUsuario());
                             VistaEmpleado e1 = new VistaEmpleado();
                             e1.setVisible(true);
                             dispose();
-                            JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Empleado: "+e.getUsuario());
+                            
                         }
                 
                     }else{
@@ -243,6 +246,7 @@ public class Inicio extends javax.swing.JFrame {
                             tiempo = new Timer(two_second, new TimerListener());
                             activar();  
                         }else {
+                        JOptionPane.showMessageDialog(rootPane, "Acceso Correcto!\n"+"Empleado: "+e.getUsuario());
                         VistaEmpleado e1 = new VistaEmpleado();
                         e1.setEmpleado(e);
                         e1.setVisible(true);
