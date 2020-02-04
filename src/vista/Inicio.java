@@ -161,7 +161,7 @@ public class Inicio extends javax.swing.JFrame {
         p = new String(txtPass.getPassword());
         if(e != null){
             
-            if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador()== 0){
+            if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador()== 0 && e.getActivo()==1){
             JOptionPane.showMessageDialog(rootPane, "Ten un Buen dia\n"+e.getUsuario());
             VistaEmpleado emp = new VistaEmpleado();
             emp.setEmpleado(e);
@@ -169,7 +169,7 @@ public class Inicio extends javax.swing.JFrame {
             setVisible(false);
               
             } else{
-                    if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1){
+                    if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1 && e.getActivo()==1 ){
                 
                     String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
                         JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
