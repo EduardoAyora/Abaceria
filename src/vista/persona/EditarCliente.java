@@ -246,6 +246,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
                 cl.setActivo(1);
             }else{
                 cl.setActivo(0);
+                JOptionPane.showMessageDialog(null, "Cliente Inactivo", "Error",JOptionPane.WARNING_MESSAGE);
             }
             controladorPersonas.update(cl);
             vaciar();
