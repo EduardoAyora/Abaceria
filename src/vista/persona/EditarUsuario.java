@@ -293,7 +293,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Se activó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
             }else{
                 em.setActivo(0);
-                JOptionPane.showMessageDialog(null, "Se inactivó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se desactivó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
 
             }
             char[] arrayC = txtPassword.getPassword();
