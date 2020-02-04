@@ -227,6 +227,8 @@ public class EditarCliente extends javax.swing.JInternalFrame {
                 chActivo.setSelected(true);
             }else{
                 chActivo.setSelected(false);
+                JOptionPane.showMessageDialog(null, "Cliente inactivo", "Actividad",JOptionPane.OK_OPTION);
+                
             }
         }else{
             JOptionPane.showMessageDialog(null, "La persona no ha sido encontrada", "Error",JOptionPane.WARNING_MESSAGE);
@@ -246,6 +248,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
                 cl.setActivo(1);
             }else{
                 cl.setActivo(0);
+                JOptionPane.showMessageDialog(null, "Se inactivó al Cliente", "Error",JOptionPane.WARNING_MESSAGE);
             }
             controladorPersonas.update(cl);
             vaciar();
