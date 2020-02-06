@@ -11,7 +11,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT * 
-FROM (SELECT cab.fac_cab_id fac_id, fac_cab_fecha fecha, ABA_PERSONAS_PER_ID emp_id, per_cedula cedula, per_nombre nombre, per_apellido apellido, per_direccion direccion, per_telefono telefono, per_celular celular, pro.pro_descripcion producto, pro.pro_precio precio, det.fac_det_cantidad cantidad, det.fac_det_subtotal subtotal, det.fac_det_iva iva, det.fac_det_total total, cab.fac_cab_subtotal fac_subtotal, cab.fac_cab_iva fac_iva, cab.fac_cab_total fac_total
+FROM (SELECT cab.fac_cab_id fac_id, fac_cab_fecha fecha, ABA_PERSONAS_PER_ID emp_id, per_cedula cedula, per_nombre nombre, per_apellido apellido, nvl(per_direccion,' ') direccion, nvl(per_telefono,' ') telefono, nvl(per_celular,' ') celular, pro.pro_descripcion producto, pro.pro_precio precio, det.fac_det_cantidad cantidad, det.fac_det_subtotal subtotal, det.fac_det_iva iva, det.fac_det_total total, cab.fac_cab_subtotal fac_subtotal, cab.fac_cab_iva fac_iva, cab.fac_cab_total fac_total
 FROM ABA_FACTURAS_CABECERA CAB, ABA_FACTURAS_DETALLE DET, ABA_PERSONAS PER, ABA_PRODUCTOS PRO
 WHERE CAB.fac_cab_id = DET.fac_cab_id AND ABA_PERSONAS_PER_ID1 = PER.PER_ID AND ABA_PRODUCTOS_PRO_ID = PRO.PRO_ID
 AND CAB.FAC_CAB_ID = $P{FACTURA}) SEL, ABA_PERSONAS per
@@ -54,27 +54,31 @@ WHERE SEL.emp_id = per.PER_ID]]>
 	<title>
 		<band height="77" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Transparent" x="15" y="15" width="172" height="53" forecolor="#3399FF" backcolor="#009999" uuid="82c14607-6a89-479d-a649-e42cf051a368"/>
+				<reportElement mode="Transparent" x="25" y="12" width="172" height="53" forecolor="#3399FF" backcolor="#009999" uuid="82c14607-6a89-479d-a649-e42cf051a368"/>
 				<textElement>
 					<font fontName="Copperplate Gothic Light" size="36" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Factura]]></text>
 			</staticText>
+			<image>
+				<reportElement x="426" y="0" width="87" height="73" uuid="2ce1d163-e5c5-4155-954a-c7afee4347ad"/>
+				<imageExpression><![CDATA["C:\\Users\\Eduardo Ayora\\Documents\\Universidad\\Abaceria\\logo2.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="61" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="35" y="0" width="500" height="61" backcolor="#99CCFF" uuid="8b093d03-fe4e-4f70-bdf8-9a724696d2db"/>
+				<reportElement mode="Opaque" x="25" y="0" width="488" height="61" backcolor="#99CCFF" uuid="8b093d03-fe4e-4f70-bdf8-9a724696d2db"/>
 				<staticText>
-					<reportElement x="264" y="10" width="74" height="20" uuid="d54fff22-9c51-4e4d-9e67-b4160aeeea40"/>
+					<reportElement x="231" y="10" width="74" height="20" uuid="d54fff22-9c51-4e4d-9e67-b4160aeeea40"/>
 					<textElement textAlignment="Right">
 						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Empleado:]]></text>
 				</staticText>
 				<textField>
-					<reportElement mode="Opaque" x="338" y="10" width="152" height="20" uuid="23b0911e-2c4b-40a2-86c3-be8d3d088522"/>
+					<reportElement mode="Opaque" x="305" y="10" width="152" height="20" uuid="23b0911e-2c4b-40a2-86c3-be8d3d088522"/>
 					<textFieldExpression><![CDATA[$F{PER_NOMBRE} + " " + $F{PER_APELLIDO}]]></textFieldExpression>
 				</textField>
 				<staticText>
@@ -89,12 +93,12 @@ WHERE SEL.emp_id = per.PER_ID]]>
 					<textFieldExpression><![CDATA[$F{FAC_ID}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement mode="Opaque" x="52" y="30" width="138" height="20" uuid="9c7cd973-f81a-4b50-ba7e-5bdeb1d00f25"/>
+					<reportElement mode="Opaque" x="52" y="30" width="100" height="20" uuid="9c7cd973-f81a-4b50-ba7e-5bdeb1d00f25"/>
 					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<staticText>
-				<reportElement x="45" y="10" width="40" height="20" uuid="956e52a1-1635-41ac-b872-a1d17a1d8538"/>
+				<reportElement x="35" y="10" width="40" height="20" uuid="956e52a1-1635-41ac-b872-a1d17a1d8538"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -103,14 +107,14 @@ WHERE SEL.emp_id = per.PER_ID]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="155" splitType="Stretch">
+		<band height="147" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="25" y="127" width="500" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="503a5173-85d4-41b2-9665-fd04c6b4a1a9"/>
+				<reportElement mode="Opaque" x="25" y="127" width="488" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="503a5173-85d4-41b2-9665-fd04c6b4a1a9"/>
 			</frame>
 			<frame>
 				<reportElement x="15" y="0" width="510" height="127" uuid="12e20cb7-3aa6-4596-b095-30c40f989fef"/>
 				<rectangle radius="10">
-					<reportElement x="10" y="10" width="488" height="105" uuid="8fca7849-11e7-4759-a62d-e5f4b28e0514"/>
+					<reportElement x="10" y="10" width="488" height="105" backcolor="#99CCFF" uuid="8fca7849-11e7-4759-a62d-e5f4b28e0514"/>
 				</rectangle>
 				<staticText>
 					<reportElement mode="Opaque" x="20" y="33" width="50" height="20" backcolor="#99CCFF" uuid="de86cae3-5adc-4a42-bc7e-17829d67cbb2"/>
@@ -215,7 +219,7 @@ WHERE SEL.emp_id = per.PER_ID]]>
 				<text><![CDATA[Iva:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="440" y="127" width="85" height="20" uuid="d3556978-1396-41a3-b269-f1e0a44b11cd"/>
+				<reportElement x="440" y="127" width="73" height="20" uuid="d3556978-1396-41a3-b269-f1e0a44b11cd"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -231,9 +235,9 @@ WHERE SEL.emp_id = per.PER_ID]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="62" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="15" y="0" width="520" height="58" backcolor="#CCCCCC" uuid="6894af21-0654-4c8e-a56e-e03c157479cc"/>
+				<reportElement mode="Opaque" x="25" y="0" width="488" height="30" backcolor="#CCCCCC" uuid="6894af21-0654-4c8e-a56e-e03c157479cc"/>
 			</frame>
 			<frame>
 				<reportElement x="25" y="9" width="500" height="21" uuid="c3d501c9-ba75-4cb8-a5ca-9fd35fb040ab"/>
@@ -288,17 +292,17 @@ WHERE SEL.emp_id = per.PER_ID]]>
 				<text><![CDATA[Total:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="355" y="18" width="100" height="20" uuid="231292f4-b727-4867-ada2-c8322c64fb3c"/>
+				<reportElement x="413" y="18" width="100" height="20" uuid="231292f4-b727-4867-ada2-c8322c64fb3c"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{FAC_SUBTOTAL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="355" y="50" width="100" height="20" uuid="6de3150f-45a5-4617-94e8-029b130b32df"/>
+				<reportElement x="413" y="50" width="100" height="20" uuid="6de3150f-45a5-4617-94e8-029b130b32df"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{FAC_IVA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="355" y="90" width="100" height="20" uuid="efcdcf9d-89a9-442c-8117-b51a9ca65fae"/>
+				<reportElement x="413" y="90" width="100" height="20" uuid="efcdcf9d-89a9-442c-8117-b51a9ca65fae"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{FAC_TOTAL}]]></textFieldExpression>
 			</textField>
