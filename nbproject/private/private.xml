@@ -4,6 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/compra/ListaProdcuto.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/persona/CrearUsuario.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/controlador/DataBaseConnection.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/VistaAdministrador.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/factura/CrearFactura.java</file>
+            <file>file:/C:/Users/Darwin/Documents/Abaceria/src/vista/compra/EntregaProveedor.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/Usuario-Pc/Documents/Abaceria/src/reporteFactura/factura2.jrxml</file>
 =======
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/reporteFactura/factura2.jrxml</file>
@@ -12,6 +21,7 @@
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/controlador/DataBaseConnection.java</file>
             <file>file:/C:/Users/Eduardo%20Ayora/Documents/Universidad/Abaceria/src/vista/factura/BuscarFactura.java</file>
 >>>>>>> ae37edf7a7ad381d2b47ede39229aaf0e512ff80
+>>>>>>> 6c96c988916b2da43e67d4562a7c8b6e2ffe4b30
         </group>
     </open-files>
 </project-private>

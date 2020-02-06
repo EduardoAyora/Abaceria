@@ -32,7 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     
     private Timer tiempo;
     private int cont;
-    public final static int two_second = 5;
+    public final static int two_second = 1;
      
     
 
