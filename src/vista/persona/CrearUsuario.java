@@ -243,7 +243,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
             
                 controladorEmpleado.create(empleado);
                 vaciar();
-                JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(rootPane, "Usuario Creado"," Crear",JOptionPane.INFORMATION_MESSAGE);
                 
         } catch (ExcepcionBinaria ex) {
             

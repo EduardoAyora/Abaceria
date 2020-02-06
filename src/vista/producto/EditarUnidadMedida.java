@@ -177,7 +177,7 @@ public class EditarUnidadMedida extends javax.swing.JInternalFrame {
          unidadMed.setDescripcion(txtUnidadMedida.getText());
          controladorUnidadMedida.update(unidadMed);
          vaciar();
-         JOptionPane.showMessageDialog(this, " Datos Actualizados", "Unidad de Medida", JOptionPane.OK_OPTION);
+         JOptionPane.showMessageDialog(this, " Datos Actualizados", "Unidad de Medida", JOptionPane.INFORMATION_MESSAGE);
          txtUnidadMedida.setText("");
          
      }catch(Exception ex){

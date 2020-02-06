@@ -164,7 +164,7 @@ public class EditarCategoria extends javax.swing.JInternalFrame {
         try{
             categoria.setNombre(txtCategoria.getText());
             controladorCategoria.update(categoria);
-            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Categoria", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Categoria", JOptionPane.INFORMATION_MESSAGE);
             txtCategoria.setText("");
         }catch(Exception ex){
             ex.printStackTrace();

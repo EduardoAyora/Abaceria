@@ -290,7 +290,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             }
             if(chActivo.isSelected()){
                 em.setActivo(1);
-                JOptionPane.showMessageDialog(null, "Se activó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se activó al Usuario", "Error",JOptionPane.INFORMATION_MESSAGE);
             }else{
                 em.setActivo(0);
                 JOptionPane.showMessageDialog(null, "Se desactivó al Usuario", "Error",JOptionPane.WARNING_MESSAGE);
@@ -300,7 +300,7 @@ public class EditarUsuario extends javax.swing.JInternalFrame {
             em.setContrasenia(new String(arrayC));
             controladorEmpleados.update(em);
             vaciar();
-            JOptionPane.showMessageDialog(null, "Datos actualizados", "Empleado", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Datos actualizados", "Empleado", JOptionPane.INFORMATION_MESSAGE);
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error", JOptionPane.WARNING_MESSAGE);

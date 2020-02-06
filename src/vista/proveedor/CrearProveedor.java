@@ -194,7 +194,7 @@ public class CrearProveedor extends javax.swing.JInternalFrame {
             
             controladorPersona.create(proveedor);
             vaciar();
-            JOptionPane.showMessageDialog(rootPane, "Proveedor Creado Exitosamente"," Proveedor",JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(rootPane, "Proveedor Creado Exitosamente"," Proveedor",JOptionPane.INFORMATION_MESSAGE);
             
             
         }catch(java.sql.SQLIntegrityConstraintViolationException odbcEx){

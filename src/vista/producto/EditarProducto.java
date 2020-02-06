@@ -395,7 +395,7 @@ public class EditarProducto extends javax.swing.JInternalFrame {
             }
            controladorProductos.update(pr);
            vaciar();
-           JOptionPane.showMessageDialog(null, "Producto actualizado con exito", "Producto",JOptionPane.OK_OPTION);
+           JOptionPane.showMessageDialog(null, "Producto actualizado con exito", "Producto",JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception ex){
           JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error",JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();   

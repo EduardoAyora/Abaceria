@@ -252,7 +252,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             }
             controladorPersonas.update(cl);
             vaciar();
-            JOptionPane.showMessageDialog(null, "Datos Actualizados", "Actualizar",JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Datos Actualizados", "Actualizar",JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Datos erroneos o faltantes", "Error",JOptionPane.WARNING_MESSAGE);
             ex.printStackTrace();

@@ -281,7 +281,7 @@ public class EntregaProveedor extends javax.swing.JInternalFrame {
             numeroFactura = Integer.parseInt(txtNumeroFactura.getText());
         }catch(Exception ex){
             mensaje = true;
-            JOptionPane.showMessageDialog(null, "Numero de factura o cantidad de producto no validos", "Compra", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Numero de factura o cantidad de producto no validos", "Compra", JOptionPane.INFORMATION_MESSAGE);
         }
         
         if(proveedor != null && producto != null){

@@ -228,7 +228,7 @@ String cedu = txtCedula.getText();
             controladorPersona.update(proveedor);
             vaciar();
             
-            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Ventana Actualizar", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this, " Datos Actualizados", "Ventana Actualizar", JOptionPane.INFORMATION_MESSAGE);
             txtCedula.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
