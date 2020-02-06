@@ -760,7 +760,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         try{
             cliente = controladorPersona.read(txtBCedula.getText());
-            llenarDatosCliente();
+            if(cliente.getActivo()==1){
+               llenarDatosCliente(); 
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Cliente Inactivo","Error",JOptionPane.ERROR_MESSAGE);            }
+            
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);
@@ -864,7 +868,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 try{
             cliente = controladorPersona.read(txtBCedula.getText());
-            llenarDatosCliente();
+            if(cliente.getActivo()==1){
+               llenarDatosCliente(); 
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Cliente Inactivo","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            
         }catch(Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Cliente", JOptionPane.ERROR_MESSAGE);
