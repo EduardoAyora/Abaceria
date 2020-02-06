@@ -139,7 +139,6 @@ public class ControladorFactura {
         } catch (JRException ex) {
             ex.printStackTrace();
         }
-        
     }
     
 }
