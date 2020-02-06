@@ -170,8 +170,8 @@ public class Inicio extends javax.swing.JFrame {
               
             } else{
                     if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1 && e.getActivo()==1 ){
-                
-                    String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
+                    try{
+                        String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
                         JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
                 
                         if (tipo.equals("Administrador")){
@@ -190,6 +190,10 @@ public class Inicio extends javax.swing.JFrame {
                             dispose();
                             
                         }
+                    }catch(Exception ex){
+                        
+                    }
+                    
                 
                     }else{
                     JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
@@ -236,8 +240,8 @@ public class Inicio extends javax.swing.JFrame {
                 
             } else{
                     if(txtU.getText().equalsIgnoreCase(e.getUsuario()) && p.equals(e.getContrasenia()) && e.getTipoAdministrador() ==1 && e.getActivo()==1){
-                
-                    String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
+                    try{
+                        String tipo = (JOptionPane.showInputDialog(null, "Seleccione un tipo de usuario","Usuario",
                         JOptionPane.PLAIN_MESSAGE,null,new Object[] {"Administrador", "Empleado" }, "Selecciona")).toString();
                 
                         if (tipo.equals("Administrador")){
@@ -254,7 +258,9 @@ public class Inicio extends javax.swing.JFrame {
                         e1.setVisible(true);
                         dispose();
                         }
-                
+                    }catch(Exception ex){
+                        
+                    }
                     }else{
                     JOptionPane.showMessageDialog(rootPane, "Acceso Denegado");
                     txtPass.setText("");

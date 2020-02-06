@@ -133,13 +133,12 @@ public class ControladorFactura {
             parametro.put("FACTURA", codigo);
             JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataBaseConnection.getConnection());
             //JasperPrintManager.printReport(jasperPrint, false);//Poner en false-------------------------------------------------
-            JasperExportManager.exportReportToPdfFile(jasperPrint, "reporteDireccion.pdf");//
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "reporte.pdf");//
             JasperViewer.viewReport(jasperPrint, false);//
             dataBaseConnection.disconnect();
         } catch (JRException ex) {
             ex.printStackTrace();
         }
-        
     }
     
 }

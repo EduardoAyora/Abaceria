@@ -61,6 +61,19 @@ public class EditarProducto extends javax.swing.JInternalFrame {
         ChBEx.setSelected(extranjero);
         ChIva.setSelected(iva);
         CbActivo.setSelected(activo);
+        
+        for(int i = 0; i < itemCategoria.getItemCount(); i++){
+            if(producto.getCateriaProducto().getNombre().equals(((Categoria) itemCategoria.getItemAt(i)).getNombre())){
+                itemCategoria.setSelectedIndex(i);
+                break;
+            }
+        }
+        for(int j = 0; j < itemUnidad.getItemCount(); j++){
+            if(producto.getUnidadMedida().getDescripcion().equals(((UnidadMedida) itemUnidad.getItemAt(j)).getDescripcion())){
+                itemUnidad.setSelectedIndex(j);
+                break;
+            }
+        }
     }
 
     /**
