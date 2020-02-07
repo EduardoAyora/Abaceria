@@ -47,6 +47,7 @@ public class Inicio extends javax.swing.JFrame {
         upadre = "1";
         pPadre="1";
         progres.setVisible(false);
+        this.setLocationRelativeTo(null);
         
     }
 

@@ -60,6 +60,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
      */
     public VistaAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controladorPersona = new ControladorPersona();
         controladorEmpleado = new ControladorEmpleado();
         controladorCategoria= new ControladorCategoria();

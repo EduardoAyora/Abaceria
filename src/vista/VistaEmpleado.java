@@ -27,6 +27,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
      */
     public VistaEmpleado() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public void setEmpleado(Empleado empleado){
